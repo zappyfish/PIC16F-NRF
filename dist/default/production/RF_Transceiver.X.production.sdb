@@ -1,0 +1,61 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1503 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"32 C:\Users\Liam\RF Transceiver.X\receiver.c
+[v _main main `(v  1 e 1 0 ]
+"42
+[v _configIO configIO `(v  1 e 1 0 ]
+"51
+[v _writeDAC1 writeDAC1 `(v  1 e 1 0 ]
+[s S34 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+]
+"945 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f1503.h
+[u S41 . 1 `S34 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES41  1 e 1 @140 ]
+"2050
+[v _FVRCON FVRCON `VEuc  1 e 1 @279 ]
+[s S51 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 DACPSS 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 DACOE2 1 0 :1:4 
+`uc 1 DACOE1 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 DACEN 1 0 :1:7 
+]
+"2141
+[u S59 . 1 `S51 1 . 1 0 ]
+[v _DACCON0bits DACCON0bits `VES59  1 e 1 @280 ]
+"2165
+[v _DACCON1 DACCON1 `VEuc  1 e 1 @281 ]
+"32 C:\Users\Liam\RF Transceiver.X\receiver.c
+[v _main main `(v  1 e 1 0 ]
+{
+"34
+[v main@val val `uc  1 a 1 2 ]
+"40
+} 0
+"51
+[v _writeDAC1 writeDAC1 `(v  1 e 1 0 ]
+{
+[v writeDAC1@val val `uc  1 a 1 wreg ]
+[v writeDAC1@val val `uc  1 a 1 wreg ]
+"53
+[v writeDAC1@val val `uc  1 a 1 0 ]
+"54
+} 0
+"42
+[v _configIO configIO `(v  1 e 1 0 ]
+{
+"49
+} 0
