@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\RF_Transceiver.X.production.hex">
+  <executable name="dist/default/production\PIC16F-NRF.production.hex">
     <memory name="program">
       <units>words</units>
       <length>2048</length>
-      <used>30</used>
-      <free>2018</free>
+      <used>246</used>
+      <free>1802</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>128</length>
-      <used>5</used>
-      <free>123</free>
+      <used>13</used>
+      <free>115</free>
     </memory>
   </executable>
 </project>

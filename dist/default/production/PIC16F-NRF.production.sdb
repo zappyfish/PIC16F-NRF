@@ -1,0 +1,179 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1503 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"58 C:\Users\Liam\PIC_projects\nrf_spi\PIC16F-NRF\receiver.c
+[v _main main `(v  1 e 1 0 ]
+"79
+[v _configIOReceiver configIOReceiver `(v  1 e 1 0 ]
+"88
+[v _configureRX configureRX `(v  1 e 1 0 ]
+"144
+[v _blink blink `(v  1 e 1 0 ]
+"151
+[v _writeSPI writeSPI `(v  1 e 1 0 ]
+"166
+[v _getData getData `(uc  1 e 1 0 ]
+"184
+[v _readSPI readSPI `(uc  1 e 1 0 ]
+"198
+[v _SPI_init SPI_init `(v  1 e 1 0 ]
+"959 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f1503.h
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1009
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S64 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1194
+[s S71 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S78 . 1 `S64 1 . 1 0 `S71 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES78  1 e 1 @149 ]
+[s S23 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+]
+"1706
+[u S30 . 1 `S23 1 . 1 0 ]
+[v _LATAbits LATAbits `VES30  1 e 1 @268 ]
+[s S124 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+]
+"1751
+[u S131 . 1 `S124 1 . 1 0 ]
+[v _LATCbits LATCbits `VES131  1 e 1 @270 ]
+[s S96 . 1 `uc 1 WPUA0 1 0 :1:0 
+`uc 1 WPUA1 1 0 :1:1 
+`uc 1 WPUA2 1 0 :1:2 
+`uc 1 WPUA3 1 0 :1:3 
+`uc 1 WPUA4 1 0 :1:4 
+`uc 1 WPUA5 1 0 :1:5 
+]
+"2619
+[s S103 . 1 `uc 1 WPUA 1 0 :6:0 
+]
+[u S105 . 1 `S96 1 . 1 0 `S103 1 . 1 0 ]
+[v _WPUAbits WPUAbits `VES105  1 e 1 @524 ]
+"2664
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @529 ]
+"2778
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @532 ]
+[s S142 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"2795
+[u S151 . 1 `S142 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES151  1 e 1 @532 ]
+"2904
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @533 ]
+[s S169 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"3049
+[s S178 . 1 `uc 1 SSPM 1 0 :4:0 
+]
+[u S180 . 1 `S169 1 . 1 0 `S178 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES180  1 e 1 @533 ]
+"47 C:\Users\Liam\PIC_projects\nrf_spi\PIC16F-NRF\receiver.c
+[v _R_RX_PAYLOAD R_RX_PAYLOAD `DCCuc  1 e 1 0 ]
+"58
+[v _main main `(v  1 e 1 0 ]
+{
+"67
+[v main@thingy thingy `uc  1 a 1 9 ]
+"66
+[v main@data data `uc  1 a 1 8 ]
+"63
+[v main@last last `uc  1 a 1 10 ]
+"77
+} 0
+"184
+[v _readSPI readSPI `(uc  1 e 1 0 ]
+{
+[v readSPI@address address `uc  1 a 1 wreg ]
+"187
+[v readSPI@ret_data ret_data `uc  1 a 1 2 ]
+"184
+[v readSPI@address address `uc  1 a 1 wreg ]
+[v readSPI@address address `uc  1 a 1 1 ]
+"196
+} 0
+"166
+[v _getData getData `(uc  1 e 1 0 ]
+{
+"171
+[v getData@data data `uc  1 a 1 5 ]
+"182
+} 0
+"88
+[v _configureRX configureRX `(v  1 e 1 0 ]
+{
+"106
+[v configureRX@i i `uc  1 a 1 6 ]
+"105
+[v configureRX@dummy dummy `uc  1 a 1 5 ]
+"143
+} 0
+"151
+[v _writeSPI writeSPI `(v  1 e 1 0 ]
+{
+[v writeSPI@data data `uc  1 a 1 wreg ]
+"155
+[v writeSPI@x x `uc  1 a 1 2 ]
+"151
+[v writeSPI@data data `uc  1 a 1 wreg ]
+[v writeSPI@address address `uc  1 p 1 0 ]
+"153
+[v writeSPI@data data `uc  1 a 1 3 ]
+"164
+} 0
+"79
+[v _configIOReceiver configIOReceiver `(v  1 e 1 0 ]
+{
+"85
+} 0
+"144
+[v _blink blink `(v  1 e 1 0 ]
+{
+[v blink@delay delay `i  1 p 2 0 ]
+"149
+} 0
+"198
+[v _SPI_init SPI_init `(v  1 e 1 0 ]
+{
+"203
+} 0
