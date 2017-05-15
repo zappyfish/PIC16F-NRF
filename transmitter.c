@@ -26,7 +26,7 @@
 #define _XTAL_FREQ 16000000
 #define NRF_CSN LATCbits.LATC4 // spi chip select
 #define NRF_CE LATCbits.LATC3 // chip enable activates RX or TX mode
-#define IRQ LATAbits.LATA1 // interrupt request, goes low when valid address
+#define IRQ PORTAbits.RA1 // interrupt request, goes low when valid address
 #define SWITCH PORTAbits.RA5 // input
 #define SCK LATCbits.LATC0 //output
 #define SDO LATCbits.LATC2 // output
@@ -56,17 +56,20 @@ void blink(void);
 int main(void) {
     NRF_CSN = 1;
     uint8_t last = 1;
-    configIOTransmitter();
     SPI_init();
     LATAbits.LATA0 = 0;
     configureTX();
     while(1) {
+        NRF_CSN = 0;
+        uint8_t sreg = writeSPI(0xFF);
+        NRF_CSN = 1;
         NRF_CSN = 0;
         writeSPI(0x00 & READ_MASK);
         uint8_t data = writeSPI(0xFF);
         NRF_CSN = 1;
         if(data == 0b01011010) {
            LATAbits.LATA0 = !PORTAbits.RA0; 
+           blink();
         }
         if(last!= SWITCH) {
         last = SWITCH;
@@ -77,7 +80,7 @@ int main(void) {
     
 }
 void configIOTransmitter(void) {
-    TRISA = 0b11101110;
+    TRISA = 0b11101110; // light output, 
     TRISC = 0b11100010;
     OPTION_REGbits.nWPUEN = 0; // enable pull ups
     WPUAbits.WPUA5 = 1; // pull up for switch
@@ -108,12 +111,6 @@ void configureTX(void) {
     NRF_CSN = 0;
     writeSPI(0x00 | WRITE_MASK);
     writeSPI(0b01011010);// write to config register. TX_DS IRQ active
-    NRF_CSN = 1;
-    NRF_CSN = 0;
-    writeSPI(0x00 & READ_MASK);
-    while(writeSPI(0xFF) != 0b01011010) {
-        blink();
-    }
     NRF_CSN = 1;
     NRF_CSN = 0;
     writeSPI(0x01 | WRITE_MASK);
@@ -164,7 +161,8 @@ uint8_t writeSPI(uint8_t data) { // executable in power down or
     // standby modes only
     uint8_t x; // this holds the SREG
     SSP1BUF = data; // put data in buffer
-    while(!SSP1STATbits.BF); // wait for read byte to come in
+    while(!PIR1bits.SSP1IF); // wait for read byte to come in
+    PIR1bits.SSP1IF = 0;
     x = SSP1BUF; // read to clear buffer
     return x;
     
@@ -211,11 +209,21 @@ void transmitData(uint8_t data) {
 }
 
 void SPI_init(void) {
+    SSP1CON1bits.SSPEN = 0;
+    configIOTransmitter();
+    SSP1CON1bits.CKP = 0; // clock polarity low
+    SSP1STATbits.CKE = 1; // transmit high to low
+    SSP1STATbits.SMP = 1; // input data sampled at end of data output time
+    SSP1CON1bits.SSPM = 0; // SPI master mode, SCK = FOSC/4
+    SSP1CON1bits.SSPEN = 1; // enable spi
+    
+    
+    /*
     SSP1CON1 = 0x00;
     SSP1STAT = 0b11000000;
-    SSP1CON1 = 0b00000010;
+    SSP1CON1 = 0b00100010;
     PIR1bits.SSP1IF = 0;
     PIE1bits.SSP1IE = 1; // enable spi interrupts
-    SSP1CON1bits.SSPEN = 1;
+    */
 }
 
