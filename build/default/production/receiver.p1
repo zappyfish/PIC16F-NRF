@@ -56,8 +56,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S96 . . ]
 "1751
 [v _LATCbits `VS96 ~T0 @X0 0 e@270 ]
-"2664
-[v _SSPBUF `Vuc ~T0 @X0 0 e@529 ]
+"2659
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@529 ]
 "2784
 [s S158 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S158 . BF UA R_nW S P D_nA CKE SMP ]
@@ -70,21 +70,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 "152 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic.h
 [v __delay `JF2919 ~T0 @X0 0 e ]
 [p i __delay ]
-"3035 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f1503.h
-[s S168 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S168 . SSPM0 SSPM1 SSPM2 SSPM3 CKP SSPEN SSPOV WCOL ]
-"3045
-[s S169 :4 `uc 1 ]
-[n S169 . SSPM ]
-"3034
-[u S167 `S168 1 `S169 1 ]
-[n S167 . . . ]
-"3049
-[v _SSPCON1bits `VS167 ~T0 @X0 0 e@533 ]
-"2778
-[v _SSPSTAT `Vuc ~T0 @X0 0 e@532 ]
-"2904
-[v _SSPCON1 `Vuc ~T0 @X0 0 e@533 ]
+"2895 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f1503.h
+[v _SSP1CON1 `Vuc ~T0 @X0 0 e@533 ]
+"2773
+[v _SSP1STAT `Vuc ~T0 @X0 0 e@532 ]
+"533
+[s S33 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S33 . TMR1IF TMR2IF . SSP1IF . ADIF TMR1GIF ]
+"532
+[u S32 `S33 1 ]
+[n S32 . . ]
+"543
+[v _PIR1bits `VS32 ~T0 @X0 0 e@17 ]
+"2910
+[s S162 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S162 . SSPM0 SSPM1 SSPM2 SSPM3 CKP SSPEN SSPOV WCOL ]
+"2920
+[s S163 :4 `uc 1 ]
+[n S163 . SSPM ]
+"2909
+[u S161 `S162 1 `S163 1 ]
+[n S161 . . . ]
+"2924
+[v _SSP1CON1bits `VS161 ~T0 @X0 0 e@533 ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 38: typedef signed long int int32_t;
@@ -2987,367 +2995,359 @@ Version 3.2 HI-TECH Software Intermediate Code
 "64
 [e :U 343 ]
 {
-[; ;receiver.c: 65: configureRX();
 "65
-[e ( _configureRX ..  ]
-"66
 [v _data `uc ~T0 @X0 1 a ]
-[; ;receiver.c: 66: uint8_t data = getData();
+[; ;receiver.c: 65: uint8_t data = getData();
 [e = _data ( _getData ..  ]
+"66
+[v _dummy `uc ~T0 @X0 1 a ]
+[; ;receiver.c: 66: uint8_t dummy = readSPI(0x00);
+[e = _dummy ( _readSPI (1 -> -> 0 `i `uc ]
+[; ;receiver.c: 67: blink(dummy);
 "67
-[v _thingy `uc ~T0 @X0 1 a ]
-[; ;receiver.c: 67: uint8_t thingy = readSPI(0x00);
-[e = _thingy ( _readSPI (1 -> -> 0 `i `uc ]
-[; ;receiver.c: 68: if(thingy == 0b00111111) {
+[e ( _blink (1 -> _dummy `i ]
+[; ;receiver.c: 68: if(data == 0xFF) {
 "68
-[e $ ! == -> _thingy `i -> 63 `i 345  ]
+[e $ ! == -> _data `i -> 255 `i 345  ]
 {
-[; ;receiver.c: 69: blink(100);
+[; ;receiver.c: 69: last = (last ? 0 : 1);
 "69
-[e ( _blink (1 -> 100 `i ]
+[e = _last -> ? != -> _last `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
+[; ;receiver.c: 70: LATAbits.LATA0 = last;
 "70
+[e = . . _LATAbits 0 0 _last ]
+[; ;receiver.c: 71: blink(100);
+"71
+[e ( _blink (1 -> 100 `i ]
+"72
 }
 [e :U 345 ]
-[; ;receiver.c: 70: }
-[; ;receiver.c: 71: if(data == 0xFF) {
-"71
-[e $ ! == -> _data `i -> 255 `i 346  ]
-{
-[; ;receiver.c: 72: last = (last ? 0 : 1);
-"72
-[e = _last -> ? != -> _last `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
-[; ;receiver.c: 73: LATAbits.LATA0 = last;
 "73
-[e = . . _LATAbits 0 0 _last ]
-[; ;receiver.c: 74: blink(20);
-"74
-[e ( _blink (1 -> 20 `i ]
-"75
-}
-[e :U 346 ]
-"76
 }
 [e :U 342 ]
 "64
 [e $U 343  ]
 [e :U 344 ]
-[; ;receiver.c: 75: }
-[; ;receiver.c: 76: }
-[; ;receiver.c: 77: }
-"77
+[; ;receiver.c: 72: }
+[; ;receiver.c: 73: }
+[; ;receiver.c: 74: }
+"74
 [e :UE 341 ]
 }
-"79
+"76
 [v _configIOReceiver `(v ~T0 @X0 1 ef ]
 {
-[; ;receiver.c: 79: void configIOReceiver(void) {
+[; ;receiver.c: 76: void configIOReceiver(void) {
 [e :U _configIOReceiver ]
 [f ]
-[; ;receiver.c: 80: TRISA = 0b11101110;
-"80
+[; ;receiver.c: 77: TRISA = 0b11101110;
+"77
 [e = _TRISA -> -> 238 `i `uc ]
-[; ;receiver.c: 81: TRISC = 0b11100010;
-"81
+[; ;receiver.c: 78: TRISC = 0b11100010;
+"78
 [e = _TRISC -> -> 226 `i `uc ]
-[; ;receiver.c: 82: OPTION_REGbits.nWPUEN = 0;
-"82
+[; ;receiver.c: 79: OPTION_REGbits.nWPUEN = 0;
+"79
 [e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-[; ;receiver.c: 83: WPUAbits.WPUA1 = 1;
-"83
+[; ;receiver.c: 80: WPUAbits.WPUA1 = 1;
+"80
 [e = . . _WPUAbits 0 1 -> -> 1 `i `uc ]
-[; ;receiver.c: 85: }
-"85
-[e :UE 347 ]
+[; ;receiver.c: 82: }
+"82
+[e :UE 346 ]
 }
-"88
+"85
 [v _configureRX `(v ~T0 @X0 1 ef ]
 {
-[; ;receiver.c: 88: void configureRX(void) {
+[; ;receiver.c: 85: void configureRX(void) {
 [e :U _configureRX ]
 [f ]
-[; ;receiver.c: 97: writeSPI(0x00, 0b00111111);
-"97
-[e ( _writeSPI (2 , -> -> 0 `i `uc -> -> 63 `i `uc ]
-[; ;receiver.c: 98: writeSPI(0x01, 0b00000001);
-"98
+[; ;receiver.c: 94: writeSPI(0x00, 0b00111011);
+"94
+[e ( _writeSPI (2 , -> -> 0 `i `uc -> -> 59 `i `uc ]
+[; ;receiver.c: 95: writeSPI(0x01, 0b00000001);
+"95
 [e ( _writeSPI (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;receiver.c: 99: writeSPI(0x02, 0b00000001);
-"99
+[; ;receiver.c: 96: writeSPI(0x02, 0b00000001);
+"96
 [e ( _writeSPI (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;receiver.c: 100: writeSPI(0x11, 0b00000001);
-"100
+[; ;receiver.c: 97: writeSPI(0x11, 0b00000001);
+"97
 [e ( _writeSPI (2 , -> -> 17 `i `uc -> -> 1 `i `uc ]
-[; ;receiver.c: 101: writeSPI(0x03, 0b00000011);
-"101
+[; ;receiver.c: 98: writeSPI(0x03, 0b00000011);
+"98
 [e ( _writeSPI (2 , -> -> 3 `i `uc -> -> 3 `i `uc ]
-[; ;receiver.c: 102: LATCbits.LATC4 = 0;
-"102
+[; ;receiver.c: 99: LATCbits.LATC4 = 0;
+"99
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;receiver.c: 103: SSPBUF = (0x0A | 0b00100000);
-"103
-[e = _SSPBUF -> | -> 10 `i -> 32 `i `uc ]
-[; ;receiver.c: 104: while(!SSP1STATbits.BF);
-"104
-[e $U 349  ]
-[e :U 350 ]
+[; ;receiver.c: 100: SSP1BUF = (0x0A | 0b00100000);
+"100
+[e = _SSP1BUF -> | -> 10 `i -> 32 `i `uc ]
+[; ;receiver.c: 101: while(!SSP1STATbits.BF);
+"101
+[e $U 348  ]
 [e :U 349 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 350  ]
-[e :U 351 ]
-"105
+[e :U 348 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 349  ]
+[e :U 350 ]
+"102
 [v _dummy `uc ~T0 @X0 1 a ]
-[; ;receiver.c: 105: uint8_t dummy = SSPBUF;
-[e = _dummy _SSPBUF ]
-[; ;receiver.c: 106: for(uint8_t i = 0; i < 5; ++i) {
-"106
+[; ;receiver.c: 102: uint8_t dummy = SSP1BUF;
+[e = _dummy _SSP1BUF ]
+[; ;receiver.c: 103: for(uint8_t i = 0; i < 5; ++i) {
+"103
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 352  ]
-[e $U 353  ]
-[e :U 352 ]
+[e $ < -> _i `i -> 5 `i 351  ]
+[e $U 352  ]
+[e :U 351 ]
 {
-[; ;receiver.c: 107: SSPBUF = (0xE7);
-"107
-[e = _SSPBUF -> -> 231 `i `uc ]
-[; ;receiver.c: 108: while(!SSP1STATbits.BF);
-"108
-[e $U 355  ]
-[e :U 356 ]
+[; ;receiver.c: 104: SSP1BUF = (0xE7);
+"104
+[e = _SSP1BUF -> -> 231 `i `uc ]
+[; ;receiver.c: 105: while(!SSP1STATbits.BF);
+"105
+[e $U 354  ]
 [e :U 355 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 356  ]
-[e :U 357 ]
-[; ;receiver.c: 109: dummy = SSPBUF;
-"109
-[e = _dummy _SSPBUF ]
-"110
-}
+[e :U 354 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 355  ]
+[e :U 356 ]
+[; ;receiver.c: 106: dummy = SSP1BUF;
 "106
+[e = _dummy _SSP1BUF ]
+"107
+}
+"103
 [e =+ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 352  ]
-[e :U 353 ]
-"110
+[e $ < -> _i `i -> 5 `i 351  ]
+[e :U 352 ]
+"107
 }
-[; ;receiver.c: 110: }
-[; ;receiver.c: 111: LATCbits.LATC4 = 1;
-"111
+[; ;receiver.c: 107: }
+[; ;receiver.c: 108: LATCbits.LATC4 = 1;
+"108
 [e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;receiver.c: 141: _delay((unsigned long)((130)*(8000000/4000000.0)));
-"141
+[; ;receiver.c: 138: _delay((unsigned long)((130)*(8000000/4000000.0)));
+"138
 [e ( __delay (1 -> * -> -> 130 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;receiver.c: 143: }
-"143
-[e :UE 348 ]
+[; ;receiver.c: 140: }
+"140
+[e :UE 347 ]
 }
-"144
+"141
 [v _blink `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;receiver.c: 144: void blink(int delay) {
+[; ;receiver.c: 141: void blink(int delay) {
 [e :U _blink ]
 [v _delay `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;receiver.c: 145: LATAbits.LATA0 = 1;
-"145
+[; ;receiver.c: 142: LATAbits.LATA0 = 1;
+"142
 [e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
-[; ;receiver.c: 146: _delay((unsigned long)((20)*(8000000/4000.0)));
-"146
+[; ;receiver.c: 143: _delay((unsigned long)((20)*(8000000/4000.0)));
+"143
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;receiver.c: 147: LATAbits.LATA0 = 0;
-"147
+[; ;receiver.c: 144: LATAbits.LATA0 = 0;
+"144
 [e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
-[; ;receiver.c: 148: _delay((unsigned long)((20)*(8000000/4000.0)));
-"148
+[; ;receiver.c: 145: _delay((unsigned long)((20)*(8000000/4000.0)));
+"145
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;receiver.c: 149: }
-"149
-[e :UE 358 ]
+[; ;receiver.c: 146: }
+"146
+[e :UE 357 ]
 }
-"151
+"148
 [v _writeSPI `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;receiver.c: 151: void writeSPI(uint8_t data, uint8_t address) {
+[; ;receiver.c: 148: void writeSPI(uint8_t data, uint8_t address) {
 [e :U _writeSPI ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [v _address `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;receiver.c: 153: address |= 0b00100000;
-"153
+[; ;receiver.c: 150: address |= 0b00100000;
+"150
 [e =| _address -> -> 32 `i `uc ]
-[; ;receiver.c: 154: LATCbits.LATC4 = 0;
-"154
+[; ;receiver.c: 151: LATCbits.LATC4 = 0;
+"151
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-"155
+"152
 [v _x `uc ~T0 @X0 1 a ]
-[; ;receiver.c: 155: uint8_t x;
-[; ;receiver.c: 156: SSPBUF = address;
-"156
-[e = _SSPBUF _address ]
-[; ;receiver.c: 157: while(!SSP1STATbits.BF);
-"157
-[e $U 360  ]
-[e :U 361 ]
+[; ;receiver.c: 152: uint8_t x;
+[; ;receiver.c: 153: SSP1BUF = address;
+"153
+[e = _SSP1BUF _address ]
+[; ;receiver.c: 154: while(!SSP1STATbits.BF);
+"154
+[e $U 359  ]
 [e :U 360 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 361  ]
-[e :U 362 ]
-[; ;receiver.c: 158: x = SSPBUF;
-"158
-[e = _x _SSPBUF ]
-[; ;receiver.c: 159: SSPBUF = data;
-"159
-[e = _SSPBUF _data ]
-[; ;receiver.c: 160: while (!SSP1STATbits.BF);
-"160
-[e $U 363  ]
-[e :U 364 ]
+[e :U 359 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 360  ]
+[e :U 361 ]
+[; ;receiver.c: 155: x = SSP1BUF;
+"155
+[e = _x _SSP1BUF ]
+[; ;receiver.c: 156: SSP1BUF = data;
+"156
+[e = _SSP1BUF _data ]
+[; ;receiver.c: 157: while (!SSP1STATbits.BF);
+"157
+[e $U 362  ]
 [e :U 363 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 364  ]
-[e :U 365 ]
-[; ;receiver.c: 161: x = SSPBUF;
-"161
-[e = _x _SSPBUF ]
-[; ;receiver.c: 162: LATCbits.LATC4 = 1;
-"162
+[e :U 362 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 363  ]
+[e :U 364 ]
+[; ;receiver.c: 158: x = SSP1BUF;
+"158
+[e = _x _SSP1BUF ]
+[; ;receiver.c: 159: LATCbits.LATC4 = 1;
+"159
 [e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;receiver.c: 164: }
-"164
-[e :UE 359 ]
+[; ;receiver.c: 161: }
+"161
+[e :UE 358 ]
 }
-"166
+"163
 [v _getData `(uc ~T0 @X0 1 ef ]
 {
-[; ;receiver.c: 166: uint8_t getData(void) {
+[; ;receiver.c: 163: uint8_t getData(void) {
 [e :U _getData ]
 [f ]
-[; ;receiver.c: 167: LATCbits.LATC3 = 1;
-"167
+[; ;receiver.c: 164: LATCbits.LATC3 = 1;
+"164
 [e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;receiver.c: 168: while(LATAbits.LATA1);
-"168
-[e $U 367  ]
-[e :U 368 ]
+[; ;receiver.c: 165: while(LATAbits.LATA1);
+"165
+[e $U 366  ]
 [e :U 367 ]
-[e $ != -> . . _LATAbits 0 1 `i -> -> -> 0 `i `Vuc `i 368  ]
-[e :U 369 ]
-[; ;receiver.c: 170: LATCbits.LATC3 = 0;
-"170
+[e :U 366 ]
+[e $ != -> . . _LATAbits 0 1 `i -> -> -> 0 `i `Vuc `i 367  ]
+[e :U 368 ]
+[; ;receiver.c: 167: LATCbits.LATC3 = 0;
+"167
 [e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-"171
+"168
 [v _data `uc ~T0 @X0 1 a ]
-[; ;receiver.c: 171: uint8_t data;
-[; ;receiver.c: 172: LATCbits.LATC4 = 0;
-"172
+[; ;receiver.c: 168: uint8_t data;
+[; ;receiver.c: 169: LATCbits.LATC4 = 0;
+"169
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;receiver.c: 173: SSPBUF = R_RX_PAYLOAD;
+[; ;receiver.c: 170: SSP1BUF = R_RX_PAYLOAD;
+"170
+[e = _SSP1BUF _R_RX_PAYLOAD ]
+[; ;receiver.c: 171: while(!SSP1STATbits.BF);
+"171
+[e $U 369  ]
+[e :U 370 ]
+[e :U 369 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 370  ]
+[e :U 371 ]
+[; ;receiver.c: 172: data = SSP1BUF;
+"172
+[e = _data _SSP1BUF ]
+[; ;receiver.c: 173: SSP1BUF = 0xFF;
 "173
-[e = _SSPBUF _R_RX_PAYLOAD ]
+[e = _SSP1BUF -> -> 255 `i `uc ]
 [; ;receiver.c: 174: while(!SSP1STATbits.BF);
 "174
-[e $U 370  ]
-[e :U 371 ]
-[e :U 370 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 371  ]
-[e :U 372 ]
-[; ;receiver.c: 175: data = SSPBUF;
-"175
-[e = _data _SSPBUF ]
-[; ;receiver.c: 176: SSPBUF = 0xFF;
-"176
-[e = _SSPBUF -> -> 255 `i `uc ]
-[; ;receiver.c: 177: while(!SSP1STATbits.BF);
-"177
-[e $U 373  ]
-[e :U 374 ]
+[e $U 372  ]
 [e :U 373 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 374  ]
-[e :U 375 ]
-[; ;receiver.c: 178: data = SSPBUF;
-"178
-[e = _data _SSPBUF ]
-[; ;receiver.c: 179: LATCbits.LATC4 = 1;
-"179
+[e :U 372 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 373  ]
+[e :U 374 ]
+[; ;receiver.c: 175: data = SSP1BUF;
+"175
+[e = _data _SSP1BUF ]
+[; ;receiver.c: 176: LATCbits.LATC4 = 1;
+"176
 [e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;receiver.c: 180: writeSPI(0x07, 0b01110000);
-"180
+[; ;receiver.c: 177: writeSPI(0x07, 0b01110000);
+"177
 [e ( _writeSPI (2 , -> -> 7 `i `uc -> -> 112 `i `uc ]
-[; ;receiver.c: 181: return data;
-"181
+[; ;receiver.c: 178: return data;
+"178
 [e ) _data ]
-[e $UE 366  ]
-[; ;receiver.c: 182: }
-"182
-[e :UE 366 ]
+[e $UE 365  ]
+[; ;receiver.c: 179: }
+"179
+[e :UE 365 ]
 }
-"184
+"181
 [v _readSPI `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;receiver.c: 184: uint8_t readSPI(uint8_t address) {
+[; ;receiver.c: 181: uint8_t readSPI(uint8_t address) {
 [e :U _readSPI ]
 [v _address `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;receiver.c: 185: address &= 0b00011111;
-"185
+[; ;receiver.c: 182: address &= 0b00011111;
+"182
 [e =& _address -> -> 31 `i `uc ]
-[; ;receiver.c: 186: LATCbits.LATC4 = 0;
-"186
+[; ;receiver.c: 183: LATCbits.LATC4 = 0;
+"183
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-"187
+"184
 [v _ret_data `uc ~T0 @X0 1 a ]
-[; ;receiver.c: 187: uint8_t ret_data;
-[; ;receiver.c: 188: SSPBUF = address;
+[; ;receiver.c: 184: uint8_t ret_data;
+[; ;receiver.c: 185: SSP1BUF = address;
+"185
+[e = _SSP1BUF _address ]
+[; ;receiver.c: 186: while(!SSP1STATbits.BF);
+"186
+[e $U 376  ]
+[e :U 377 ]
+[e :U 376 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 377  ]
+[e :U 378 ]
+[; ;receiver.c: 187: ret_data = SSP1BUF;
+"187
+[e = _ret_data _SSP1BUF ]
+[; ;receiver.c: 188: SSP1BUF = 0xFF;
 "188
-[e = _SSPBUF _address ]
+[e = _SSP1BUF -> -> 255 `i `uc ]
 [; ;receiver.c: 189: while(!SSP1STATbits.BF);
 "189
-[e $U 377  ]
-[e :U 378 ]
-[e :U 377 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 378  ]
-[e :U 379 ]
-[; ;receiver.c: 190: ret_data = SSPBUF;
-"190
-[e = _ret_data _SSPBUF ]
-[; ;receiver.c: 191: SSPBUF = 0xFF;
-"191
-[e = _SSPBUF -> -> 255 `i `uc ]
-[; ;receiver.c: 192: while(!SSP1STATbits.BF);
-"192
-[e $U 380  ]
-[e :U 381 ]
+[e $U 379  ]
 [e :U 380 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 381  ]
-[e :U 382 ]
-[; ;receiver.c: 193: ret_data = SSPBUF;
-"193
-[e = _ret_data _SSPBUF ]
-[; ;receiver.c: 194: LATCbits.LATC4 = 1;
-"194
+[e :U 379 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 380  ]
+[e :U 381 ]
+[; ;receiver.c: 190: ret_data = SSP1BUF;
+"190
+[e = _ret_data _SSP1BUF ]
+[; ;receiver.c: 191: LATCbits.LATC4 = 1;
+"191
 [e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;receiver.c: 195: return ret_data;
-"195
+[; ;receiver.c: 192: return ret_data;
+"192
 [e ) _ret_data ]
-[e $UE 376  ]
-[; ;receiver.c: 196: }
-"196
-[e :UE 376 ]
+[e $UE 375  ]
+[; ;receiver.c: 193: }
+"193
+[e :UE 375 ]
 }
-"198
+"195
 [v _SPI_init `(v ~T0 @X0 1 ef ]
 {
-[; ;receiver.c: 198: void SPI_init(void) {
+[; ;receiver.c: 195: void SPI_init(void) {
 [e :U _SPI_init ]
 [f ]
-[; ;receiver.c: 199: SSPCON1bits.SSPEN = 0;
+[; ;receiver.c: 196: SSP1CON1 = 0x00;
+"196
+[e = _SSP1CON1 -> -> 0 `i `uc ]
+[; ;receiver.c: 197: SSP1STAT = 0b11000000;
+"197
+[e = _SSP1STAT -> -> 192 `i `uc ]
+[; ;receiver.c: 198: SSP1CON1 = 0b00000010;
+"198
+[e = _SSP1CON1 -> -> 2 `i `uc ]
+[; ;receiver.c: 199: PIR1bits.SSP1IF = 0;
 "199
-[e = . . _SSPCON1bits 0 5 -> -> 0 `i `uc ]
-[; ;receiver.c: 200: SSPSTAT = 0b01000000;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;receiver.c: 200: SSP1CON1bits.SSPEN = 1;
 "200
-[e = _SSPSTAT -> -> 64 `i `uc ]
-[; ;receiver.c: 201: SSPCON1 = 0b00100010;
+[e = . . _SSP1CON1bits 0 5 -> -> 1 `i `uc ]
+[; ;receiver.c: 201: }
 "201
-[e = _SSPCON1 -> -> 34 `i `uc ]
-[; ;receiver.c: 202: SSPCON1bits.SSPEN = 1;
-"202
-[e = . . _SSPCON1bits 0 5 -> -> 1 `i `uc ]
-[; ;receiver.c: 203: }
-"203
-[e :UE 383 ]
+[e :UE 382 ]
 }

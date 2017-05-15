@@ -27,7 +27,10 @@
 #define NRF_CSN LATCbits.LATC4 // spi chip select
 #define NRF_CE LATCbits.LATC3 // chip enable activates RX or TX mode
 #define IRQ LATAbits.LATA1 // interrupt request, goes low when valid address
-#define SWITCH PORTCbits.RC5
+#define SWITCH PORTAbits.RA5 // input
+#define SCK LATCbits.LATC0 //output
+#define SDO LATCbits.LATC2 // output
+#define SDI LATCbits.LATC1 // input
 // and payload received (RX). for (TX), goes low when transmission complete
 const uint8_t TX_ADDR[] = { 0x0B, 0x3B, 0x4B, 0x5B, 0x60};
 const uint8_t W_TX_PAYLOAD = 0b10100000;
@@ -39,7 +42,7 @@ const uint8_t READ_MASK = 0b00011111; // and this w/ address
 void SPI_init(void);
 void configureTX(void);
 void configIOTransmitter(void);
-void writeSPI(uint8_t data);
+uint8_t writeSPI(uint8_t data);
 uint8_t readSPI(uint8_t address);
 void transmitData(uint8_t data);
 void blink(void);
@@ -55,18 +58,33 @@ int main(void) {
     uint8_t last = 1;
     configIOTransmitter();
     SPI_init();
-    LATAbits.LATA0 = last;
+    LATAbits.LATA0 = 0;
     configureTX();
     while(1) {
-        if(last!= PORTAbits.RA5) {
-        last = PORTAbits.RA5;
-        transmitData(0xFF);
-        blink();
+        NRF_CSN = 0;
+        writeSPI(0x00 & READ_MASK);
+        uint8_t data = writeSPI(0xFF);
+        NRF_CSN = 1;
+        if(data == 0b01011010) {
+           LATAbits.LATA0 = !PORTAbits.RA0; 
         }
+        if(last!= SWITCH) {
+        last = SWITCH;
+        transmitData(0xFF);     
+        }
+        
     }
     
 }
-
+void configIOTransmitter(void) {
+    TRISA = 0b11101110;
+    TRISC = 0b11100010;
+    OPTION_REGbits.nWPUEN = 0; // enable pull ups
+    WPUAbits.WPUA5 = 1; // pull up for switch
+    WPUAbits.WPUA1 = 1; // enable pull up on IRQ
+    
+    
+}
 void blink(void) {
     LATAbits.LATA0 = 1;
     __delay_ms(20);
@@ -90,6 +108,12 @@ void configureTX(void) {
     NRF_CSN = 0;
     writeSPI(0x00 | WRITE_MASK);
     writeSPI(0b01011010);// write to config register. TX_DS IRQ active
+    NRF_CSN = 1;
+    NRF_CSN = 0;
+    writeSPI(0x00 & READ_MASK);
+    while(writeSPI(0xFF) != 0b01011010) {
+        blink();
+    }
     NRF_CSN = 1;
     NRF_CSN = 0;
     writeSPI(0x01 | WRITE_MASK);
@@ -133,24 +157,16 @@ void configureTX(void) {
     */
 }
 
-void configIOTransmitter(void) {
-    TRISA = 0b11101110;
-    TRISC = 0b11100110;
-    OPTION_REGbits.nWPUEN = 0; // enable pull ups
-    WPUAbits.WPUA5 = 1; // pull up for switch
-    WPUAbits.WPUA1 = 1; // enable pull up on IRQ
-    TRISAbits.TRISA0 = 0;
-    
-    
-}
+
 
 // address is 5 bits, 001 at the beginning
-void writeSPI(uint8_t data) { // executable in power down or
+uint8_t writeSPI(uint8_t data) { // executable in power down or
     // standby modes only
     uint8_t x; // this holds the SREG
-    SSPBUF = data; // put data in buffer
+    SSP1BUF = data; // put data in buffer
     while(!SSP1STATbits.BF); // wait for read byte to come in
-    x = SSPBUF; // read to clear buffer
+    x = SSP1BUF; // read to clear buffer
+    return x;
     
 }
 
@@ -175,21 +191,31 @@ void transmitData(uint8_t data) {
     NRF_CSN = 1;
     NRF_CE = 1;
     __delay_us(50); // pulse to send data   
-    while(IRQ);
+    //while(IRQ);
     NRF_CSN = 0;
-    writeSPI(0x07 | WRITE_MASK);
-    writeSPI(0b0111000); // clear interrupt
+    uint8_t sreg = writeSPI(0xFF);
     NRF_CSN = 1;
+    while(!(sreg & 0b00100000)) {
+        NRF_CSN = 0;
+        sreg = writeSPI(0xFF);
+        NRF_CSN = 1;
+    }
     NRF_CE = 0;
+    NRF_CSN = 0;
+    uint8_t sreg = writeSPI(0x07 | WRITE_MASK);
+    writeSPI((sreg | 0b01110000)); // clear interrupt
+    NRF_CSN = 1;
     // pull IRQ high here again by getting SREG and writing interrupt low
     
     
 }
 
 void SPI_init(void) {
-    SSPCON1bits.SSPEN = 0; // disable spi
-    SSPSTAT = 0b01000000; // I don't know where these bits come from
-    SSPCON1 = 0b00100010; // or these bits
-    SSPCON1bits.SSPEN = 1; // enable spi
+    SSP1CON1 = 0x00;
+    SSP1STAT = 0b11000000;
+    SSP1CON1 = 0b00000010;
+    PIR1bits.SSP1IF = 0;
+    PIE1bits.SSP1IE = 1; // enable spi interrupts
+    SSP1CON1bits.SSPEN = 1;
 }
 

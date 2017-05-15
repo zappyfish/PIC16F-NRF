@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.42 build -159332390 
-                                                                                               Sun May 14 02:22:56 2017
+                                                                                               Sun May 14 20:11:39 2017
 
 Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130522
      1                           	processor	16F1503
@@ -9,1087 +9,1113 @@ Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130
      3                           	opt	lm
      4                           	psect	stringtext1,global,class=STRCODE,delta=2
      5                           	psect	stringtext2,global,class=STRCODE,delta=2
-     6                           	psect	cinit,global,class=CODE,merge=1,delta=2
-     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
-     8                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
-     9                           	psect	text1,local,class=CODE,merge=1,delta=2
-    10                           	psect	text2,local,class=CODE,merge=1,delta=2
-    11                           	psect	text3,local,class=CODE,merge=1,delta=2
-    12                           	psect	text4,local,class=CODE,merge=1,delta=2
-    13                           	psect	text5,local,class=CODE,merge=1,delta=2
-    14                           	psect	text6,local,class=CODE,merge=1,delta=2
-    15                           	psect	text7,local,class=CODE,merge=1,delta=2
-    16                           	dabs	1,0x7E,2
-    17  0000                     
-    18                           ; Version 1.42
-    19                           ; Generated 13/04/2017 GMT
-    20                           ; 
-    21                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    22                           ; All rights reserved.
-    23                           ; 
-    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+     6                           	psect	stringtext3,global,class=STRCODE,delta=2
+     7                           	psect	stringtext4,global,class=STRCODE,delta=2
+     8                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     9                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    10                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,merge=1,delta=2
+    14                           	psect	text4,local,class=CODE,merge=1,delta=2
+    15                           	psect	text5,local,class=CODE,merge=1,delta=2
+    16                           	psect	text6,local,class=CODE,merge=1,delta=2
+    17                           	dabs	1,0x7E,2
+    18  0000                     
+    19                           ; Version 1.42
+    20                           ; Generated 13/04/2017 GMT
+    21                           ; 
+    22                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    23                           ; All rights reserved.
+    24                           ; 
+    25                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    25                           ; 
-    26                           ; Redistribution and use in source and binary forms, with or without modification, are
-    27                           ; permitted provided that the following conditions are met:
-    28                           ; 
-    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    26                           ; 
+    27                           ; Redistribution and use in source and binary forms, with or without modification, are
+    28                           ; permitted provided that the following conditions are met:
+    29                           ; 
+    30                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    30                           ;        conditions and the following disclaimer.
-    31                           ; 
-    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    31                           ;        conditions and the following disclaimer.
+    32                           ; 
+    33                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    33                           ;        of conditions and the following disclaimer in the documentation and/or other
-    34                           ;        materials provided with the distribution.
-    35                           ; 
-    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    34                           ;        of conditions and the following disclaimer in the documentation and/or other
+    35                           ;        materials provided with the distribution.
+    36                           ; 
+    37                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    37                           ;        software without specific prior written permission.
-    38                           ; 
-    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    38                           ;        software without specific prior written permission.
+    39                           ; 
+    40                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    41                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    42                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    43                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    44                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    45                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    46                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    47                           ; 
+    47                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     48                           ; 
-    49                           ; Code-generator required, PIC16F1503 Definitions
-    50                           ; 
-    51                           ; SFR Addresses
-    52  0000                     	;# 
-    53  0001                     	;# 
-    54  0002                     	;# 
-    55  0003                     	;# 
-    56  0004                     	;# 
-    57  0005                     	;# 
-    58  0006                     	;# 
-    59  0007                     	;# 
-    60  0008                     	;# 
-    61  0009                     	;# 
-    62  000A                     	;# 
-    63  000B                     	;# 
-    64  000C                     	;# 
-    65  000E                     	;# 
-    66  0011                     	;# 
-    67  0012                     	;# 
-    68  0013                     	;# 
-    69  0015                     	;# 
-    70  0016                     	;# 
+    49                           ; 
+    50                           ; Code-generator required, PIC16F1503 Definitions
+    51                           ; 
+    52                           ; SFR Addresses
+    53  0000                     	;# 
+    54  0001                     	;# 
+    55  0002                     	;# 
+    56  0003                     	;# 
+    57  0004                     	;# 
+    58  0005                     	;# 
+    59  0006                     	;# 
+    60  0007                     	;# 
+    61  0008                     	;# 
+    62  0009                     	;# 
+    63  000A                     	;# 
+    64  000B                     	;# 
+    65  000C                     	;# 
+    66  000E                     	;# 
+    67  0011                     	;# 
+    68  0012                     	;# 
+    69  0013                     	;# 
+    70  0015                     	;# 
     71  0016                     	;# 
-    72  0017                     	;# 
-    73  0018                     	;# 
-    74  0019                     	;# 
-    75  001A                     	;# 
-    76  001B                     	;# 
-    77  001C                     	;# 
-    78  008C                     	;# 
-    79  008E                     	;# 
-    80  0091                     	;# 
-    81  0092                     	;# 
-    82  0093                     	;# 
-    83  0095                     	;# 
-    84  0096                     	;# 
-    85  0097                     	;# 
-    86  0099                     	;# 
-    87  009A                     	;# 
-    88  009B                     	;# 
+    72  0016                     	;# 
+    73  0017                     	;# 
+    74  0018                     	;# 
+    75  0019                     	;# 
+    76  001A                     	;# 
+    77  001B                     	;# 
+    78  001C                     	;# 
+    79  008C                     	;# 
+    80  008E                     	;# 
+    81  0091                     	;# 
+    82  0092                     	;# 
+    83  0093                     	;# 
+    84  0095                     	;# 
+    85  0096                     	;# 
+    86  0097                     	;# 
+    87  0099                     	;# 
+    88  009A                     	;# 
     89  009B                     	;# 
-    90  009C                     	;# 
-    91  009D                     	;# 
-    92  009E                     	;# 
-    93  009F                     	;# 
-    94  010C                     	;# 
-    95  010E                     	;# 
-    96  0111                     	;# 
-    97  0112                     	;# 
-    98  0113                     	;# 
-    99  0114                     	;# 
-   100  0115                     	;# 
-   101  0116                     	;# 
-   102  0117                     	;# 
-   103  0118                     	;# 
-   104  0119                     	;# 
-   105  011D                     	;# 
-   106  018C                     	;# 
-   107  018E                     	;# 
-   108  0191                     	;# 
+    90  009B                     	;# 
+    91  009C                     	;# 
+    92  009D                     	;# 
+    93  009E                     	;# 
+    94  009F                     	;# 
+    95  010C                     	;# 
+    96  010E                     	;# 
+    97  0111                     	;# 
+    98  0112                     	;# 
+    99  0113                     	;# 
+   100  0114                     	;# 
+   101  0115                     	;# 
+   102  0116                     	;# 
+   103  0117                     	;# 
+   104  0118                     	;# 
+   105  0119                     	;# 
+   106  011D                     	;# 
+   107  018C                     	;# 
+   108  018E                     	;# 
    109  0191                     	;# 
-   110  0192                     	;# 
-   111  0193                     	;# 
+   110  0191                     	;# 
+   111  0192                     	;# 
    112  0193                     	;# 
-   113  0194                     	;# 
-   114  0195                     	;# 
-   115  0196                     	;# 
-   116  0197                     	;# 
-   117  020C                     	;# 
-   118  0211                     	;# 
+   113  0193                     	;# 
+   114  0194                     	;# 
+   115  0195                     	;# 
+   116  0196                     	;# 
+   117  0197                     	;# 
+   118  020C                     	;# 
    119  0211                     	;# 
-   120  0212                     	;# 
+   120  0211                     	;# 
    121  0212                     	;# 
-   122  0213                     	;# 
+   122  0212                     	;# 
    123  0213                     	;# 
-   124  0214                     	;# 
+   124  0213                     	;# 
    125  0214                     	;# 
-   126  0215                     	;# 
+   126  0214                     	;# 
    127  0215                     	;# 
    128  0215                     	;# 
-   129  0216                     	;# 
+   129  0215                     	;# 
    130  0216                     	;# 
-   131  0217                     	;# 
+   131  0216                     	;# 
    132  0217                     	;# 
-   133  0391                     	;# 
-   134  0392                     	;# 
-   135  0393                     	;# 
-   136  0498                     	;# 
+   133  0217                     	;# 
+   134  0391                     	;# 
+   135  0392                     	;# 
+   136  0393                     	;# 
    137  0498                     	;# 
-   138  0499                     	;# 
-   139  049A                     	;# 
-   140  049B                     	;# 
+   138  0498                     	;# 
+   139  0499                     	;# 
+   140  049A                     	;# 
    141  049B                     	;# 
-   142  049C                     	;# 
-   143  049D                     	;# 
-   144  049E                     	;# 
-   145  049F                     	;# 
-   146  0611                     	;# 
-   147  0612                     	;# 
-   148  0613                     	;# 
+   142  049B                     	;# 
+   143  049C                     	;# 
+   144  049D                     	;# 
+   145  049E                     	;# 
+   146  049F                     	;# 
+   147  0611                     	;# 
+   148  0612                     	;# 
    149  0613                     	;# 
-   150  0614                     	;# 
-   151  0615                     	;# 
-   152  0616                     	;# 
+   150  0613                     	;# 
+   151  0614                     	;# 
+   152  0615                     	;# 
    153  0616                     	;# 
-   154  0617                     	;# 
-   155  0618                     	;# 
-   156  0619                     	;# 
+   154  0616                     	;# 
+   155  0617                     	;# 
+   156  0618                     	;# 
    157  0619                     	;# 
-   158  061A                     	;# 
-   159  061B                     	;# 
-   160  061C                     	;# 
+   158  0619                     	;# 
+   159  061A                     	;# 
+   160  061B                     	;# 
    161  061C                     	;# 
-   162  0691                     	;# 
-   163  0692                     	;# 
-   164  0693                     	;# 
-   165  0694                     	;# 
-   166  0695                     	;# 
-   167  0F0F                     	;# 
-   168  0F10                     	;# 
-   169  0F11                     	;# 
-   170  0F12                     	;# 
-   171  0F13                     	;# 
-   172  0F14                     	;# 
-   173  0F15                     	;# 
-   174  0F16                     	;# 
-   175  0F17                     	;# 
-   176  0F18                     	;# 
-   177  0F19                     	;# 
-   178  0F1A                     	;# 
-   179  0F1B                     	;# 
-   180  0F1C                     	;# 
-   181  0F1D                     	;# 
-   182  0F1E                     	;# 
-   183  0F1F                     	;# 
-   184  0FE3                     	;# 
-   185  0FE4                     	;# 
-   186  0FE5                     	;# 
-   187  0FE6                     	;# 
-   188  0FE7                     	;# 
-   189  0FE8                     	;# 
-   190  0FE9                     	;# 
-   191  0FEA                     	;# 
-   192  0FEB                     	;# 
-   193  0FED                     	;# 
-   194  0FEE                     	;# 
-   195  0FEF                     	;# 
-   196                           
-   197                           	psect	stringtext1
-   198  070C                     __pstringtext1:	
-   199  070C                     _RX_ADDR_P5:	
-   200  070C  340B               	retlw	11
-   201  070D  343B               	retlw	59
-   202  070E  344B               	retlw	75
-   203  070F  345B               	retlw	91
-   204  0710  3460               	retlw	96
-   205  0711                     __end_of_RX_ADDR_P5:	
-   206                           
-   207                           	psect	stringtext2
-   208  070B                     __pstringtext2:	
-   209  070B                     _R_RX_PAYLOAD:	
-   210  070B  3461               	retlw	97
-   211  070C                     __end_of_R_RX_PAYLOAD:	
-   212  0095                     _OPTION_REGbits	set	149
-   213  008E                     _TRISC	set	142
-   214  008C                     _TRISA	set	140
-   215  010E                     _LATCbits	set	270
-   216  010C                     _LATAbits	set	268
-   217  0215                     _SSPCON1	set	533
-   218  0214                     _SSPSTAT	set	532
-   219  0215                     _SSPCON1bits	set	533
-   220  0214                     _SSP1STATbits	set	532
-   221  0211                     _SSPBUF	set	529
-   222  020C                     _WPUAbits	set	524
-   223                           
-   224                           ; #config settings
-   225  0000                     
-   226                           	psect	cinit
-   227  07FE                     start_initialization:	
-   228  07FE                     __initialization:	
-   229  07FE                     end_of_initialization:	
-   230                           ;End of C runtime variable initialization code
-   231                           
-   232  07FE                     __end_of__initialization:	
-   233  07FE  0020               	movlb	0
-   234  07FF  2F8E               	ljmp	_main	;jump to C main() function
-   235                           
-   236                           	psect	cstackCOMMON
-   237  0070                     __pcstackCOMMON:	
-   238  0070                     ?_configIOReceiver:	
-   239  0070                     ??_configIOReceiver:	
-   240                           ; 1 bytes @ 0x0
-   241                           
-   242  0070                     ?_SPI_init:	
-   243                           ; 1 bytes @ 0x0
-   244                           
-   245  0070                     ??_SPI_init:	
-   246                           ; 1 bytes @ 0x0
+   162  061C                     	;# 
+   163  0691                     	;# 
+   164  0692                     	;# 
+   165  0693                     	;# 
+   166  0694                     	;# 
+   167  0695                     	;# 
+   168  0F0F                     	;# 
+   169  0F10                     	;# 
+   170  0F11                     	;# 
+   171  0F12                     	;# 
+   172  0F13                     	;# 
+   173  0F14                     	;# 
+   174  0F15                     	;# 
+   175  0F16                     	;# 
+   176  0F17                     	;# 
+   177  0F18                     	;# 
+   178  0F19                     	;# 
+   179  0F1A                     	;# 
+   180  0F1B                     	;# 
+   181  0F1C                     	;# 
+   182  0F1D                     	;# 
+   183  0F1E                     	;# 
+   184  0F1F                     	;# 
+   185  0FE3                     	;# 
+   186  0FE4                     	;# 
+   187  0FE5                     	;# 
+   188  0FE6                     	;# 
+   189  0FE7                     	;# 
+   190  0FE8                     	;# 
+   191  0FE9                     	;# 
+   192  0FEA                     	;# 
+   193  0FEB                     	;# 
+   194  0FED                     	;# 
+   195  0FEE                     	;# 
+   196  0FEF                     	;# 
+   197                           
+   198                           	psect	stringtext1
+   199  06DF                     __pstringtext1:	
+   200  06DF                     _TX_ADDR:	
+   201  06DF  340B               	retlw	11
+   202  06E0  343B               	retlw	59
+   203  06E1  344B               	retlw	75
+   204  06E2  345B               	retlw	91
+   205  06E3  3460               	retlw	96
+   206  06E4                     __end_of_TX_ADDR:	
+   207                           
+   208                           	psect	stringtext2
+   209  06DE                     __pstringtext2:	
+   210  06DE                     _READ_MASK:	
+   211  06DE  341F               	retlw	31
+   212  06DF                     __end_of_READ_MASK:	
+   213                           
+   214                           	psect	stringtext3
+   215  06DD                     __pstringtext3:	
+   216  06DD                     _WRITE_MASK:	
+   217  06DD  3420               	retlw	32
+   218  06DE                     __end_of_WRITE_MASK:	
+   219                           
+   220                           	psect	stringtext4
+   221  06DC                     __pstringtext4:	
+   222  06DC                     _W_TX_PAYLOAD:	
+   223  06DC  34A0               	retlw	160
+   224  06DD                     __end_of_W_TX_PAYLOAD:	
+   225  0011                     _PIR1bits	set	17
+   226  000C                     _PORTAbits	set	12
+   227  0091                     _PIE1bits	set	145
+   228  0095                     _OPTION_REGbits	set	149
+   229  008E                     _TRISC	set	142
+   230  008C                     _TRISA	set	140
+   231  010C                     _LATAbits	set	268
+   232  010E                     _LATCbits	set	270
+   233  0215                     _SSP1CON1bits	set	533
+   234  0214                     _SSP1STAT	set	532
+   235  0215                     _SSP1CON1	set	533
+   236  0214                     _SSP1STATbits	set	532
+   237  0211                     _SSP1BUF	set	529
+   238  020C                     _WPUAbits	set	524
+   239                           
+   240                           ; #config settings
+   241  0000                     
+   242                           	psect	cinit
+   243  07FE                     start_initialization:	
+   244  07FE                     __initialization:	
+   245  07FE                     end_of_initialization:	
+   246                           ;End of C runtime variable initialization code
    247                           
-   248  0070                     ?_configureRX:	
-   249                           ; 1 bytes @ 0x0
-   250                           
-   251  0070                     ?_getData:	
-   252                           ; 1 bytes @ 0x0
-   253                           
-   254  0070                     ?_readSPI:	
-   255                           ; 1 bytes @ 0x0
-   256                           
-   257  0070                     ??_readSPI:	
-   258                           ; 1 bytes @ 0x0
-   259                           
-   260  0070                     ?_blink:	
-   261                           ; 1 bytes @ 0x0
-   262                           
-   263  0070                     ?_writeSPI:	
-   264                           ; 1 bytes @ 0x0
-   265                           
-   266  0070                     ?_main:	
-   267                           ; 1 bytes @ 0x0
-   268                           
-   269  0070                     writeSPI@address:	
-   270                           ; 1 bytes @ 0x0
-   271                           
-   272  0070                     blink@delay:	
-   273                           ; 1 bytes @ 0x0
-   274                           
+   248  07FE                     __end_of__initialization:	
+   249  07FE  0020               	movlb	0
+   250  07FF  2F4B               	ljmp	_main	;jump to C main() function
+   251                           
+   252                           	psect	cstackCOMMON
+   253  0070                     __pcstackCOMMON:	
+   254  0070                     ?_configIOTransmitter:	
+   255  0070                     ??_configIOTransmitter:	
+   256                           ; 1 bytes @ 0x0
+   257                           
+   258  0070                     ?_SPI_init:	
+   259                           ; 1 bytes @ 0x0
+   260                           
+   261  0070                     ??_SPI_init:	
+   262                           ; 1 bytes @ 0x0
+   263                           
+   264  0070                     ?_configureTX:	
+   265                           ; 1 bytes @ 0x0
+   266                           
+   267  0070                     ?_writeSPI:	
+   268                           ; 1 bytes @ 0x0
+   269                           
+   270  0070                     ??_writeSPI:	
+   271                           ; 1 bytes @ 0x0
+   272                           
+   273  0070                     ?_transmitData:	
+   274                           ; 1 bytes @ 0x0
    275                           
-   276                           ; 2 bytes @ 0x0
-   277  0070                     	ds	1
-   278  0071                     ??_writeSPI:	
-   279  0071                     readSPI@address:	
-   280                           ; 1 bytes @ 0x1
+   276  0070                     ?_blink:	
+   277                           ; 1 bytes @ 0x0
+   278                           
+   279  0070                     ??_blink:	
+   280                           ; 1 bytes @ 0x0
    281                           
-   282                           
-   283                           ; 1 bytes @ 0x1
-   284  0071                     	ds	1
-   285  0072                     ??_blink:	
-   286  0072                     writeSPI@x:	
-   287                           ; 1 bytes @ 0x2
-   288                           
-   289  0072                     readSPI@ret_data:	
-   290                           ; 1 bytes @ 0x2
-   291                           
-   292                           
-   293                           ; 1 bytes @ 0x2
-   294  0072                     	ds	1
-   295  0073                     writeSPI@data:	
-   296                           
-   297                           ; 1 bytes @ 0x3
-   298  0073                     	ds	1
-   299  0074                     ??_configureRX:	
-   300  0074                     ??_getData:	
-   301                           ; 1 bytes @ 0x4
-   302                           
-   303                           
-   304                           ; 1 bytes @ 0x4
-   305  0074                     	ds	1
-   306  0075                     configureRX@dummy:	
-   307  0075                     getData@data:	
-   308                           ; 1 bytes @ 0x5
-   309                           
-   310                           
-   311                           ; 1 bytes @ 0x5
-   312  0075                     	ds	1
-   313  0076                     configureRX@i:	
+   282  0070                     ?_main:	
+   283                           ; 1 bytes @ 0x0
+   284                           
+   285                           
+   286                           ; 2 bytes @ 0x0
+   287  0070                     	ds	1
+   288  0071                     writeSPI@data:	
+   289                           
+   290                           ; 1 bytes @ 0x1
+   291  0071                     	ds	1
+   292  0072                     writeSPI@x:	
+   293                           
+   294                           ; 1 bytes @ 0x2
+   295  0072                     	ds	1
+   296  0073                     ??_configureTX:	
+   297  0073                     ??_transmitData:	
+   298                           ; 1 bytes @ 0x3
+   299                           
+   300                           
+   301                           ; 1 bytes @ 0x3
+   302  0073                     	ds	1
+   303  0074                     configureTX@i:	
+   304  0074                     transmitData@data:	
+   305                           ; 1 bytes @ 0x4
+   306                           
+   307                           
+   308                           ; 1 bytes @ 0x4
+   309  0074                     	ds	1
+   310  0075                     configureTX@i_288:	
+   311  0075                     transmitData@sreg:	
+   312                           ; 1 bytes @ 0x5
+   313                           
    314                           
-   315                           ; 1 bytes @ 0x6
-   316  0076                     	ds	1
-   317  0077                     ??_main:	
+   315                           ; 1 bytes @ 0x5
+   316  0075                     	ds	1
+   317  0076                     ??_main:	
    318                           
-   319                           ; 1 bytes @ 0x7
-   320  0077                     	ds	1
-   321  0078                     main@data:	
+   319                           ; 1 bytes @ 0x6
+   320  0076                     	ds	1
+   321  0077                     main@data:	
    322                           
-   323                           ; 1 bytes @ 0x8
-   324  0078                     	ds	1
-   325  0079                     main@thingy:	
+   323                           ; 1 bytes @ 0x7
+   324  0077                     	ds	1
+   325  0078                     main@last:	
    326                           
-   327                           ; 1 bytes @ 0x9
-   328  0079                     	ds	1
-   329  007A                     main@last:	
-   330                           
-   331                           ; 1 bytes @ 0xA
-   332  007A                     	ds	1
-   333                           
-   334                           	psect	maintext
-   335  078E                     __pmaintext:	
-   336 ;;
-   337 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
-   338 ;;
-   339 ;; *************** function _main *****************
-   340 ;; Defined at:
-   341 ;;		line 58 in file "receiver.c"
-   342 ;; Parameters:    Size  Location     Type
-   343 ;;		None
-   344 ;; Auto vars:     Size  Location     Type
-   345 ;;  thingy          1    9[COMMON] unsigned char 
-   346 ;;  data            1    8[COMMON] unsigned char 
-   347 ;;  last            1   10[COMMON] unsigned char 
-   348 ;; Return value:  Size  Location     Type
-   349 ;;                  1    wreg      void 
-   350 ;; Registers used:
-   351 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
-   352 ;; Tracked objects:
-   353 ;;		On entry : B1F/0
-   354 ;;		On exit  : 0/0
-   355 ;;		Unchanged: 0/0
-   356 ;; Data sizes:     COMMON   BANK0   BANK1
-   357 ;;      Params:         0       0       0
-   358 ;;      Locals:         3       0       0
-   359 ;;      Temps:          1       0       0
-   360 ;;      Totals:         4       0       0
-   361 ;;Total ram usage:        4 bytes
-   362 ;; Hardware stack levels required when called:    2
-   363 ;; This function calls:
-   364 ;;		_SPI_init
-   365 ;;		_blink
-   366 ;;		_configIOReceiver
-   367 ;;		_configureRX
-   368 ;;		_getData
-   369 ;;		_readSPI
-   370 ;; This function is called by:
-   371 ;;		Startup code after reset
-   372 ;; This function uses a non-reentrant model
-   373 ;;
+   327                           ; 1 bytes @ 0x8
+   328  0078                     	ds	1
+   329                           
+   330                           	psect	maintext
+   331  074B                     __pmaintext:	
+   332 ;;
+   333 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   334 ;;
+   335 ;; *************** function _main *****************
+   336 ;; Defined at:
+   337 ;;		line 56 in file "transmitter.c"
+   338 ;; Parameters:    Size  Location     Type
+   339 ;;		None
+   340 ;; Auto vars:     Size  Location     Type
+   341 ;;  data            1    7[COMMON] unsigned char 
+   342 ;;  last            1    8[COMMON] unsigned char 
+   343 ;; Return value:  Size  Location     Type
+   344 ;;                  2   52[None  ] int 
+   345 ;; Registers used:
+   346 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   347 ;; Tracked objects:
+   348 ;;		On entry : B1F/0
+   349 ;;		On exit  : 0/0
+   350 ;;		Unchanged: 0/0
+   351 ;; Data sizes:     COMMON   BANK0   BANK1
+   352 ;;      Params:         0       0       0
+   353 ;;      Locals:         2       0       0
+   354 ;;      Temps:          1       0       0
+   355 ;;      Totals:         3       0       0
+   356 ;;Total ram usage:        3 bytes
+   357 ;; Hardware stack levels required when called:    2
+   358 ;; This function calls:
+   359 ;;		_SPI_init
+   360 ;;		_configIOTransmitter
+   361 ;;		_configureTX
+   362 ;;		_transmitData
+   363 ;;		_writeSPI
+   364 ;; This function is called by:
+   365 ;;		Startup code after reset
+   366 ;; This function uses a non-reentrant model
+   367 ;;
+   368                           
+   369                           
+   370                           ;psect for function _main
+   371  074B                     _main:	
+   372                           
+   373                           ;transmitter.c: 57: LATCbits.LATC4 = 1;
    374                           
-   375                           
-   376                           ;psect for function _main
-   377  078E                     _main:	
-   378                           
-   379                           ;receiver.c: 59: configIOReceiver();
-   380                           
-   381                           ;incstack = 0
-   382                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-   383  078E  2719               	fcall	_configIOReceiver
-   384                           
-   385                           ;receiver.c: 60: LATAbits.LATA0 = 0;
-   386  078F  0022               	movlb	2	; select bank2
-   387  0790  100C               	bcf	12,0	;volatile
-   388                           
-   389                           ;receiver.c: 61: SPI_init();
-   390  0791  2711               	fcall	_SPI_init
-   391                           
-   392                           ;receiver.c: 62: configureRX();
-   393  0792  27BF               	fcall	_configureRX
-   394                           
-   395                           ;receiver.c: 63: uint8_t last = 0;
-   396  0793  01FA               	clrf	main@last
-   397  0794                     l644:	
-   398                           ;receiver.c: 64: while(1) {
+   375                           ;incstack = 0
+   376                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   377  074B  0022               	movlb	2	; select bank2
+   378  074C  160E               	bsf	14,4	;volatile
+   379                           
+   380                           ;transmitter.c: 58: uint8_t last = 1;
+   381  074D  01F8               	clrf	main@last
+   382  074E  0AF8               	incf	main@last,f
+   383                           
+   384                           ;transmitter.c: 59: configIOTransmitter();
+   385  074F  26E4               	fcall	_configIOTransmitter
+   386                           
+   387                           ;transmitter.c: 60: SPI_init();
+   388  0750  26FA               	fcall	_SPI_init
+   389                           
+   390                           ;transmitter.c: 61: LATAbits.LATA0 = 0;
+   391  0751  0022               	movlb	2	; select bank2
+   392  0752  100C               	bcf	12,0	;volatile
+   393                           
+   394                           ;transmitter.c: 62: configureTX();
+   395  0753  277C               	fcall	_configureTX
+   396  0754                     l607:	
+   397                           ;transmitter.c: 63: while(1) {
+   398                           
    399                           
-   400                           
-   401                           ;receiver.c: 65: configureRX();
-   402  0794  27BF               	fcall	_configureRX
+   400                           ;transmitter.c: 64: LATCbits.LATC4 = 0;
+   401  0754  0022               	movlb	2	; select bank2
+   402  0755  120E               	bcf	14,4	;volatile
    403                           
-   404                           ;receiver.c: 66: uint8_t data = getData();
-   405  0795  2769               	fcall	_getData
-   406  0796  00F7               	movwf	??_main
-   407  0797  0877               	movf	??_main,w
-   408  0798  00F8               	movwf	main@data
-   409                           
-   410                           ;receiver.c: 67: uint8_t thingy = readSPI(0x00);
-   411  0799  3000               	movlw	0
-   412  079A  274D               	fcall	_readSPI
-   413  079B  00F7               	movwf	??_main
-   414  079C  0877               	movf	??_main,w
-   415  079D  00F9               	movwf	main@thingy
-   416                           
-   417                           ;receiver.c: 68: if(thingy == 0b00111111) {
-   418  079E  303F               	movlw	63
-   419  079F  0679               	xorwf	main@thingy,w
-   420  07A0  1D03               	btfss	3,2
-   421  07A1  2FA7               	goto	l654
-   422                           
-   423                           ;receiver.c: 69: blink(100);
-   424  07A2  3064               	movlw	100
-   425  07A3  00F0               	movwf	blink@delay
-   426  07A4  3000               	movlw	0
-   427  07A5  00F1               	movwf	blink@delay+1
-   428  07A6  2722               	fcall	_blink
-   429  07A7                     l654:	
-   430                           
-   431                           ;receiver.c: 70: }
-   432                           ;receiver.c: 71: if(data == 0xFF) {
-   433  07A7  0A78               	incf	main@data,w
-   434  07A8  1D03               	btfss	3,2
-   435  07A9  2F94               	goto	l644
-   436                           
-   437                           ;receiver.c: 72: last = (last ? 0 : 1);
-   438  07AA  087A               	movf	main@last,w
-   439  07AB  1D03               	btfss	3,2
-   440  07AC  2FAF               	goto	u270
-   441  07AD  3001               	movlw	1
-   442  07AE  2FB0               	goto	u280
-   443  07AF                     u270:	
-   444  07AF  3000               	movlw	0
-   445  07B0                     u280:	
-   446  07B0  00F7               	movwf	??_main
-   447  07B1  0877               	movf	??_main,w
-   448  07B2  00FA               	movwf	main@last
+   404                           ;transmitter.c: 65: writeSPI(0x00 & READ_MASK);
+   405  0756  3000               	movlw	0
+   406  0757  26EE               	fcall	_writeSPI
+   407                           
+   408                           ;transmitter.c: 66: uint8_t data = writeSPI(0xFF);
+   409  0758  30FF               	movlw	255
+   410  0759  26EE               	fcall	_writeSPI
+   411  075A  00F6               	movwf	??_main
+   412  075B  0876               	movf	??_main,w
+   413  075C  00F7               	movwf	main@data
+   414                           
+   415                           ;transmitter.c: 67: LATCbits.LATC4 = 1;
+   416  075D  0022               	movlb	2	; select bank2
+   417  075E  160E               	bsf	14,4	;volatile
+   418                           
+   419                           ;transmitter.c: 68: if(data == 0b01011010) {
+   420  075F  305A               	movlw	90
+   421  0760  0677               	xorwf	main@data,w
+   422  0761  1D03               	btfss	3,2
+   423  0762  2F6E               	goto	l619
+   424                           
+   425                           ;transmitter.c: 69: LATAbits.LATA0 = !PORTAbits.RA0;
+   426  0763  1003               	clrc
+   427  0764  0020               	movlb	0	; select bank0
+   428  0765  1C0C               	btfss	12,0	;volatile
+   429  0766  1403               	setc
+   430  0767  1C03               	btfss	3,0
+   431  0768  2F6C               	goto	u90
+   432  0769  0022               	movlb	2	; select bank2
+   433  076A  140C               	bsf	12,0	;volatile
+   434  076B  2F6E               	goto	l619
+   435  076C                     u90:	
+   436  076C  0022               	movlb	2	; select bank2
+   437  076D  100C               	bcf	12,0	;volatile
+   438  076E                     l619:	
+   439                           
+   440                           ;transmitter.c: 70: }
+   441                           ;transmitter.c: 71: if(last!= PORTAbits.RA5) {
+   442  076E  0020               	movlb	0	; select bank0
+   443  076F  0E0C               	swapf	12,w	;volatile
+   444  0770  0C89               	rrf	9,f
+   445  0771  3901               	andlw	1
+   446  0772  0678               	xorwf	main@last,w
+   447  0773  1903               	skipnz
+   448  0774  2F54               	goto	l607
    449                           
-   450                           ;receiver.c: 73: LATAbits.LATA0 = last;
-   451  07B3  0C7A               	rrf	main@last,w
-   452  07B4  0022               	movlb	2	; select bank2
-   453  07B5  1C03               	skipc
-   454  07B6  100C               	bcf	12,0	;volatile
-   455  07B7  1803               	skipnc
-   456  07B8  140C               	bsf	12,0	;volatile
-   457                           
-   458                           ;receiver.c: 74: blink(20);
-   459  07B9  3014               	movlw	20
-   460  07BA  00F0               	movwf	blink@delay
-   461  07BB  3000               	movlw	0
-   462  07BC  00F1               	movwf	blink@delay+1
-   463  07BD  2722               	fcall	_blink
-   464  07BE  2F94               	goto	l644
-   465  07BF                     __end_of_main:	
-   466                           
-   467                           	psect	text1
-   468  074D                     __ptext1:	
-   469 ;; *************** function _readSPI *****************
-   470 ;; Defined at:
-   471 ;;		line 184 in file "receiver.c"
-   472 ;; Parameters:    Size  Location     Type
-   473 ;;  address         1    wreg     unsigned char 
-   474 ;; Auto vars:     Size  Location     Type
-   475 ;;  address         1    1[COMMON] unsigned char 
-   476 ;;  ret_data        1    2[COMMON] unsigned char 
-   477 ;; Return value:  Size  Location     Type
-   478 ;;                  1    wreg      unsigned char 
-   479 ;; Registers used:
-   480 ;;		wreg, status,2, status,0
-   481 ;; Tracked objects:
-   482 ;;		On entry : 0/0
-   483 ;;		On exit  : 0/0
-   484 ;;		Unchanged: 0/0
-   485 ;; Data sizes:     COMMON   BANK0   BANK1
-   486 ;;      Params:         0       0       0
-   487 ;;      Locals:         2       0       0
-   488 ;;      Temps:          1       0       0
-   489 ;;      Totals:         3       0       0
-   490 ;;Total ram usage:        3 bytes
-   491 ;; Hardware stack levels used:    1
-   492 ;; This function calls:
-   493 ;;		Nothing
-   494 ;; This function is called by:
-   495 ;;		_main
-   496 ;; This function uses a non-reentrant model
-   497 ;;
+   450                           ;transmitter.c: 72: last = PORTAbits.RA5;
+   451  0775  3000               	movlw	0
+   452  0776  1A8C               	btfsc	12,5	;volatile
+   453  0777  3001               	movlw	1
+   454  0778  00F8               	movwf	main@last
+   455                           
+   456                           ;transmitter.c: 73: transmitData(0xFF);
+   457  0779  30FF               	movlw	255
+   458  077A  271C               	fcall	_transmitData
+   459  077B  2F54               	goto	l607
+   460  077C                     __end_of_main:	
+   461                           
+   462                           	psect	text1
+   463  071C                     __ptext1:	
+   464 ;; *************** function _transmitData *****************
+   465 ;; Defined at:
+   466 ;;		line 187 in file "transmitter.c"
+   467 ;; Parameters:    Size  Location     Type
+   468 ;;  data            1    wreg     unsigned char 
+   469 ;; Auto vars:     Size  Location     Type
+   470 ;;  data            1    4[COMMON] unsigned char 
+   471 ;;  sreg            1    5[COMMON] unsigned char 
+   472 ;; Return value:  Size  Location     Type
+   473 ;;                  1    wreg      void 
+   474 ;; Registers used:
+   475 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   476 ;; Tracked objects:
+   477 ;;		On entry : 0/0
+   478 ;;		On exit  : 0/0
+   479 ;;		Unchanged: 0/0
+   480 ;; Data sizes:     COMMON   BANK0   BANK1
+   481 ;;      Params:         0       0       0
+   482 ;;      Locals:         2       0       0
+   483 ;;      Temps:          1       0       0
+   484 ;;      Totals:         3       0       0
+   485 ;;Total ram usage:        3 bytes
+   486 ;; Hardware stack levels used:    1
+   487 ;; Hardware stack levels required when called:    1
+   488 ;; This function calls:
+   489 ;;		_writeSPI
+   490 ;; This function is called by:
+   491 ;;		_main
+   492 ;; This function uses a non-reentrant model
+   493 ;;
+   494                           
+   495                           
+   496                           ;psect for function _transmitData
+   497  071C                     _transmitData:	
    498                           
-   499                           
-   500                           ;psect for function _readSPI
-   501  074D                     _readSPI:	
-   502                           
-   503                           ;incstack = 0
-   504                           ; Regs used in _readSPI: [wreg+status,2+status,0]
-   505                           ;readSPI@address stored from wreg
-   506  074D  00F1               	movwf	readSPI@address
+   499                           ;incstack = 0
+   500                           ; Regs used in _transmitData: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   501                           ;transmitData@data stored from wreg
+   502  071C  00F4               	movwf	transmitData@data
+   503                           
+   504                           ;transmitter.c: 188: LATCbits.LATC4 = 0;
+   505  071D  0022               	movlb	2	; select bank2
+   506  071E  120E               	bcf	14,4	;volatile
    507                           
-   508                           ;receiver.c: 185: address &= 0b00011111;
-   509  074E  301F               	movlw	31
-   510  074F  00F0               	movwf	??_readSPI
-   511  0750  0870               	movf	??_readSPI,w
-   512  0751  05F1               	andwf	readSPI@address,f
-   513                           
-   514                           ;receiver.c: 186: LATCbits.LATC4 = 0;
-   515  0752  0022               	movlb	2	; select bank2
-   516  0753  120E               	bcf	14,4	;volatile
-   517                           
-   518                           ;receiver.c: 187: uint8_t ret_data;
-   519                           ;receiver.c: 188: SSPBUF = address;
-   520  0754  0871               	movf	readSPI@address,w
-   521  0755  0024               	movlb	4	; select bank4
-   522  0756  0091               	movwf	17	;volatile
-   523  0757                     l93:	
-   524                           ;receiver.c: 189: while(!SSP1STATbits.BF);
-   525                           
-   526  0757  1C14               	btfss	20,0	;volatile
-   527  0758  2F57               	goto	l93
-   528                           
-   529                           ;receiver.c: 190: ret_data = SSPBUF;
-   530  0759  0811               	movf	17,w	;volatile
-   531  075A  00F0               	movwf	??_readSPI
-   532  075B  0870               	movf	??_readSPI,w
-   533  075C  00F2               	movwf	readSPI@ret_data
-   534                           
-   535                           ;receiver.c: 191: SSPBUF = 0xFF;
-   536  075D  30FF               	movlw	255
-   537  075E  0091               	movwf	17	;volatile
-   538  075F                     l96:	
-   539                           ;receiver.c: 192: while(!SSP1STATbits.BF);
-   540                           
-   541  075F  1C14               	btfss	20,0	;volatile
-   542  0760  2F5F               	goto	l96
-   543                           
-   544                           ;receiver.c: 193: ret_data = SSPBUF;
-   545  0761  0811               	movf	17,w	;volatile
-   546  0762  00F0               	movwf	??_readSPI
-   547  0763  0870               	movf	??_readSPI,w
-   548  0764  00F2               	movwf	readSPI@ret_data
-   549                           
-   550                           ;receiver.c: 194: LATCbits.LATC4 = 1;
-   551  0765  0022               	movlb	2	; select bank2
-   552  0766  160E               	bsf	14,4	;volatile
-   553                           
-   554                           ;receiver.c: 195: return ret_data;
-   555  0767  0872               	movf	readSPI@ret_data,w
-   556  0768  0008               	return
-   557  0769                     __end_of_readSPI:	
+   508                           ;transmitter.c: 189: writeSPI(W_TX_PAYLOAD);
+   509  071F  30DC               	movlw	low (_W_TX_PAYLOAD| (0+32768))
+   510  0720  0084               	movwf	4
+   511  0721  3086               	movlw	high (_W_TX_PAYLOAD| (0+32768))
+   512  0722  0085               	movwf	5
+   513  0723  0800               	movf	0,w	;code access
+   514  0724  26EE               	fcall	_writeSPI
+   515                           
+   516                           ;transmitter.c: 190: writeSPI(data);
+   517  0725  0874               	movf	transmitData@data,w
+   518  0726  26EE               	fcall	_writeSPI
+   519                           
+   520                           ;transmitter.c: 191: LATCbits.LATC4 = 1;
+   521  0727  0022               	movlb	2	; select bank2
+   522  0728  160E               	bsf	14,4	;volatile
+   523                           
+   524                           ;transmitter.c: 192: LATCbits.LATC3 = 1;
+   525  0729  158E               	bsf	14,3	;volatile
+   526                           
+   527                           ;transmitter.c: 193: _delay((unsigned long)((50)*(16000000/4000000.0)));
+   528  072A  3042               	movlw	66
+   529  072B                     u127:	
+   530  072B  0B89               	decfsz	9,f
+   531  072C  2F2B               	goto	u127
+   532  072D  3200               	nop2
+   533                           
+   534                           ;transmitter.c: 195: LATCbits.LATC4 = 0;
+   535  072E  0022               	movlb	2	; select bank2
+   536  072F                     L1:	
+   537  072F  120E               	bcf	14,4	;volatile
+   538                           
+   539                           ;transmitter.c: 196: uint8_t sreg = writeSPI(0xFF);
+   540  0730  30FF               	movlw	255
+   541  0731  26EE               	fcall	_writeSPI
+   542  0732  00F3               	movwf	??_transmitData
+   543  0733  0873               	movf	??_transmitData,w
+   544  0734  00F5               	movwf	transmitData@sreg
+   545                           
+   546                           ;transmitter.c: 201: LATCbits.LATC4 = 1;
+   547  0735  0022               	movlb	2	; select bank2
+   548  0736  160E               	bsf	14,4	;volatile
+   549  0737  1EF5               	btfss	transmitData@sreg,5
+   550  0738  2F2F               	goto	L1
+   551                           
+   552                           ;transmitter.c: 202: }
+   553                           ;transmitter.c: 203: LATCbits.LATC3 = 0;
+   554                           
+   555                           ;transmitter.c: 200: sreg = writeSPI(0xFF);
+   556                           
+   557                           ;transmitter.c: 199: LATCbits.LATC4 = 0;
    558                           
-   559                           	psect	text2
-   560  0769                     __ptext2:	
-   561 ;; *************** function _getData *****************
-   562 ;; Defined at:
-   563 ;;		line 166 in file "receiver.c"
-   564 ;; Parameters:    Size  Location     Type
-   565 ;;		None
-   566 ;; Auto vars:     Size  Location     Type
-   567 ;;  data            1    5[COMMON] unsigned char 
-   568 ;; Return value:  Size  Location     Type
-   569 ;;                  1    wreg      unsigned char 
-   570 ;; Registers used:
-   571 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
-   572 ;; Tracked objects:
-   573 ;;		On entry : 0/0
-   574 ;;		On exit  : 0/0
-   575 ;;		Unchanged: 0/0
-   576 ;; Data sizes:     COMMON   BANK0   BANK1
-   577 ;;      Params:         0       0       0
-   578 ;;      Locals:         1       0       0
-   579 ;;      Temps:          1       0       0
-   580 ;;      Totals:         2       0       0
-   581 ;;Total ram usage:        2 bytes
-   582 ;; Hardware stack levels used:    1
-   583 ;; Hardware stack levels required when called:    1
-   584 ;; This function calls:
-   585 ;;		_writeSPI
-   586 ;; This function is called by:
-   587 ;;		_main
-   588 ;; This function uses a non-reentrant model
-   589 ;;
-   590                           
-   591                           
-   592                           ;psect for function _getData
-   593  0769                     _getData:	
-   594                           
-   595                           ;receiver.c: 167: LATCbits.LATC3 = 1;
-   596                           
-   597                           ;incstack = 0
-   598                           ; Regs used in _getData: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-   599  0769  0022               	movlb	2	; select bank2
-   600  076A  158E               	bsf	14,3	;volatile
-   601  076B                     l81:	
-   602                           ;receiver.c: 168: while(LATAbits.LATA1);
-   603                           
-   604  076B  188C               	btfsc	12,1	;volatile
-   605  076C  2F6B               	goto	l81
-   606                           
-   607                           ;receiver.c: 170: LATCbits.LATC3 = 0;
-   608  076D  118E               	bcf	14,3	;volatile
-   609                           
-   610                           ;receiver.c: 171: uint8_t data;
-   611                           ;receiver.c: 172: LATCbits.LATC4 = 0;
-   612  076E  120E               	bcf	14,4	;volatile
-   613                           
-   614                           ;receiver.c: 173: SSPBUF = R_RX_PAYLOAD;
-   615  076F  300B               	movlw	low (_R_RX_PAYLOAD| (0+32768))
-   616  0770  0084               	movwf	4
-   617  0771  3087               	movlw	high (_R_RX_PAYLOAD| (0+32768))
-   618  0772  0085               	movwf	5
-   619  0773  0800               	movf	0,w	;code access
-   620  0774  0024               	movlb	4	; select bank4
-   621  0775  0091               	movwf	17	;volatile
-   622  0776                     l84:	
-   623                           ;receiver.c: 174: while(!SSP1STATbits.BF);
+   559                           ;transmitter.c: 198: while(!(sreg & 0b00100000)) {
+   560                           
+   561                           ;transmitter.c: 197: LATCbits.LATC4 = 1;
+   562  0739  118E               	bcf	14,3	;volatile
+   563                           
+   564                           ;transmitter.c: 204: LATCbits.LATC4 = 0;
+   565  073A  120E               	bcf	14,4	;volatile
+   566                           
+   567                           ;transmitter.c: 205: uint8_t sreg = writeSPI(0x07 | WRITE_MASK);
+   568  073B  30DD               	movlw	low (_WRITE_MASK| (0+32768))
+   569  073C  0084               	movwf	4
+   570  073D  3086               	movlw	high (_WRITE_MASK| (0+32768))
+   571  073E  0085               	movwf	5
+   572  073F  0800               	movf	0,w	;code access
+   573  0740  3807               	iorlw	7
+   574  0741  26EE               	fcall	_writeSPI
+   575  0742  00F3               	movwf	??_transmitData
+   576  0743  0873               	movf	??_transmitData,w
+   577  0744  00F5               	movwf	transmitData@sreg
+   578                           
+   579                           ;transmitter.c: 206: writeSPI((sreg | 0b01110000));
+   580  0745  0875               	movf	transmitData@sreg,w
+   581  0746  3870               	iorlw	112
+   582  0747  26EE               	fcall	_writeSPI
+   583                           
+   584                           ;transmitter.c: 207: LATCbits.LATC4 = 1;
+   585  0748  0022               	movlb	2	; select bank2
+   586  0749  160E               	bsf	14,4	;volatile
+   587  074A  0008               	return
+   588  074B                     __end_of_transmitData:	
+   589                           
+   590                           	psect	text2
+   591  077C                     __ptext2:	
+   592 ;; *************** function _configureTX *****************
+   593 ;; Defined at:
+   594 ;;		line 95 in file "transmitter.c"
+   595 ;; Parameters:    Size  Location     Type
+   596 ;;		None
+   597 ;; Auto vars:     Size  Location     Type
+   598 ;;  i               1    5[COMMON] unsigned char 
+   599 ;;  i               1    4[COMMON] unsigned char 
+   600 ;; Return value:  Size  Location     Type
+   601 ;;                  1    wreg      void 
+   602 ;; Registers used:
+   603 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   604 ;; Tracked objects:
+   605 ;;		On entry : 0/0
+   606 ;;		On exit  : 0/0
+   607 ;;		Unchanged: 0/0
+   608 ;; Data sizes:     COMMON   BANK0   BANK1
+   609 ;;      Params:         0       0       0
+   610 ;;      Locals:         2       0       0
+   611 ;;      Temps:          1       0       0
+   612 ;;      Totals:         3       0       0
+   613 ;;Total ram usage:        3 bytes
+   614 ;; Hardware stack levels used:    1
+   615 ;; Hardware stack levels required when called:    1
+   616 ;; This function calls:
+   617 ;;		_blink
+   618 ;;		_writeSPI
+   619 ;; This function is called by:
+   620 ;;		_main
+   621 ;; This function uses a non-reentrant model
+   622 ;;
+   623                           
    624                           
-   625  0776  1C14               	btfss	20,0	;volatile
-   626  0777  2F76               	goto	l84
+   625                           ;psect for function _configureTX
+   626  077C                     _configureTX:	
    627                           
-   628                           ;receiver.c: 175: data = SSPBUF;
-   629  0778  0811               	movf	17,w	;volatile
-   630  0779  00F4               	movwf	??_getData
-   631  077A  0874               	movf	??_getData,w
-   632  077B  00F5               	movwf	getData@data
-   633                           
-   634                           ;receiver.c: 176: SSPBUF = 0xFF;
-   635  077C  30FF               	movlw	255
-   636  077D  0091               	movwf	17	;volatile
-   637  077E                     l87:	
-   638                           ;receiver.c: 177: while(!SSP1STATbits.BF);
-   639                           
-   640  077E  1C14               	btfss	20,0	;volatile
-   641  077F  2F7E               	goto	l87
+   628                           ;transmitter.c: 108: LATCbits.LATC4 = 0;
+   629                           
+   630                           ;incstack = 0
+   631                           ; Regs used in _configureTX: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   632  077C  0022               	movlb	2	; select bank2
+   633  077D  120E               	bcf	14,4	;volatile
+   634                           
+   635                           ;transmitter.c: 109: writeSPI(0x00 | WRITE_MASK);
+   636  077E  30DD               	movlw	low (_WRITE_MASK| (0+32768))
+   637  077F  0084               	movwf	4
+   638  0780  3086               	movlw	high (_WRITE_MASK| (0+32768))
+   639  0781  0085               	movwf	5
+   640  0782  0800               	movf	0,w	;code access
+   641  0783  26EE               	fcall	_writeSPI
    642                           
-   643                           ;receiver.c: 178: data = SSPBUF;
-   644  0780  0811               	movf	17,w	;volatile
-   645  0781  00F4               	movwf	??_getData
-   646  0782  0874               	movf	??_getData,w
-   647  0783  00F5               	movwf	getData@data
-   648                           
-   649                           ;receiver.c: 179: LATCbits.LATC4 = 1;
-   650  0784  0022               	movlb	2	; select bank2
-   651  0785  160E               	bsf	14,4	;volatile
-   652                           
-   653                           ;receiver.c: 180: writeSPI(0x07, 0b01110000);
-   654  0786  3070               	movlw	112
-   655  0787  00F4               	movwf	??_getData
-   656  0788  0874               	movf	??_getData,w
-   657  0789  00F0               	movwf	writeSPI@address
-   658  078A  3007               	movlw	7
-   659  078B  2735               	fcall	_writeSPI
-   660                           
-   661                           ;receiver.c: 181: return data;
-   662  078C  0875               	movf	getData@data,w
-   663  078D  0008               	return
-   664  078E                     __end_of_getData:	
+   643                           ;transmitter.c: 110: writeSPI(0b01011010);
+   644  0784  305A               	movlw	90
+   645  0785  26EE               	fcall	_writeSPI
+   646                           
+   647                           ;transmitter.c: 111: LATCbits.LATC4 = 1;
+   648  0786  0022               	movlb	2	; select bank2
+   649  0787  160E               	bsf	14,4	;volatile
+   650                           
+   651                           ;transmitter.c: 112: LATCbits.LATC4 = 0;
+   652  0788  120E               	bcf	14,4	;volatile
+   653                           
+   654                           ;transmitter.c: 113: writeSPI(0x00 & READ_MASK);
+   655  0789  3000               	movlw	0
+   656  078A  26EE               	fcall	_writeSPI
+   657  078B                     l511:	
+   658                           ;transmitter.c: 114: while(writeSPI(0xFF) != 0b01011010) {
+   659                           
+   660  078B  30FF               	movlw	255
+   661  078C  26EE               	fcall	_writeSPI
+   662  078D  3A5A               	xorlw	90
+   663  078E  1903               	btfsc	3,2
+   664  078F  2F92               	goto	l69
    665                           
-   666                           	psect	text3
-   667  07BF                     __ptext3:	
-   668 ;; *************** function _configureRX *****************
-   669 ;; Defined at:
-   670 ;;		line 88 in file "receiver.c"
-   671 ;; Parameters:    Size  Location     Type
-   672 ;;		None
-   673 ;; Auto vars:     Size  Location     Type
-   674 ;;  i               1    6[COMMON] unsigned char 
-   675 ;;  dummy           1    5[COMMON] unsigned char 
-   676 ;; Return value:  Size  Location     Type
-   677 ;;                  1    wreg      void 
-   678 ;; Registers used:
-   679 ;;		wreg, status,2, status,0, pclath, cstack
-   680 ;; Tracked objects:
-   681 ;;		On entry : 0/0
-   682 ;;		On exit  : 0/0
-   683 ;;		Unchanged: 0/0
-   684 ;; Data sizes:     COMMON   BANK0   BANK1
-   685 ;;      Params:         0       0       0
-   686 ;;      Locals:         2       0       0
-   687 ;;      Temps:          1       0       0
-   688 ;;      Totals:         3       0       0
-   689 ;;Total ram usage:        3 bytes
-   690 ;; Hardware stack levels used:    1
-   691 ;; Hardware stack levels required when called:    1
-   692 ;; This function calls:
-   693 ;;		_writeSPI
-   694 ;; This function is called by:
-   695 ;;		_main
-   696 ;; This function uses a non-reentrant model
-   697 ;;
+   666                           ;transmitter.c: 115: blink();
+   667  0790  2707               	fcall	_blink
+   668  0791  2F8B               	goto	l511
+   669  0792                     l69:	
+   670                           
+   671                           ;transmitter.c: 116: }
+   672                           ;transmitter.c: 117: LATCbits.LATC4 = 1;
+   673  0792  0022               	movlb	2	; select bank2
+   674  0793  160E               	bsf	14,4	;volatile
+   675                           
+   676                           ;transmitter.c: 118: LATCbits.LATC4 = 0;
+   677  0794  120E               	bcf	14,4	;volatile
+   678                           
+   679                           ;transmitter.c: 119: writeSPI(0x01 | WRITE_MASK);
+   680  0795  30DD               	movlw	low (_WRITE_MASK| (0+32768))
+   681  0796  0084               	movwf	4
+   682  0797  3086               	movlw	high (_WRITE_MASK| (0+32768))
+   683  0798  0085               	movwf	5
+   684  0799  0800               	movf	0,w	;code access
+   685  079A  3801               	iorlw	1
+   686  079B  26EE               	fcall	_writeSPI
+   687                           
+   688                           ;transmitter.c: 120: writeSPI(0b00000001);
+   689  079C  3001               	movlw	1
+   690  079D  26EE               	fcall	_writeSPI
+   691                           
+   692                           ;transmitter.c: 121: LATCbits.LATC4 = 1;
+   693  079E  0022               	movlb	2	; select bank2
+   694  079F  160E               	bsf	14,4	;volatile
+   695                           
+   696                           ;transmitter.c: 122: LATCbits.LATC4 = 0;
+   697  07A0  120E               	bcf	14,4	;volatile
    698                           
-   699                           
-   700                           ;psect for function _configureRX
-   701  07BF                     _configureRX:	
-   702                           
-   703                           ;receiver.c: 97: writeSPI(0x00, 0b00111111);
-   704                           
-   705                           ;incstack = 0
-   706                           ; Regs used in _configureRX: [wreg+status,2+status,0+pclath+cstack]
-   707  07BF  303F               	movlw	63
-   708  07C0  00F4               	movwf	??_configureRX
-   709  07C1  0874               	movf	??_configureRX,w
-   710  07C2  00F0               	movwf	writeSPI@address
-   711  07C3  3000               	movlw	0
-   712  07C4  2735               	fcall	_writeSPI
-   713                           
-   714                           ;receiver.c: 98: writeSPI(0x01, 0b00000001);
-   715  07C5  01F0               	clrf	writeSPI@address
-   716  07C6  0AF0               	incf	writeSPI@address,f
-   717  07C7  3001               	movlw	1
-   718  07C8  2735               	fcall	_writeSPI
-   719                           
-   720                           ;receiver.c: 99: writeSPI(0x02, 0b00000001);
-   721  07C9  01F0               	clrf	writeSPI@address
-   722  07CA  0AF0               	incf	writeSPI@address,f
-   723  07CB  3002               	movlw	2
-   724  07CC  2735               	fcall	_writeSPI
-   725                           
-   726                           ;receiver.c: 100: writeSPI(0x11, 0b00000001);
-   727  07CD  01F0               	clrf	writeSPI@address
-   728  07CE  0AF0               	incf	writeSPI@address,f
-   729  07CF  3011               	movlw	17
-   730  07D0  2735               	fcall	_writeSPI
+   699                           ;transmitter.c: 123: writeSPI(0x02 | WRITE_MASK);
+   700  07A1  30DD               	movlw	low (_WRITE_MASK| (0+32768))
+   701  07A2  0084               	movwf	4
+   702  07A3  3086               	movlw	high (_WRITE_MASK| (0+32768))
+   703  07A4  0085               	movwf	5
+   704  07A5  0800               	movf	0,w	;code access
+   705  07A6  3802               	iorlw	2
+   706  07A7  26EE               	fcall	_writeSPI
+   707                           
+   708                           ;transmitter.c: 124: writeSPI(0b00000001);
+   709  07A8  3001               	movlw	1
+   710  07A9  26EE               	fcall	_writeSPI
+   711                           
+   712                           ;transmitter.c: 125: LATCbits.LATC4 = 1;
+   713  07AA  0022               	movlb	2	; select bank2
+   714  07AB  160E               	bsf	14,4	;volatile
+   715                           
+   716                           ;transmitter.c: 126: LATCbits.LATC4 = 0;
+   717  07AC  120E               	bcf	14,4	;volatile
+   718                           
+   719                           ;transmitter.c: 127: writeSPI(0x11 | WRITE_MASK);
+   720  07AD  30DD               	movlw	low (_WRITE_MASK| (0+32768))
+   721  07AE  0084               	movwf	4
+   722  07AF  3086               	movlw	high (_WRITE_MASK| (0+32768))
+   723  07B0  0085               	movwf	5
+   724  07B1  0800               	movf	0,w	;code access
+   725  07B2  3811               	iorlw	17
+   726  07B3  26EE               	fcall	_writeSPI
+   727                           
+   728                           ;transmitter.c: 128: writeSPI(0b00000001);
+   729  07B4  3001               	movlw	1
+   730  07B5  26EE               	fcall	_writeSPI
    731                           
-   732                           ;receiver.c: 101: writeSPI(0x03, 0b00000011);
-   733  07D1  3003               	movlw	3
-   734  07D2  00F4               	movwf	??_configureRX
-   735  07D3  0874               	movf	??_configureRX,w
-   736  07D4  00F0               	movwf	writeSPI@address
-   737  07D5  3003               	movlw	3
-   738  07D6  2735               	fcall	_writeSPI
-   739                           
-   740                           ;receiver.c: 102: LATCbits.LATC4 = 0;
-   741  07D7  0022               	movlb	2	; select bank2
-   742  07D8  120E               	bcf	14,4	;volatile
-   743                           
-   744                           ;receiver.c: 103: SSPBUF = (0x0A | 0b00100000);
-   745  07D9  302A               	movlw	42
-   746  07DA  0024               	movlb	4	; select bank4
-   747  07DB  0091               	movwf	17	;volatile
-   748  07DC                     l58:	
-   749                           ;receiver.c: 104: while(!SSP1STATbits.BF);
-   750                           
-   751  07DC  1C14               	btfss	20,0	;volatile
-   752  07DD  2FDC               	goto	l58
-   753                           
-   754                           ;receiver.c: 105: uint8_t dummy = SSPBUF;
-   755  07DE  0811               	movf	17,w	;volatile
-   756  07DF  00F4               	movwf	??_configureRX
-   757  07E0  0874               	movf	??_configureRX,w
-   758  07E1  00F5               	movwf	configureRX@dummy
-   759                           
-   760                           ;receiver.c: 106: for(uint8_t i = 0; i < 5; ++i) {
-   761  07E2  01F6               	clrf	configureRX@i
-   762  07E3  3005               	movlw	5
-   763  07E4  0276               	subwf	configureRX@i,w
-   764  07E5  1803               	btfsc	3,0
-   765  07E6  2FF7               	goto	l62
-   766  07E7                     l606:	
+   732                           ;transmitter.c: 129: LATCbits.LATC4 = 1;
+   733  07B6  0022               	movlb	2	; select bank2
+   734  07B7  160E               	bsf	14,4	;volatile
+   735                           
+   736                           ;transmitter.c: 130: LATCbits.LATC4 = 0;
+   737  07B8  120E               	bcf	14,4	;volatile
+   738                           
+   739                           ;transmitter.c: 131: writeSPI(0x03 | WRITE_MASK);
+   740  07B9  30DD               	movlw	low (_WRITE_MASK| (0+32768))
+   741  07BA  0084               	movwf	4
+   742  07BB  3086               	movlw	high (_WRITE_MASK| (0+32768))
+   743  07BC  0085               	movwf	5
+   744  07BD  0800               	movf	0,w	;code access
+   745  07BE  3803               	iorlw	3
+   746  07BF  26EE               	fcall	_writeSPI
+   747                           
+   748                           ;transmitter.c: 132: writeSPI(0b00000011);
+   749  07C0  3003               	movlw	3
+   750  07C1  26EE               	fcall	_writeSPI
+   751                           
+   752                           ;transmitter.c: 133: LATCbits.LATC4 = 1;
+   753  07C2  0022               	movlb	2	; select bank2
+   754  07C3  160E               	bsf	14,4	;volatile
+   755                           
+   756                           ;transmitter.c: 135: LATCbits.LATC4 = 0;
+   757  07C4  120E               	bcf	14,4	;volatile
+   758                           
+   759                           ;transmitter.c: 136: writeSPI(0x10 | WRITE_MASK);
+   760  07C5  30DD               	movlw	low (_WRITE_MASK| (0+32768))
+   761  07C6  0084               	movwf	4
+   762  07C7  3086               	movlw	high (_WRITE_MASK| (0+32768))
+   763  07C8  0085               	movwf	5
+   764  07C9  0800               	movf	0,w	;code access
+   765  07CA  3810               	iorlw	16
+   766  07CB  26EE               	fcall	_writeSPI
    767                           
-   768                           ;receiver.c: 107: SSPBUF = (0xE7);
-   769  07E7  30E7               	movlw	231
-   770  07E8  0091               	movwf	17	;volatile
-   771  07E9                     l63:	
-   772                           ;receiver.c: 108: while(!SSP1STATbits.BF);
-   773                           
-   774  07E9  1C14               	btfss	20,0	;volatile
-   775  07EA  2FE9               	goto	l63
-   776                           
-   777                           ;receiver.c: 109: dummy = SSPBUF;
-   778  07EB  0811               	movf	17,w	;volatile
-   779  07EC  00F4               	movwf	??_configureRX
-   780  07ED  0874               	movf	??_configureRX,w
-   781  07EE  00F5               	movwf	configureRX@dummy
-   782  07EF  3001               	movlw	1
-   783  07F0  00F4               	movwf	??_configureRX
-   784  07F1  0874               	movf	??_configureRX,w
-   785  07F2  07F6               	addwf	configureRX@i,f
-   786  07F3  3005               	movlw	5
-   787  07F4  0276               	subwf	configureRX@i,w
-   788  07F5  1C03               	skipc
-   789  07F6  2FE7               	goto	l606
-   790  07F7                     l62:	
-   791                           
-   792                           ;receiver.c: 110: }
-   793                           ;receiver.c: 111: LATCbits.LATC4 = 1;
-   794  07F7  0022               	movlb	2	; select bank2
-   795  07F8  160E               	bsf	14,4	;volatile
+   768                           ;transmitter.c: 137: for(uint8_t i = 0; i < 5; ++i) {
+   769  07CC  01F4               	clrf	configureTX@i
+   770  07CD  3005               	movlw	5
+   771  07CE  0274               	subwf	configureTX@i,w
+   772  07CF  1803               	btfsc	3,0
+   773  07D0  2FDB               	goto	l71
+   774  07D1                     l549:	
+   775                           
+   776                           ;transmitter.c: 138: writeSPI(0xE7);
+   777  07D1  30E7               	movlw	231
+   778  07D2  26EE               	fcall	_writeSPI
+   779  07D3  3001               	movlw	1
+   780  07D4  00F3               	movwf	??_configureTX
+   781  07D5  0873               	movf	??_configureTX,w
+   782  07D6  07F4               	addwf	configureTX@i,f
+   783  07D7  3005               	movlw	5
+   784  07D8  0274               	subwf	configureTX@i,w
+   785  07D9  1C03               	skipc
+   786  07DA  2FD1               	goto	l549
+   787  07DB                     l71:	
+   788                           
+   789                           ;transmitter.c: 139: }
+   790                           ;transmitter.c: 140: LATCbits.LATC4 = 1;
+   791  07DB  0022               	movlb	2	; select bank2
+   792  07DC  160E               	bsf	14,4	;volatile
+   793                           
+   794                           ;transmitter.c: 142: LATCbits.LATC4 = 0;
+   795  07DD  120E               	bcf	14,4	;volatile
    796                           
-   797                           ;receiver.c: 141: _delay((unsigned long)((130)*(8000000/4000000.0)));
-   798  07F9  3056               	movlw	86
-   799  07FA                     u297:	
-   800  07FA  0B89               	decfsz	9,f
-   801  07FB  2FFA               	goto	u297
-   802  07FC  3200               	nop2
-   803  07FD  0008               	return
-   804  07FE                     __end_of_configureRX:	
+   797                           ;transmitter.c: 143: writeSPI(0x0A | WRITE_MASK);
+   798  07DE  30DD               	movlw	low (_WRITE_MASK| (0+32768))
+   799  07DF  0084               	movwf	4
+   800  07E0  3086               	movlw	high (_WRITE_MASK| (0+32768))
+   801  07E1  0085               	movwf	5
+   802  07E2  0800               	movf	0,w	;code access
+   803  07E3  380A               	iorlw	10
+   804  07E4  26EE               	fcall	_writeSPI
    805                           
-   806                           	psect	text4
-   807  0735                     __ptext4:	
-   808 ;; *************** function _writeSPI *****************
-   809 ;; Defined at:
-   810 ;;		line 151 in file "receiver.c"
-   811 ;; Parameters:    Size  Location     Type
-   812 ;;  data            1    wreg     unsigned char 
-   813 ;;  address         1    0[COMMON] unsigned char 
-   814 ;; Auto vars:     Size  Location     Type
-   815 ;;  data            1    3[COMMON] unsigned char 
-   816 ;;  x               1    2[COMMON] unsigned char 
-   817 ;; Return value:  Size  Location     Type
-   818 ;;                  1    wreg      void 
-   819 ;; Registers used:
-   820 ;;		wreg
-   821 ;; Tracked objects:
-   822 ;;		On entry : 0/0
-   823 ;;		On exit  : 0/0
-   824 ;;		Unchanged: 0/0
-   825 ;; Data sizes:     COMMON   BANK0   BANK1
-   826 ;;      Params:         1       0       0
-   827 ;;      Locals:         2       0       0
-   828 ;;      Temps:          1       0       0
-   829 ;;      Totals:         4       0       0
-   830 ;;Total ram usage:        4 bytes
-   831 ;; Hardware stack levels used:    1
-   832 ;; This function calls:
-   833 ;;		Nothing
-   834 ;; This function is called by:
-   835 ;;		_configureRX
-   836 ;;		_getData
-   837 ;; This function uses a non-reentrant model
-   838 ;;
-   839                           
+   806                           ;transmitter.c: 144: for(uint8_t i = 0; i < 5; ++i) {
+   807  07E5  01F5               	clrf	configureTX@i_288
+   808  07E6  3005               	movlw	5
+   809  07E7  0275               	subwf	configureTX@i_288,w
+   810  07E8  1803               	btfsc	3,0
+   811  07E9  2FFB               	goto	l73
+   812  07EA                     l563:	
+   813                           
+   814                           ;transmitter.c: 145: writeSPI(TX_ADDR[i]);
+   815  07EA  0875               	movf	configureTX@i_288,w
+   816  07EB  3EDF               	addlw	low (_TX_ADDR| (0+32768))
+   817  07EC  0084               	movwf	4
+   818  07ED  3086               	movlw	high (_TX_ADDR| (0+32768))
+   819  07EE  1803               	skipnc
+   820  07EF  3E01               	addlw	1
+   821  07F0  0085               	movwf	5
+   822  07F1  0800               	movf	0,w	;code access
+   823  07F2  26EE               	fcall	_writeSPI
+   824  07F3  3001               	movlw	1
+   825  07F4  00F3               	movwf	??_configureTX
+   826  07F5  0873               	movf	??_configureTX,w
+   827  07F6  07F5               	addwf	configureTX@i_288,f
+   828  07F7  3005               	movlw	5
+   829  07F8  0275               	subwf	configureTX@i_288,w
+   830  07F9  1C03               	skipc
+   831  07FA  2FEA               	goto	l563
+   832  07FB                     l73:	
+   833                           
+   834                           ;transmitter.c: 146: }
+   835                           ;transmitter.c: 147: LATCbits.LATC4 = 1;
+   836  07FB  0022               	movlb	2	; select bank2
+   837  07FC  160E               	bsf	14,4	;volatile
+   838  07FD  0008               	return
+   839  07FE                     __end_of_configureTX:	
    840                           
-   841                           ;psect for function _writeSPI
-   842  0735                     _writeSPI:	
-   843                           
-   844                           ;incstack = 0
-   845                           ; Regs used in _writeSPI: [wreg]
-   846                           ;writeSPI@data stored from wreg
-   847  0735  00F3               	movwf	writeSPI@data
-   848                           
-   849                           ;receiver.c: 153: address |= 0b00100000;
-   850  0736  16F0               	bsf	writeSPI@address,5
-   851                           
-   852                           ;receiver.c: 154: LATCbits.LATC4 = 0;
-   853  0737  0022               	movlb	2	; select bank2
-   854  0738  120E               	bcf	14,4	;volatile
-   855                           
-   856                           ;receiver.c: 155: uint8_t x;
-   857                           ;receiver.c: 156: SSPBUF = address;
-   858  0739  0870               	movf	writeSPI@address,w
-   859  073A  0024               	movlb	4	; select bank4
-   860  073B  0091               	movwf	17	;volatile
-   861  073C                     l72:	
-   862                           ;receiver.c: 157: while(!SSP1STATbits.BF);
-   863                           
-   864  073C  1C14               	btfss	20,0	;volatile
-   865  073D  2F3C               	goto	l72
-   866                           
-   867                           ;receiver.c: 158: x = SSPBUF;
-   868  073E  0811               	movf	17,w	;volatile
-   869  073F  00F1               	movwf	??_writeSPI
-   870  0740  0871               	movf	??_writeSPI,w
-   871  0741  00F2               	movwf	writeSPI@x
-   872                           
-   873                           ;receiver.c: 159: SSPBUF = data;
-   874  0742  0873               	movf	writeSPI@data,w
-   875  0743  0091               	movwf	17	;volatile
-   876  0744                     l75:	
-   877                           ;receiver.c: 160: while (!SSP1STATbits.BF);
+   841                           	psect	text3
+   842  06EE                     __ptext3:	
+   843 ;; *************** function _writeSPI *****************
+   844 ;; Defined at:
+   845 ;;		line 163 in file "transmitter.c"
+   846 ;; Parameters:    Size  Location     Type
+   847 ;;  data            1    wreg     unsigned char 
+   848 ;; Auto vars:     Size  Location     Type
+   849 ;;  data            1    1[COMMON] unsigned char 
+   850 ;;  x               1    2[COMMON] unsigned char 
+   851 ;; Return value:  Size  Location     Type
+   852 ;;                  1    wreg      unsigned char 
+   853 ;; Registers used:
+   854 ;;		wreg
+   855 ;; Tracked objects:
+   856 ;;		On entry : 0/0
+   857 ;;		On exit  : 0/0
+   858 ;;		Unchanged: 0/0
+   859 ;; Data sizes:     COMMON   BANK0   BANK1
+   860 ;;      Params:         0       0       0
+   861 ;;      Locals:         2       0       0
+   862 ;;      Temps:          1       0       0
+   863 ;;      Totals:         3       0       0
+   864 ;;Total ram usage:        3 bytes
+   865 ;; Hardware stack levels used:    1
+   866 ;; This function calls:
+   867 ;;		Nothing
+   868 ;; This function is called by:
+   869 ;;		_main
+   870 ;;		_configureTX
+   871 ;;		_transmitData
+   872 ;; This function uses a non-reentrant model
+   873 ;;
+   874                           
+   875                           
+   876                           ;psect for function _writeSPI
+   877  06EE                     _writeSPI:	
    878                           
-   879  0744  1C14               	btfss	20,0	;volatile
-   880  0745  2F44               	goto	l75
-   881                           
-   882                           ;receiver.c: 161: x = SSPBUF;
-   883  0746  0811               	movf	17,w	;volatile
-   884  0747  00F1               	movwf	??_writeSPI
-   885  0748  0871               	movf	??_writeSPI,w
-   886  0749  00F2               	movwf	writeSPI@x
-   887                           
-   888                           ;receiver.c: 162: LATCbits.LATC4 = 1;
-   889  074A  0022               	movlb	2	; select bank2
-   890  074B  160E               	bsf	14,4	;volatile
-   891  074C  0008               	return
-   892  074D                     __end_of_writeSPI:	
-   893                           
-   894                           	psect	text5
-   895  0719                     __ptext5:	
-   896 ;; *************** function _configIOReceiver *****************
-   897 ;; Defined at:
-   898 ;;		line 79 in file "receiver.c"
-   899 ;; Parameters:    Size  Location     Type
-   900 ;;		None
-   901 ;; Auto vars:     Size  Location     Type
-   902 ;;		None
-   903 ;; Return value:  Size  Location     Type
-   904 ;;                  1    wreg      void 
-   905 ;; Registers used:
-   906 ;;		wreg
-   907 ;; Tracked objects:
-   908 ;;		On entry : 0/0
-   909 ;;		On exit  : 0/0
-   910 ;;		Unchanged: 0/0
-   911 ;; Data sizes:     COMMON   BANK0   BANK1
-   912 ;;      Params:         0       0       0
-   913 ;;      Locals:         0       0       0
-   914 ;;      Temps:          0       0       0
-   915 ;;      Totals:         0       0       0
-   916 ;;Total ram usage:        0 bytes
-   917 ;; Hardware stack levels used:    1
-   918 ;; This function calls:
-   919 ;;		Nothing
-   920 ;; This function is called by:
-   921 ;;		_main
-   922 ;; This function uses a non-reentrant model
-   923 ;;
-   924                           
-   925                           
-   926                           ;psect for function _configIOReceiver
-   927  0719                     _configIOReceiver:	
-   928                           
-   929                           ;receiver.c: 80: TRISA = 0b11101110;
-   930                           
-   931                           ;incstack = 0
-   932                           ; Regs used in _configIOReceiver: [wreg]
-   933  0719  30EE               	movlw	238
-   934  071A  0021               	movlb	1	; select bank1
-   935  071B  008C               	movwf	12	;volatile
+   879                           ;incstack = 0
+   880                           ; Regs used in _writeSPI: [wreg]
+   881                           ;writeSPI@data stored from wreg
+   882  06EE  00F1               	movwf	writeSPI@data
+   883                           
+   884                           ;transmitter.c: 165: uint8_t x;
+   885                           ;transmitter.c: 166: SSP1BUF = data;
+   886  06EF  0871               	movf	writeSPI@data,w
+   887  06F0  0024               	movlb	4	; select bank4
+   888  06F1  0091               	movwf	17	;volatile
+   889  06F2                     l77:	
+   890                           ;transmitter.c: 167: while(!SSP1STATbits.BF);
+   891                           
+   892  06F2  1C14               	btfss	20,0	;volatile
+   893  06F3  2EF2               	goto	l77
+   894                           
+   895                           ;transmitter.c: 168: x = SSP1BUF;
+   896  06F4  0811               	movf	17,w	;volatile
+   897  06F5  00F0               	movwf	??_writeSPI
+   898  06F6  0870               	movf	??_writeSPI,w
+   899  06F7  00F2               	movwf	writeSPI@x
+   900                           
+   901                           ;transmitter.c: 169: return x;
+   902  06F8  0872               	movf	writeSPI@x,w
+   903  06F9  0008               	return
+   904  06FA                     __end_of_writeSPI:	
+   905                           
+   906                           	psect	text4
+   907  0707                     __ptext4:	
+   908 ;; *************** function _blink *****************
+   909 ;; Defined at:
+   910 ;;		line 88 in file "transmitter.c"
+   911 ;; Parameters:    Size  Location     Type
+   912 ;;		None
+   913 ;; Auto vars:     Size  Location     Type
+   914 ;;		None
+   915 ;; Return value:  Size  Location     Type
+   916 ;;                  1    wreg      void 
+   917 ;; Registers used:
+   918 ;;		wreg
+   919 ;; Tracked objects:
+   920 ;;		On entry : 0/0
+   921 ;;		On exit  : 0/0
+   922 ;;		Unchanged: 0/0
+   923 ;; Data sizes:     COMMON   BANK0   BANK1
+   924 ;;      Params:         0       0       0
+   925 ;;      Locals:         0       0       0
+   926 ;;      Temps:          1       0       0
+   927 ;;      Totals:         1       0       0
+   928 ;;Total ram usage:        1 bytes
+   929 ;; Hardware stack levels used:    1
+   930 ;; This function calls:
+   931 ;;		Nothing
+   932 ;; This function is called by:
+   933 ;;		_configureTX
+   934 ;; This function uses a non-reentrant model
+   935 ;;
    936                           
-   937                           ;receiver.c: 81: TRISC = 0b11100010;
-   938  071C  30E2               	movlw	226
-   939  071D  008E               	movwf	14	;volatile
+   937                           
+   938                           ;psect for function _blink
+   939  0707                     _blink:	
    940                           
-   941                           ;receiver.c: 82: OPTION_REGbits.nWPUEN = 0;
-   942  071E  1395               	bcf	21,7	;volatile
-   943                           
-   944                           ;receiver.c: 83: WPUAbits.WPUA1 = 1;
-   945  071F  0024               	movlb	4	; select bank4
-   946  0720  148C               	bsf	12,1	;volatile
-   947  0721  0008               	return
-   948  0722                     __end_of_configIOReceiver:	
-   949                           
-   950                           	psect	text6
-   951  0722                     __ptext6:	
-   952 ;; *************** function _blink *****************
-   953 ;; Defined at:
-   954 ;;		line 144 in file "receiver.c"
-   955 ;; Parameters:    Size  Location     Type
-   956 ;;  delay           2    0[COMMON] int 
-   957 ;; Auto vars:     Size  Location     Type
-   958 ;;		None
-   959 ;; Return value:  Size  Location     Type
-   960 ;;                  1    wreg      void 
-   961 ;; Registers used:
-   962 ;;		wreg
-   963 ;; Tracked objects:
-   964 ;;		On entry : 0/0
-   965 ;;		On exit  : 0/0
-   966 ;;		Unchanged: 0/0
-   967 ;; Data sizes:     COMMON   BANK0   BANK1
-   968 ;;      Params:         2       0       0
-   969 ;;      Locals:         0       0       0
-   970 ;;      Temps:          1       0       0
-   971 ;;      Totals:         3       0       0
-   972 ;;Total ram usage:        3 bytes
-   973 ;; Hardware stack levels used:    1
-   974 ;; This function calls:
-   975 ;;		Nothing
-   976 ;; This function is called by:
-   977 ;;		_main
-   978 ;; This function uses a non-reentrant model
-   979 ;;
-   980                           
-   981                           
-   982                           ;psect for function _blink
-   983  0722                     _blink:	
-   984                           
-   985                           ;receiver.c: 145: LATAbits.LATA0 = 1;
-   986                           
-   987                           ;incstack = 0
-   988                           ; Regs used in _blink: [wreg]
-   989  0722  0022               	movlb	2	; select bank2
-   990  0723  140C               	bsf	12,0	;volatile
-   991                           
-   992                           ;receiver.c: 146: _delay((unsigned long)((20)*(8000000/4000.0)));
-   993  0724  3034               	movlw	52
-   994  0725  00F2               	movwf	??_blink
-   995  0726  30F2               	movlw	242
-   996  0727                     u307:	
-   997  0727  0B89               	decfsz	9,f
-   998  0728  2F27               	goto	u307
-   999  0729  0BF2               	decfsz	??_blink,f
-  1000  072A  2F27               	goto	u307
-  1001                           
-  1002                           ;receiver.c: 147: LATAbits.LATA0 = 0;
-  1003  072B  0022               	movlb	2	; select bank2
-  1004  072C  100C               	bcf	12,0	;volatile
-  1005                           
-  1006                           ;receiver.c: 148: _delay((unsigned long)((20)*(8000000/4000.0)));
-  1007  072D  3034               	movlw	52
-  1008  072E  00F2               	movwf	??_blink
-  1009  072F  30F2               	movlw	242
-  1010  0730                     u317:	
-  1011  0730  0B89               	decfsz	9,f
-  1012  0731  2F30               	goto	u317
-  1013  0732  0BF2               	decfsz	??_blink,f
-  1014  0733  2F30               	goto	u317
-  1015  0734  0008               	return
-  1016  0735                     __end_of_blink:	
-  1017                           
-  1018                           	psect	text7
-  1019  0711                     __ptext7:	
-  1020 ;; *************** function _SPI_init *****************
-  1021 ;; Defined at:
-  1022 ;;		line 198 in file "receiver.c"
-  1023 ;; Parameters:    Size  Location     Type
-  1024 ;;		None
-  1025 ;; Auto vars:     Size  Location     Type
-  1026 ;;		None
-  1027 ;; Return value:  Size  Location     Type
-  1028 ;;                  1    wreg      void 
-  1029 ;; Registers used:
-  1030 ;;		wreg
-  1031 ;; Tracked objects:
-  1032 ;;		On entry : 0/0
-  1033 ;;		On exit  : 0/0
-  1034 ;;		Unchanged: 0/0
-  1035 ;; Data sizes:     COMMON   BANK0   BANK1
-  1036 ;;      Params:         0       0       0
-  1037 ;;      Locals:         0       0       0
-  1038 ;;      Temps:          0       0       0
-  1039 ;;      Totals:         0       0       0
-  1040 ;;Total ram usage:        0 bytes
-  1041 ;; Hardware stack levels used:    1
-  1042 ;; This function calls:
-  1043 ;;		Nothing
-  1044 ;; This function is called by:
-  1045 ;;		_main
-  1046 ;; This function uses a non-reentrant model
-  1047 ;;
-  1048                           
-  1049                           
-  1050                           ;psect for function _SPI_init
-  1051  0711                     _SPI_init:	
-  1052                           
-  1053                           ;receiver.c: 199: SSPCON1bits.SSPEN = 0;
-  1054                           
-  1055                           ;incstack = 0
-  1056                           ; Regs used in _SPI_init: [wreg]
-  1057  0711  0024               	movlb	4	; select bank4
-  1058  0712  1295               	bcf	21,5	;volatile
-  1059                           
-  1060                           ;receiver.c: 200: SSPSTAT = 0b01000000;
-  1061  0713  3040               	movlw	64
-  1062  0714  0094               	movwf	20	;volatile
-  1063                           
-  1064                           ;receiver.c: 201: SSPCON1 = 0b00100010;
-  1065  0715  3022               	movlw	34
-  1066  0716  0095               	movwf	21	;volatile
-  1067                           
-  1068                           ;receiver.c: 202: SSPCON1bits.SSPEN = 1;
-  1069  0717  1695               	bsf	21,5	;volatile
-  1070  0718  0008               	return
-  1071  0719                     __end_of_SPI_init:	
-  1072  007E                     btemp	set	126	;btemp
-  1073  007E                     wtemp0	set	126
+   941                           ;transmitter.c: 89: LATAbits.LATA0 = 1;
+   942                           
+   943                           ;incstack = 0
+   944                           ; Regs used in _blink: [wreg]
+   945  0707  0022               	movlb	2	; select bank2
+   946  0708  140C               	bsf	12,0	;volatile
+   947                           
+   948                           ;transmitter.c: 90: _delay((unsigned long)((20)*(16000000/4000.0)));
+   949  0709  3068               	movlw	104
+   950  070A  00F0               	movwf	??_blink
+   951  070B  30E4               	movlw	228
+   952  070C                     u137:	
+   953  070C  0B89               	decfsz	9,f
+   954  070D  2F0C               	goto	u137
+   955  070E  0BF0               	decfsz	??_blink,f
+   956  070F  2F0C               	goto	u137
+   957  0710  3200               	nop2
+   958                           
+   959                           ;transmitter.c: 91: LATAbits.LATA0 = 0;
+   960  0711  0022               	movlb	2	; select bank2
+   961  0712  100C               	bcf	12,0	;volatile
+   962                           
+   963                           ;transmitter.c: 92: _delay((unsigned long)((20)*(16000000/4000.0)));
+   964  0713  3068               	movlw	104
+   965  0714  00F0               	movwf	??_blink
+   966  0715  30E4               	movlw	228
+   967  0716                     u147:	
+   968  0716  0B89               	decfsz	9,f
+   969  0717  2F16               	goto	u147
+   970  0718  0BF0               	decfsz	??_blink,f
+   971  0719  2F16               	goto	u147
+   972  071A  3200               	nop2
+   973  071B  0008               	return
+   974  071C                     __end_of_blink:	
+   975                           
+   976                           	psect	text5
+   977  06E4                     __ptext5:	
+   978 ;; *************** function _configIOTransmitter *****************
+   979 ;; Defined at:
+   980 ;;		line 79 in file "transmitter.c"
+   981 ;; Parameters:    Size  Location     Type
+   982 ;;		None
+   983 ;; Auto vars:     Size  Location     Type
+   984 ;;		None
+   985 ;; Return value:  Size  Location     Type
+   986 ;;                  1    wreg      void 
+   987 ;; Registers used:
+   988 ;;		wreg
+   989 ;; Tracked objects:
+   990 ;;		On entry : 0/0
+   991 ;;		On exit  : 0/0
+   992 ;;		Unchanged: 0/0
+   993 ;; Data sizes:     COMMON   BANK0   BANK1
+   994 ;;      Params:         0       0       0
+   995 ;;      Locals:         0       0       0
+   996 ;;      Temps:          0       0       0
+   997 ;;      Totals:         0       0       0
+   998 ;;Total ram usage:        0 bytes
+   999 ;; Hardware stack levels used:    1
+  1000 ;; This function calls:
+  1001 ;;		Nothing
+  1002 ;; This function is called by:
+  1003 ;;		_main
+  1004 ;; This function uses a non-reentrant model
+  1005 ;;
+  1006                           
+  1007                           
+  1008                           ;psect for function _configIOTransmitter
+  1009  06E4                     _configIOTransmitter:	
+  1010                           
+  1011                           ;transmitter.c: 80: TRISA = 0b11101110;
+  1012                           
+  1013                           ;incstack = 0
+  1014                           ; Regs used in _configIOTransmitter: [wreg]
+  1015  06E4  30EE               	movlw	238
+  1016  06E5  0021               	movlb	1	; select bank1
+  1017  06E6  008C               	movwf	12	;volatile
+  1018                           
+  1019                           ;transmitter.c: 81: TRISC = 0b11100010;
+  1020  06E7  30E2               	movlw	226
+  1021  06E8  008E               	movwf	14	;volatile
+  1022                           
+  1023                           ;transmitter.c: 82: OPTION_REGbits.nWPUEN = 0;
+  1024  06E9  1395               	bcf	21,7	;volatile
+  1025                           
+  1026                           ;transmitter.c: 83: WPUAbits.WPUA5 = 1;
+  1027  06EA  0024               	movlb	4	; select bank4
+  1028  06EB  168C               	bsf	12,5	;volatile
+  1029                           
+  1030                           ;transmitter.c: 84: WPUAbits.WPUA1 = 1;
+  1031  06EC  148C               	bsf	12,1	;volatile
+  1032  06ED  0008               	return
+  1033  06EE                     __end_of_configIOTransmitter:	
+  1034                           
+  1035                           	psect	text6
+  1036  06FA                     __ptext6:	
+  1037 ;; *************** function _SPI_init *****************
+  1038 ;; Defined at:
+  1039 ;;		line 213 in file "transmitter.c"
+  1040 ;; Parameters:    Size  Location     Type
+  1041 ;;		None
+  1042 ;; Auto vars:     Size  Location     Type
+  1043 ;;		None
+  1044 ;; Return value:  Size  Location     Type
+  1045 ;;                  1    wreg      void 
+  1046 ;; Registers used:
+  1047 ;;		wreg, status,2
+  1048 ;; Tracked objects:
+  1049 ;;		On entry : 0/0
+  1050 ;;		On exit  : 0/0
+  1051 ;;		Unchanged: 0/0
+  1052 ;; Data sizes:     COMMON   BANK0   BANK1
+  1053 ;;      Params:         0       0       0
+  1054 ;;      Locals:         0       0       0
+  1055 ;;      Temps:          0       0       0
+  1056 ;;      Totals:         0       0       0
+  1057 ;;Total ram usage:        0 bytes
+  1058 ;; Hardware stack levels used:    1
+  1059 ;; This function calls:
+  1060 ;;		Nothing
+  1061 ;; This function is called by:
+  1062 ;;		_main
+  1063 ;; This function uses a non-reentrant model
+  1064 ;;
+  1065                           
+  1066                           
+  1067                           ;psect for function _SPI_init
+  1068  06FA                     _SPI_init:	
+  1069                           
+  1070                           ;transmitter.c: 214: SSP1CON1 = 0x00;
+  1071                           
+  1072                           ;incstack = 0
+  1073                           ; Regs used in _SPI_init: [wreg+status,2]
+  1074  06FA  0024               	movlb	4	; select bank4
+  1075  06FB  0195               	clrf	21	;volatile
+  1076                           
+  1077                           ;transmitter.c: 215: SSP1STAT = 0b11000000;
+  1078  06FC  30C0               	movlw	192
+  1079  06FD  0094               	movwf	20	;volatile
+  1080                           
+  1081                           ;transmitter.c: 216: SSP1CON1 = 0b00000010;
+  1082  06FE  3002               	movlw	2
+  1083  06FF  0095               	movwf	21	;volatile
+  1084                           
+  1085                           ;transmitter.c: 217: PIR1bits.SSP1IF = 0;
+  1086  0700  0020               	movlb	0	; select bank0
+  1087  0701  1191               	bcf	17,3	;volatile
+  1088                           
+  1089                           ;transmitter.c: 218: PIE1bits.SSP1IE = 1;
+  1090  0702  0021               	movlb	1	; select bank1
+  1091  0703  1591               	bsf	17,3	;volatile
+  1092                           
+  1093                           ;transmitter.c: 219: SSP1CON1bits.SSPEN = 1;
+  1094  0704  0024               	movlb	4	; select bank4
+  1095  0705  1695               	bsf	21,5	;volatile
+  1096  0706  0008               	return
+  1097  0707                     __end_of_SPI_init:	
+  1098  007E                     btemp	set	126	;btemp
+  1099  007E                     wtemp0	set	126
 
 
 Data Sizes:
     Strings     0
-    Constant    6
+    Constant    8
     Data        0
     BSS         0
     Persistent  0
@@ -1097,7 +1123,7 @@ Data Sizes:
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMMON           14     11      11
+    COMMON           14      9       9
     BANK0            80      0       0
     BANK1            32      0       0
 
@@ -1107,9 +1133,10 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMMON
 
-    _main->_configureRX
-    _getData->_writeSPI
-    _configureRX->_writeSPI
+    _main->_configureTX
+    _main->_transmitData
+    _transmitData->_writeSPI
+    _configureTX->_writeSPI
 
 Critical Paths under _main in BANK0
 
@@ -1124,33 +1151,30 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 4     4      0     890
-                                              7 COMMON     4     4      0
+ (0) _main                                                 3     3      0     240
+                                              6 COMMON     3     3      0
                            _SPI_init
-                              _blink
-                   _configIOReceiver
-                        _configureRX
-                            _getData
-                            _readSPI
+                _configIOTransmitter
+                        _configureTX
+                       _transmitData
+                           _writeSPI
  ---------------------------------------------------------------------------------
- (1) _readSPI                                              3     3      0      30
+ (1) _transmitData                                         3     3      0      75
+                                              3 COMMON     3     3      0
+                           _writeSPI
+ ---------------------------------------------------------------------------------
+ (1) _configureTX                                          3     3      0     105
+                                              3 COMMON     3     3      0
+                              _blink
+                           _writeSPI
+ ---------------------------------------------------------------------------------
+ (1) _writeSPI                                             3     3      0      30
                                               0 COMMON     3     3      0
  ---------------------------------------------------------------------------------
- (1) _getData                                              2     2      0     329
-                                              4 COMMON     2     2      0
-                           _writeSPI
+ (2) _blink                                                1     1      0       0
+                                              0 COMMON     1     1      0
  ---------------------------------------------------------------------------------
- (1) _configureRX                                          3     3      0     353
-                                              4 COMMON     3     3      0
-                           _writeSPI
- ---------------------------------------------------------------------------------
- (2) _writeSPI                                             4     3      1     305
-                                              0 COMMON     4     3      1
- ---------------------------------------------------------------------------------
- (1) _configIOReceiver                                     0     0      0       0
- ---------------------------------------------------------------------------------
- (1) _blink                                                3     1      2      86
-                                              0 COMMON     3     1      2
+ (1) _configIOTransmitter                                  0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _SPI_init                                             0     0      0       0
  ---------------------------------------------------------------------------------
@@ -1161,13 +1185,13 @@ Call Graph Tables:
 
  _main (ROOT)
    _SPI_init
-   _blink
-   _configIOReceiver
-   _configureRX
+   _configIOTransmitter
+   _configureTX
+     _blink
      _writeSPI
-   _getData
+   _transmitData
      _writeSPI
-   _readSPI
+   _writeSPI
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
@@ -1177,7 +1201,7 @@ CODE                 0      0       0       0        0.0%
 BITCOMMON            E      0       0       1        0.0%
 BITSFR0              0      0       0       1        0.0%
 SFR0                 0      0       0       1        0.0%
-COMMON               E      B       B       2       78.6%
+COMMON               E      9       9       2       64.3%
 BITSFR1              0      0       0       2        0.0%
 SFR1                 0      0       0       2        0.0%
 BITSFR2              0      0       0       3        0.0%
@@ -1250,46 +1274,44 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.42 build -159332390 
-Symbol Table                                                                                   Sun May 14 02:22:56 2017
+Symbol Table                                                                                   Sun May 14 20:11:39 2017
 
-             ?_configureRX 0070                __CFG_CP$OFF 0000                         l62 07F7  
-                       l63 07E9                         l72 073C                         l81 076B  
-                       l58 07DC                         l75 0744                         l84 0776  
-                       l93 0757                         l87 077E                         l96 075F  
-     __end_of_R_RX_PAYLOAD 070C                 _RX_ADDR_P5 070C                        l606 07E7  
-                      l644 0794                        l654 07A7                        u307 0727  
-                      u317 0730                        u270 07AF                        u280 07B0  
-                      u297 07FA               __CFG_BORV$LO 0000                        wreg 0009  
-             __CFG_LVP$OFF 0000               __CFG_WRT$OFF 0000           _configIOReceiver 0719  
-                     _main 078E                       fsr0h 0005                       indf0 0000  
-                     fsr0l 0004                       btemp 007E                       start 0001  
-            __CFG_MCLRE$ON 0000               configureRX@i 0076                      ?_main 0070  
-            __CFG_WDTE$OFF 0000                      _TRISA 008C                      _TRISC 008E  
-          __end_of_getData 078E                      _blink 0722            __end_of_readSPI 0769  
-           __CFG_BOREN$OFF 0000           __end_of_SPI_init 0719                      status 0003  
-                    wtemp0 007E            __initialization 07FE               __end_of_main 07BF  
-           __CFG_LPBOR$OFF 0000                     ??_main 0077                     ?_blink 0070  
-                   _SSPBUF 0211             __CFG_PWRTE$OFF 0000             __CFG_STVREN$ON 0000  
-     __size_of_configureRX 003F                  ??_getData 0074                  ??_readSPI 0070  
-           readSPI@address 0071           __end_of_writeSPI 074D               _R_RX_PAYLOAD 070B  
-  __end_of__initialization 07FE             __pcstackCOMMON 0070              __end_of_blink 0735  
- __end_of_configIOReceiver 0722                  ?_SPI_init 0070             _OPTION_REGbits 0095  
-                  ??_blink 0072           configureRX@dummy 0075                 __pmaintext 078E  
-               ??_SPI_init 0070                    _SSPCON1 0215                    _SSPSTAT 0214  
-                  _getData 0769                  ?_writeSPI 0070                    __ptext1 074D  
-                  __ptext2 0769                    __ptext3 07BF                    __ptext4 0735  
-                  __ptext5 0719                    __ptext6 0722                    __ptext7 0711  
-                  _readSPI 074D       end_of_initialization 07FE               writeSPI@data 0073  
-               blink@delay 0070         __end_of_RX_ADDR_P5 0711                 ??_writeSPI 0071  
-         __CFG_FOSC$INTOSC 0000            readSPI@ret_data 0072                 main@thingy 0079  
-            ??_configureRX 0074          ?_configIOReceiver 0070        start_initialization 07FE  
-       ??_configIOReceiver 0070          __size_of_SPI_init 0008            writeSPI@address 0070  
-      __end_of_configureRX 07FE                  ___latbits 0000                   ?_getData 0070  
-                 ?_readSPI 0070          __size_of_writeSPI 0018             __size_of_blink 0013  
-                 _LATAbits 010C                   _LATCbits 010E                _configureRX 07BF  
-                 _SPI_init 0711                   _WPUAbits 020C           __size_of_getData 0025  
-         __size_of_readSPI 001C  __size_of_configIOReceiver 0009              __size_of_main 0031  
-                 main@data 0078               _SSP1STATbits 0214                   main@last 007A  
-                 _writeSPI 0735                getData@data 0075          __CFG_CLKOUTEN$OFF 0000  
-                writeSPI@x 0072              __pstringtext1 070C              __pstringtext2 070B  
-              _SSPCON1bits 0215  
+                ?_configureTX 0070                   __CFG_CP$OFF 0000                            l71 07DB  
+                          l73 07FB                            l77 06F2                            l69 0792  
+                          u90 076C                    _WRITE_MASK 06DD                           l511 078B  
+                         l607 0754                           l563 07EA                           l619 076E  
+                         l549 07D1                           u127 072B                           u137 070C  
+                         u147 0716                  __CFG_BORV$LO 0000                           wreg 0009  
+                __CFG_LVP$OFF 0000                  _transmitData 071C                  __CFG_WRT$OFF 0000  
+                        _main 074B                          fsr0h 0005                          indf0 0000  
+                        fsr0l 0004                          btemp 007E                          start 0001  
+             __end_of_TX_ADDR 06E4                 __CFG_MCLRE$ON 0000                  configureTX@i 0074  
+                       ?_main 0070                 __CFG_WDTE$OFF 0000                         _TRISA 008C  
+                       _TRISC 008E                         _blink 0707                __CFG_BOREN$OFF 0000  
+            __end_of_SPI_init 0707                         status 0003                         wtemp0 007E  
+             __initialization 07FE                  __end_of_main 077C                __CFG_LPBOR$OFF 0000  
+                      ??_main 0076             __end_of_READ_MASK 06DF                        ?_blink 0070  
+              __CFG_PWRTE$OFF 0000          __end_of_W_TX_PAYLOAD 06DD                __CFG_STVREN$ON 0000  
+        __size_of_configureTX 0082              __end_of_writeSPI 06FA       __end_of__initialization 07FE  
+              __pcstackCOMMON 0070                 __end_of_blink 071C                     ?_SPI_init 0070  
+              _OPTION_REGbits 0095                       ??_blink 0070              configureTX@i_288 0075  
+                  __pmaintext 074B  __size_of_configIOTransmitter 000A                    ??_SPI_init 0070  
+                     _SSP1BUF 0211                       _TX_ADDR 06DF                     ?_writeSPI 0070  
+                     __ptext1 071C                       __ptext2 077C                       __ptext3 06EE  
+                     __ptext4 0707                       __ptext5 06E4                       __ptext6 06FA  
+                _W_TX_PAYLOAD 06DC          end_of_initialization 07FE                  writeSPI@data 0071  
+                   _READ_MASK 06DE            __end_of_WRITE_MASK 06DE                    ??_writeSPI 0070  
+                   _PORTAbits 000C              __CFG_FOSC$INTOSC 0000                 ??_configureTX 0073  
+            transmitData@data 0074              transmitData@sreg 0075           start_initialization 07FE  
+           __size_of_SPI_init 000D           _configIOTransmitter 06E4                 ?_transmitData 0070  
+        ?_configIOTransmitter 0070           __end_of_configureTX 07FE                     ___latbits 0000  
+              ??_transmitData 0073         ??_configIOTransmitter 0070             __size_of_writeSPI 000C  
+              __size_of_blink 0015                      _LATAbits 010C                      _LATCbits 010E  
+                    _PIE1bits 0091                      _PIR1bits 0011                   _configureTX 077C  
+                    _SSP1CON1 0215                      _SSP1STAT 0214                      _SPI_init 06FA  
+                    _WPUAbits 020C          __end_of_transmitData 074B                  _SSP1CON1bits 0215  
+               __size_of_main 0031                      main@data 0077                  _SSP1STATbits 0214  
+                    main@last 0078                      _writeSPI 06EE             __CFG_CLKOUTEN$OFF 0000  
+                   writeSPI@x 0072                 __pstringtext1 06DF                 __pstringtext2 06DE  
+               __pstringtext3 06DD                 __pstringtext4 06DC   __end_of_configIOTransmitter 06EE  
+       __size_of_transmitData 002F  

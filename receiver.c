@@ -62,16 +62,13 @@ void main(void) {
     configureRX();
     uint8_t last = 0;
     while(1) {
-        configureRX();
         uint8_t data = getData();
-        uint8_t thingy = readSPI(0x00);
-        if(thingy == 0b00111111) {
-            blink(100);
-        }
+        uint8_t dummy = readSPI(0x00);
+        blink(dummy);
         if(data == 0xFF) {
             last = (last ? 0 : 1);
             LATAbits.LATA0 = last;
-            blink(20);
+            blink(100);
         }
     }
 }
@@ -94,19 +91,19 @@ void configureRX(void) {
     // to receive the acknowledgment
     // 3. A high pulse of CE starts the transmission. Minimum pulse width of
     // 10 microseconds
-    writeSPI(0x00, 0b00111111); // enable IRQ on RX received
+    writeSPI(0x00, 0b00111011); // enable IRQ on RX received
     writeSPI(0x01, 0b00000001); // enable pipe 1
     writeSPI(0x02, 0b00000001); // auto acknowledgment on pipe 1
     writeSPI(0x11, 0b00000001); // width in RX payload is 1
     writeSPI(0x03, 0b00000011); // 5 byte addresses
     NRF_CSN = 0;
-    SSPBUF = (0x0A | 0b00100000);
+    SSP1BUF = (0x0A | 0b00100000);
     while(!SSP1STATbits.BF);
-    uint8_t dummy = SSPBUF;
+    uint8_t dummy = SSP1BUF;
     for(uint8_t i = 0; i < 5; ++i) {
-        SSPBUF = (0xE7);
+        SSP1BUF = (0xE7);
         while(!SSP1STATbits.BF);
-        dummy = SSPBUF;
+        dummy = SSP1BUF;
     }
     NRF_CSN = 1;
     //writeSPI(0x01, 0b00100000); // enable data pipe 5
@@ -153,12 +150,12 @@ void writeSPI(uint8_t data, uint8_t address) { // executable in power down or
     address |= 0b00100000;
     NRF_CSN = 0;
     uint8_t x; // this holds the SREG
-    SSPBUF = address; // put data in buffer
+    SSP1BUF = address; // put data in buffer
     while(!SSP1STATbits.BF); // wait for read byte to come in
-    x = SSPBUF; // read to clear buffer
-    SSPBUF = data;
+    x = SSP1BUF; // read to clear buffer
+    SSP1BUF = data;
     while (!SSP1STATbits.BF);
-    x = SSPBUF;
+    x = SSP1BUF;
     NRF_CSN = 1;
     
 }
@@ -170,12 +167,12 @@ uint8_t getData(void) {
     NRF_CE = 0; // enter standby
     uint8_t data;
     NRF_CSN = 0;
-    SSPBUF = R_RX_PAYLOAD;
+    SSP1BUF = R_RX_PAYLOAD;
     while(!SSP1STATbits.BF);
-    data = SSPBUF;
-    SSPBUF = 0xFF; // dummy byte
+    data = SSP1BUF;
+    SSP1BUF = 0xFF; // dummy byte
     while(!SSP1STATbits.BF);
-    data = SSPBUF; // this is the actual data we want from RX FIFO
+    data = SSP1BUF; // this is the actual data we want from RX FIFO
     NRF_CSN = 1;
     writeSPI(0x07, 0b01110000); // clear irq
     return data;
@@ -185,19 +182,20 @@ uint8_t readSPI(uint8_t address) {
     address &= 0b00011111; // make sure first 3 bits are low for read
     NRF_CSN = 0;
     uint8_t ret_data;
-    SSPBUF = address;
+    SSP1BUF = address;
     while(!SSP1STATbits.BF); // wait for read byte to come in
-    ret_data = SSPBUF;
-    SSPBUF = 0xFF; // write dummy
+    ret_data = SSP1BUF;
+    SSP1BUF = 0xFF; // write dummy
     while(!SSP1STATbits.BF);
-    ret_data = SSPBUF;
+    ret_data = SSP1BUF;
     NRF_CSN = 1;
     return ret_data;
 }
 
 void SPI_init(void) {
-    SSPCON1bits.SSPEN = 0; // disable spi
-    SSPSTAT = 0b01000000; // I don't know where these bits come from
-    SSPCON1 = 0b00100010; // or these bits
-    SSPCON1bits.SSPEN = 1; // enable spi
+    SSP1CON1 = 0x00;
+    SSP1STAT = 0b11000000;
+    SSP1CON1 = 0b00000010;
+    PIR1bits.SSP1IF = 0;
+    SSP1CON1bits.SSPEN = 1;
 }

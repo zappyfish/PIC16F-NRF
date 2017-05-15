@@ -175,7 +175,15 @@
         <property key="stack-size-main" value="auto"/>
         <property key="stack-type" value="compiled"/>
       </XC8-config-global>
-      <item path="transmitter.c" ex="true" overriding="false">
+      <item path="receiver.c" ex="true" overriding="false">
+      </item>
+      <item path="transmitter.c" ex="false" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
     </conf>
   </confs>

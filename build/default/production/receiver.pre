@@ -3899,16 +3899,13 @@ SPI_init();
 configureRX();
 uint8_t last = 0;
 while(1) {
-configureRX();
 uint8_t data = getData();
-uint8_t thingy = readSPI(0x00);
-if(thingy == 0b00111111) {
-blink(100);
-}
+uint8_t dummy = readSPI(0x00);
+blink(dummy);
 if(data == 0xFF) {
 last = (last ? 0 : 1);
 LATAbits.LATA0 = last;
-blink(20);
+blink(100);
 }
 }
 }
@@ -3924,24 +3921,24 @@ WPUAbits.WPUA1 = 1;
 
 void configureRX(void) {
 
-# 97
-writeSPI(0x00, 0b00111111);
+# 94
+writeSPI(0x00, 0b00111011);
 writeSPI(0x01, 0b00000001);
 writeSPI(0x02, 0b00000001);
 writeSPI(0x11, 0b00000001);
 writeSPI(0x03, 0b00000011);
 LATCbits.LATC4 = 0;
-SSPBUF = (0x0A | 0b00100000);
+SSP1BUF = (0x0A | 0b00100000);
 while(!SSP1STATbits.BF);
-uint8_t dummy = SSPBUF;
+uint8_t dummy = SSP1BUF;
 for(uint8_t i = 0; i < 5; ++i) {
-SSPBUF = (0xE7);
+SSP1BUF = (0xE7);
 while(!SSP1STATbits.BF);
-dummy = SSPBUF;
+dummy = SSP1BUF;
 }
 LATCbits.LATC4 = 1;
 
-# 141
+# 138
 _delay((unsigned long)((130)*(8000000/4000000.0)));
 
 }
@@ -3957,12 +3954,12 @@ void writeSPI(uint8_t data, uint8_t address) {
 address |= 0b00100000;
 LATCbits.LATC4 = 0;
 uint8_t x;
-SSPBUF = address;
+SSP1BUF = address;
 while(!SSP1STATbits.BF);
-x = SSPBUF;
-SSPBUF = data;
+x = SSP1BUF;
+SSP1BUF = data;
 while (!SSP1STATbits.BF);
-x = SSPBUF;
+x = SSP1BUF;
 LATCbits.LATC4 = 1;
 
 }
@@ -3974,12 +3971,12 @@ while(LATAbits.LATA1);
 LATCbits.LATC3 = 0;
 uint8_t data;
 LATCbits.LATC4 = 0;
-SSPBUF = R_RX_PAYLOAD;
+SSP1BUF = R_RX_PAYLOAD;
 while(!SSP1STATbits.BF);
-data = SSPBUF;
-SSPBUF = 0xFF;
+data = SSP1BUF;
+SSP1BUF = 0xFF;
 while(!SSP1STATbits.BF);
-data = SSPBUF;
+data = SSP1BUF;
 LATCbits.LATC4 = 1;
 writeSPI(0x07, 0b01110000);
 return data;
@@ -3989,19 +3986,20 @@ uint8_t readSPI(uint8_t address) {
 address &= 0b00011111;
 LATCbits.LATC4 = 0;
 uint8_t ret_data;
-SSPBUF = address;
+SSP1BUF = address;
 while(!SSP1STATbits.BF);
-ret_data = SSPBUF;
-SSPBUF = 0xFF;
+ret_data = SSP1BUF;
+SSP1BUF = 0xFF;
 while(!SSP1STATbits.BF);
-ret_data = SSPBUF;
+ret_data = SSP1BUF;
 LATCbits.LATC4 = 1;
 return ret_data;
 }
 
 void SPI_init(void) {
-SSPCON1bits.SSPEN = 0;
-SSPSTAT = 0b01000000;
-SSPCON1 = 0b00100010;
-SSPCON1bits.SSPEN = 1;
+SSP1CON1 = 0x00;
+SSP1STAT = 0b11000000;
+SSP1CON1 = 0b00000010;
+PIR1bits.SSP1IF = 0;
+SSP1CON1bits.SSPEN = 1;
 }
