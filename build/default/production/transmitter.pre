@@ -3872,8 +3872,20 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
+# 29 "spi.h"
+void configIO(void);
+void SPI_init(void);
+uint8_t SPI_write_byte(uint8_t data);
+uint8_t SPI_writeArray(uint8_t *data, uint8_t length);
+uint8_t SPI_read_byte(uint8_t address);
 
-# 11 "transmitter.c"
+# 33 "NRF_consts.h"
+const uint8_t RX_ADDR_P[6] = {0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F};
+const uint8_t TX_ADDR = 0x10;
+const uint8_t RX_PW_P[6] = {0x11, 0x12, 0x13, 0x14, 0x15, 0x16};
+
+
+# 14 "transmitter.c"
 #pragma config FOSC = INTOSC
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -3889,160 +3901,88 @@ extern __bit __timeout;
 #pragma config LPBOR = OFF
 #pragma config LVP = OFF
 
-# 35
-const uint8_t TX_ADDR[] = { 0x0B, 0x3B, 0x4B, 0x5B, 0x60};
-const uint8_t W_TX_PAYLOAD = 0b10100000;
-const uint8_t WRITE_MASK = 0b00100000;
-const uint8_t READ_MASK = 0b00011111;
-
-
-
-void SPI_init(void);
+# 33
 void configureTX(void);
 void configIOTransmitter(void);
-uint8_t writeSPI(uint8_t data);
-uint8_t readSPI(uint8_t address);
 void transmitData(uint8_t data);
 void blink(void);
+void bigBlink(uint8_t x);
 
-# 56
+# 45
 int main(void) {
-LATCbits.LATC4 = 1;
 uint8_t last = 1;
 SPI_init();
-LATAbits.LATA0 = 0;
+LATAbits.LATA1 = 0;
 configureTX();
 while(1) {
-LATCbits.LATC4 = 0;
-uint8_t sreg = writeSPI(0xFF);
-LATCbits.LATC4 = 1;
-LATAbits.LATA0 = 1;
-_delay((unsigned long)((sreg)*(16000000/4000.0)));
-LATAbits.LATA0 = 0;
-_delay((unsigned long)((sreg)*(16000000/4000.0)));
-LATCbits.LATC4 = 0;
-writeSPI(0x00 & READ_MASK);
-uint8_t data = writeSPI(0xFF);
-LATCbits.LATC4 = 1;
-if(data == 0b01011010) {
-LATAbits.LATA0 = !PORTAbits.RA0;
-blink();
-}
-if(last!= PORTAbits.RA5) {
+if(PORTAbits.RA5 != last) {
 last = PORTAbits.RA5;
-transmitData(0xFF);
+LATAbits.LATA1 = last;
+transmitData(0xCF);
 }
 
 }
 
 }
-void configIOTransmitter(void) {
-TRISA = 0b11101110;
-TRISC = 0b11100010;
-OPTION_REGbits.nWPUEN = 0;
-WPUAbits.WPUA5 = 1;
-WPUAbits.WPUA1 = 1;
 
-
-}
 void blink(void) {
-LATAbits.LATA0 = 1;
-_delay((unsigned long)((20)*(16000000/4000.0)));
-LATAbits.LATA0 = 0;
-_delay((unsigned long)((20)*(16000000/4000.0)));
+LATAbits.LATA1 = 1;
+_delay((unsigned long)((10)*(16000000UL/4000.0)));
+LATAbits.LATA1 = 0;
+_delay((unsigned long)((10)*(16000000UL/4000.0)));
+}
+void bigBlink(uint8_t x) {
+LATAbits.LATA1 = 1;
+for(uint8_t i = 0; i<x; ++i) {
+_delay((unsigned long)((10)*(16000000UL/4000.0)));
+}
+LATAbits.LATA1 = 0;
+for(uint8_t i = 0; i<x; ++i) {
+_delay((unsigned long)((10)*(16000000UL/4000.0)));
 }
 
+}
 void configureTX(void) {
 
-# 115
+# 91
 LATCbits.LATC4 = 0;
-writeSPI(0x00 | WRITE_MASK);
-writeSPI(0b01011010);
-LATCbits.LATC4 = 1;
-LATCbits.LATC4 = 0;
-writeSPI(0x01 | WRITE_MASK);
-writeSPI(0b00000001);
-LATCbits.LATC4 = 1;
-LATCbits.LATC4 = 0;
-writeSPI(0x02 | WRITE_MASK);
-writeSPI(0b00000001);
-LATCbits.LATC4 = 1;
-LATCbits.LATC4 = 0;
-writeSPI(0x11 | WRITE_MASK);
-writeSPI(0b00000001);
-LATCbits.LATC4 = 1;
-LATCbits.LATC4 = 0;
-writeSPI(0x03 | WRITE_MASK);
-writeSPI(0b00000011);
-LATCbits.LATC4 = 1;
-
-LATCbits.LATC4 = 0;
-writeSPI(0x10 | WRITE_MASK);
-for(uint8_t i = 0; i < 5; ++i) {
-writeSPI(0xE7);
-}
-LATCbits.LATC4 = 1;
-
-LATCbits.LATC4 = 0;
-writeSPI(0x0A | WRITE_MASK);
-for(uint8_t i = 0; i < 5; ++i) {
-writeSPI(TX_ADDR[i]);
-}
-LATCbits.LATC4 = 1;
-
-# 159
-}
-
-
-
-
-uint8_t writeSPI(uint8_t data) {
-
-uint8_t x;
-SSP1BUF = data;
-while(!PIR1bits.SSP1IF);
-PIR1bits.SSP1IF = 0;
-x = SSP1BUF;
-return x;
-
-}
-
-# 189
-void transmitData(uint8_t data) {
-LATCbits.LATC4 = 0;
-writeSPI(W_TX_PAYLOAD);
-writeSPI(data);
-LATCbits.LATC4 = 1;
+_delay((unsigned long)((1)*(16000000UL/4000.0)));
 LATCbits.LATC3 = 1;
-_delay((unsigned long)((50)*(16000000/4000000.0)));
+_delay((unsigned long)((10)*(16000000UL/4000.0)));
+uint8_t write[2];
+write[0] = (0x00 & 0b00011111) | 0x00;
+write[1] = 0b01011010;
+SPI_writeArray(write, 2);
 
-LATCbits.LATC4 = 0;
-uint8_t sreg = writeSPI(0xFF);
-LATCbits.LATC4 = 1;
-while(!(sreg & 0b00100000)) {
-LATCbits.LATC4 = 0;
-sreg = writeSPI(0xFF);
-LATCbits.LATC4 = 1;
-}
-LATCbits.LATC3 = 0;
-LATCbits.LATC4 = 0;
-uint8_t sreg = writeSPI(0x07 | WRITE_MASK);
-writeSPI((sreg | 0b01110000));
-LATCbits.LATC4 = 1;
-
-
-
+if(SPI_read_byte(0x00) == 0b01011010) {
+bigBlink(10);
 }
 
-void SPI_init(void) {
-SSP1CON1bits.SSPEN = 0;
-configIOTransmitter();
-SSP1CON1bits.CKP = 0;
-SSP1STATbits.CKE = 1;
-SSP1STATbits.SMP = 1;
-SSP1CON1bits.SSPM = 0;
-SSP1CON1bits.SSPEN = 1;
+write[0] = (0x01 & 0b00011111) | 0x00;
+write[1] = 0b00000001;
+SPI_writeArray(write, 2);
 
-# 232
+write[0] = (0x02 & 0b00011111) | 0x00;
+write[1] = 0b00000001;
+SPI_writeArray(write, 2);
+
+write[0] = (RX_PW_P[0] & 0b00011111) | 0x00;
+write[1] = 0b00000001;
+SPI_writeArray(write, 2);
+
+write[0] = (0x03 & 0b00011111) | 0x00;
+write[1] = 0b0000011;
+SPI_writeArray(write, 2);
+
+
+}
+
+
+
+void transmitData(uint8_t data) {
+uint8_t write[2];
+write[0]= 0b10100000;
+write[1] = data;
+SPI_writeArray(write, 2);
 }
 
