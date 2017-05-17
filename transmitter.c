@@ -32,7 +32,6 @@
 
 void configureTX(void);
 void transmitData(uint8_t data);
-void blink(void);
 void bigBlink(uint8_t x);
 
 // IRQ is active low. It is asserted when the packet is received and validated 
@@ -52,19 +51,10 @@ int main(void) {
             LED = last;
             transmitData(0xCF);
         }
-        if(SPI_read_byte(0x00) == 0b01011010) {
-            bigBlink(5);
-        }
     }
     
 }
 
-void blink(void) {
-    LED = 1;
-    __delay_ms(10);
-    LED = 0;
-    __delay_ms(10);
-}
 void bigBlink(uint8_t x) {
     LED = 1;
     for(uint8_t i = 0; i<x; ++i) {
@@ -95,8 +85,11 @@ void configureTX(void) {
     __delay_ms(10);
     uint8_t write[2];
     write[0] = (CONFIG & REGISTER_MASK) | W_MASK;
-    write[1] = 0b01011010;  // config stuff
+    write[1] = 0b01001010;  // config stuff. show max_rt and tx_ds
+    // interrupts. mask rx_dr interrupt. enable crc, crc 1 byte,
+    // power up, ptx mode
     SPI_writeArray(write, 2);
+    
    
     write[0] = (EN_AA & REGISTER_MASK) | W_MASK;
     write[1] = 0b00000001;
@@ -114,7 +107,6 @@ void configureTX(void) {
     write[1] = 0b0000011;
     SPI_writeArray(write, 2);
     
-    
 }
 
 
@@ -124,10 +116,20 @@ void transmitData(uint8_t data) {
     write[0]= W_TX_PAYLOAD; 
     write[1] = data;// command and data. single byte data
     SPI_writeArray(write, 2);
-    NRF_CE = 1;
-    __delay_us(50);
-    NRF_CE = 0;
-    while(IRQ);
+    uint8_t sreg;
+    do {
+        NRF_CE = 1;
+        __delay_us(15);
+        NRF_CE = 0;
+        while(IRQ);
+        SS_PIN = 0;
+        sreg = SPI_write_byte(GET_SREG);
+        SS_PIN = 1;
+        resetIRQ();
+    } while(!(sreg & 0b00100000)); // check to see if IRQ was
+    // asserted due to auto acknowledgment
+    
+    
 }
 
 

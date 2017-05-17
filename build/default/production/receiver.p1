@@ -10,22 +10,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S94 . . ]
 "1661
 [v _LATAbits `VS94 ~T0 @X0 0 e@268 ]
-"33 transmitter.c
-[v _configureTX `(v ~T0 @X0 0 ef ]
-"418 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f1503.h
-[s S29 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S29 . RA0 RA1 RA2 RA3 RA4 RA5 ]
-"417
-[u S28 `S29 1 ]
-[n S28 . . ]
-"427
-[v _PORTAbits `VS28 ~T0 @X0 0 e@12 ]
-"34 transmitter.c
-[v _transmitData `(v ~T0 @X0 0 ef1`uc ]
-[v F2925 `(v ~T0 @X0 1 tf1`ul ]
-"152 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic.h
-[v __delay `JF2925 ~T0 @X0 0 e ]
-[p i __delay ]
+"47 receiver.c
+[v _configureRX `(v ~T0 @X0 0 ef ]
 "1696 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f1503.h
 [s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S97 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
@@ -34,14 +20,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S96 . . ]
 "1705
 [v _LATCbits `VS96 ~T0 @X0 0 e@270 ]
+"418
+[s S29 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S29 . RA0 RA1 RA2 RA3 RA4 RA5 ]
+"417
+[u S28 `S29 1 ]
+[n S28 . . ]
+"427
+[v _PORTAbits `VS28 ~T0 @X0 0 e@12 ]
+"49 receiver.c
+[v _readData `(uc ~T0 @X0 0 ef ]
+"34 spi.h
+[v _resetIRQ `(v ~T0 @X0 0 ef ]
+"48 receiver.c
+[v _blink `(v ~T0 @X0 0 ef1`i ]
+[v F2925 `(v ~T0 @X0 1 tf1`ul ]
+"152 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic.h
+[v __delay `JF2925 ~T0 @X0 0 e ]
+[p i __delay ]
 "32 spi.h
 [v _SPI_writeArray `(uc ~T0 @X0 0 ef2`*uc`uc ]
-"33
-[v _SPI_read_byte `(uc ~T0 @X0 0 ef1`uc ]
 "31
 [v _SPI_write_byte `(uc ~T0 @X0 0 ef1`uc ]
-"34
-[v _resetIRQ `(v ~T0 @X0 0 ef ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -2912,313 +2912,253 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;NRF_consts.h: 35: const uint8_t RX_PW_P[6] = {0x11, 0x12, 0x13, 0x14, 0x15, 0x16};
-"14 transmitter.c
+"18 receiver.c
 [p x FOSC=INTOSC ]
-"15
-[p x WDTE=OFF ]
-"16
-[p x PWRTE=OFF ]
-"17
-[p x MCLRE=ON ]
-"18
-[p x CP=OFF ]
 "19
-[p x BOREN=OFF ]
+[p x WDTE=OFF ]
 "20
-[p x CLKOUTEN=OFF ]
+[p x PWRTE=OFF ]
+"21
+[p x MCLRE=ON ]
+"22
+[p x CP=OFF ]
 "23
-[p x WRT=OFF ]
+[p x BOREN=OFF ]
 "24
-[p x STVREN=ON ]
-"25
-[p x BORV=LO ]
-"26
-[p x LPBOR=OFF ]
+[p x CLKOUTEN=OFF ]
 "27
+[p x WRT=OFF ]
+"28
+[p x STVREN=ON ]
+"29
+[p x BORV=LO ]
+"30
+[p x LPBOR=OFF ]
+"31
 [p x LVP=OFF ]
-[; ;transmitter.c: 33: void configureTX(void);
-[; ;transmitter.c: 34: void transmitData(uint8_t data);
-[; ;transmitter.c: 35: void blink(void);
-[; ;transmitter.c: 36: void bigBlink(uint8_t x);
-"44
-[v _main `(i ~T0 @X0 1 ef ]
+[; ;receiver.c: 47: void configureRX(void);
+[; ;receiver.c: 48: void blink(int delay);
+[; ;receiver.c: 49: uint8_t readData(void);
+"51
+[v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;transmitter.c: 44: int main(void) {
+[; ;receiver.c: 51: void main(void) {
 [e :U _main ]
 [f ]
-"45
+"52
 [v _last `uc ~T0 @X0 1 a ]
-[; ;transmitter.c: 45: uint8_t last = 1;
+[; ;receiver.c: 52: uint8_t last = 1;
 [e = _last -> -> 1 `i `uc ]
-[; ;transmitter.c: 46: SPI_init();
-"46
+[; ;receiver.c: 53: SPI_init();
+"53
 [e ( _SPI_init ..  ]
-[; ;transmitter.c: 47: LATAbits.LATA1 = 0;
-"47
+[; ;receiver.c: 54: LATAbits.LATA1 = 0;
+"54
 [e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
-[; ;transmitter.c: 48: configureTX();
-"48
-[e ( _configureTX ..  ]
-[; ;transmitter.c: 49: while(1) {
-"49
+[; ;receiver.c: 55: configureRX();
+"55
+[e ( _configureRX ..  ]
+[; ;receiver.c: 56: while(1) {
+"56
 [e :U 343 ]
 {
-[; ;transmitter.c: 50: if(PORTAbits.RA5 != last) {
-"50
-[e $ ! != -> . . _PORTAbits 0 5 `i -> _last `i 345  ]
-{
-[; ;transmitter.c: 51: last = PORTAbits.RA5;
-"51
-[e = _last . . _PORTAbits 0 5 ]
-[; ;transmitter.c: 52: LATAbits.LATA1 = last;
-"52
-[e = . . _LATAbits 0 1 _last ]
-[; ;transmitter.c: 53: transmitData(0xCF);
-"53
-[e ( _transmitData (1 -> -> 207 `i `uc ]
-"54
-}
+[; ;receiver.c: 57: LATCbits.LATC4 = 1;
+"57
+[e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
+[; ;receiver.c: 58: while(PORTAbits.RA2);
+"58
+[e $U 345  ]
+[e :U 346 ]
 [e :U 345 ]
-"55
+[e $ != -> . . _PORTAbits 0 2 `i -> -> -> 0 `i `Vuc `i 346  ]
+[e :U 347 ]
+[; ;receiver.c: 59: LATCbits.LATC4 = 0;
+"59
+[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
+"60
+[v _data `uc ~T0 @X0 1 a ]
+[; ;receiver.c: 60: uint8_t data = readData();
+[e = _data ( _readData ..  ]
+[; ;receiver.c: 61: resetIRQ();
+"61
+[e ( _resetIRQ ..  ]
+[; ;receiver.c: 62: if(data == 0xCF)
+"62
+[e $ ! == -> _data `i -> 207 `i 348  ]
+[; ;receiver.c: 63: {
+"63
+{
+[; ;receiver.c: 64: blink(10);
+"64
+[e ( _blink (1 -> 10 `i ]
+"65
+}
+[e :U 348 ]
+"66
 }
 [e :U 342 ]
-"49
+"56
 [e $U 343  ]
 [e :U 344 ]
-[; ;transmitter.c: 54: }
-[; ;transmitter.c: 55: }
-[; ;transmitter.c: 57: }
-"57
+[; ;receiver.c: 65: }
+[; ;receiver.c: 66: }
+[; ;receiver.c: 67: }
+"67
 [e :UE 341 ]
 }
-"59
-[v _blink `(v ~T0 @X0 1 ef ]
+"69
+[v _blink `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;transmitter.c: 59: void blink(void) {
+[; ;receiver.c: 69: void blink(int delay) {
 [e :U _blink ]
+[v _delay `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;transmitter.c: 60: LATAbits.LATA1 = 1;
-"60
-[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
-[; ;transmitter.c: 61: _delay((unsigned long)((10)*(16000000UL/4000.0)));
-"61
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
-[; ;transmitter.c: 62: LATAbits.LATA1 = 0;
-"62
-[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
-[; ;transmitter.c: 63: _delay((unsigned long)((10)*(16000000UL/4000.0)));
-"63
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
-[; ;transmitter.c: 64: }
-"64
-[e :UE 346 ]
-}
-"65
-[v _bigBlink `(v ~T0 @X0 1 ef1`uc ]
-{
-[; ;transmitter.c: 65: void bigBlink(uint8_t x) {
-[e :U _bigBlink ]
-[v _x `uc ~T0 @X0 1 r1 ]
-[f ]
-[; ;transmitter.c: 66: LATAbits.LATA1 = 1;
-"66
-[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
-[; ;transmitter.c: 67: for(uint8_t i = 0; i<x; ++i) {
-"67
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $U 351  ]
-[e :U 348 ]
-{
-[; ;transmitter.c: 68: _delay((unsigned long)((10)*(16000000UL/4000.0)));
-"68
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
-"69
-}
-"67
-[e =+ _i -> -> 1 `i `uc ]
-[e :U 351 ]
-[e $ < -> _i `i -> _x `i 348  ]
-[e :U 349 ]
-"69
-}
-[; ;transmitter.c: 69: }
-[; ;transmitter.c: 70: LATAbits.LATA1 = 0;
+[; ;receiver.c: 70: LATAbits.LATA1 = 1;
 "70
-[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
-[; ;transmitter.c: 71: for(uint8_t i = 0; i<x; ++i) {
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
+[; ;receiver.c: 71: for(int i = 0; i < delay; ++i) {
 "71
 {
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $U 355  ]
-[e :U 352 ]
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 353  ]
+[e :U 350 ]
 {
-[; ;transmitter.c: 72: _delay((unsigned long)((10)*(16000000UL/4000.0)));
+[; ;receiver.c: 72: _delay((unsigned long)((5)*(16000000UL/4000.0)));
 "72
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
 "73
 }
 "71
-[e =+ _i -> -> 1 `i `uc ]
-[e :U 355 ]
-[e $ < -> _i `i -> _x `i 352  ]
+[e =+ _i -> 1 `i ]
 [e :U 353 ]
+[e $ < _i _delay 350  ]
+[e :U 351 ]
 "73
 }
-[; ;transmitter.c: 73: }
-[; ;transmitter.c: 75: }
+[; ;receiver.c: 73: }
+[; ;receiver.c: 74: LATAbits.LATA1 = 0;
+"74
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+[; ;receiver.c: 75: for(int i = 0; i < delay; ++i) {
 "75
-[e :UE 347 ]
-}
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 357  ]
+[e :U 354 ]
+{
+[; ;receiver.c: 76: _delay((unsigned long)((5)*(16000000UL/4000.0)));
 "76
-[v _configureTX `(v ~T0 @X0 1 ef ]
-{
-[; ;transmitter.c: 76: void configureTX(void) {
-[e :U _configureTX ]
-[f ]
-[; ;transmitter.c: 89: LATCbits.LATC4 = 0;
-"89
-[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;transmitter.c: 90: _delay((unsigned long)((1)*(16000000UL/4000.0)));
-"90
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
-[; ;transmitter.c: 91: LATCbits.LATC3 = 1;
-"91
-[e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;transmitter.c: 92: _delay((unsigned long)((10)*(16000000UL/4000.0)));
-"92
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
-"93
-[v _write `uc ~T0 @X0 -> 2 `i a ]
-[; ;transmitter.c: 93: uint8_t write[2];
-[; ;transmitter.c: 94: write[0] = (0x00 & 0b00011111) | 0b00100000;
-"94
-[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 0 `i -> 31 `i -> 32 `i `uc ]
-[; ;transmitter.c: 95: write[1] = 0b01001010;
-"95
-[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 74 `i `uc ]
-[; ;transmitter.c: 98: SPI_writeArray(write, 2);
-"98
-[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
-[; ;transmitter.c: 101: write[0] = (0x01 & 0b00011111) | 0b00100000;
-"101
-[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 1 `i -> 31 `i -> 32 `i `uc ]
-[; ;transmitter.c: 102: write[1] = 0b00000001;
-"102
-[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 1 `i `uc ]
-[; ;transmitter.c: 103: SPI_writeArray(write, 2);
-"103
-[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
-[; ;transmitter.c: 105: write[0] = (0x02 & 0b00011111) | 0b00100000;
-"105
-[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 2 `i -> 31 `i -> 32 `i `uc ]
-[; ;transmitter.c: 106: write[1] = 0b00000001;
-"106
-[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 1 `i `uc ]
-[; ;transmitter.c: 107: SPI_writeArray(write, 2);
-"107
-[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
-[; ;transmitter.c: 109: write[0] = (RX_PW_P[0] & 0b00011111) | 0b00100000;
-"109
-[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> *U + &U _RX_PW_P * -> -> -> 0 `i `ui `ux -> -> # *U &U _RX_PW_P `ui `ux `i -> 31 `i -> 32 `i `uc ]
-[; ;transmitter.c: 110: write[1] = 0b00000001;
-"110
-[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 1 `i `uc ]
-[; ;transmitter.c: 111: SPI_writeArray(write, 2);
-"111
-[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
-[; ;transmitter.c: 113: write[0] = (0x03 & 0b00011111) | 0b00100000;
-"113
-[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 3 `i -> 31 `i -> 32 `i `uc ]
-[; ;transmitter.c: 114: write[1] = 0b0000011;
-"114
-[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 3 `i `uc ]
-[; ;transmitter.c: 115: SPI_writeArray(write, 2);
-"115
-[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
-[; ;transmitter.c: 117: if(SPI_read_byte(0x00) == 0b01001010) {
-"117
-[e $ ! == -> ( _SPI_read_byte (1 -> -> 0 `i `uc `i -> 74 `i 357  ]
-{
-[; ;transmitter.c: 118: bigBlink(1);
-"118
-[e ( _bigBlink (1 -> -> 1 `i `uc ]
-[; ;transmitter.c: 119: bigBlink(1);
-"119
-[e ( _bigBlink (1 -> -> 1 `i `uc ]
-[; ;transmitter.c: 120: bigBlink(1);
-"120
-[e ( _bigBlink (1 -> -> 1 `i `uc ]
-"121
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
+"77
 }
+"75
+[e =+ _i -> 1 `i ]
 [e :U 357 ]
-[; ;transmitter.c: 121: }
-[; ;transmitter.c: 122: }
-"122
-[e :UE 356 ]
+[e $ < _i _delay 354  ]
+[e :U 355 ]
+"77
 }
-"126
-[v _transmitData `(v ~T0 @X0 1 ef1`uc ]
+[; ;receiver.c: 77: }
+[; ;receiver.c: 78: }
+"78
+[e :UE 349 ]
+}
+"81
+[v _configureRX `(v ~T0 @X0 1 ef ]
 {
-[; ;transmitter.c: 126: void transmitData(uint8_t data) {
-[e :U _transmitData ]
-[v _data `uc ~T0 @X0 1 r1 ]
+[; ;receiver.c: 81: void configureRX(void) {
+[e :U _configureRX ]
 [f ]
-"127
-[v _write `uc ~T0 @X0 -> 2 `i a ]
-[; ;transmitter.c: 127: uint8_t write[2];
-[; ;transmitter.c: 128: write[0]= 0b10100000;
-"128
-[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 160 `i `uc ]
-[; ;transmitter.c: 129: write[1] = data;
-"129
-[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux _data ]
-[; ;transmitter.c: 130: SPI_writeArray(write, 2);
-"130
-[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
-"131
-[v _sreg `uc ~T0 @X0 1 a ]
-[; ;transmitter.c: 131: uint8_t sreg;
-[; ;transmitter.c: 132: do {
-"132
-[e :U 361 ]
-{
-[; ;transmitter.c: 133: LATCbits.LATC4 = 1;
-"133
-[e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;transmitter.c: 134: _delay((unsigned long)((15)*(16000000UL/4000000.0)));
-"134
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 16000000 `ul `d .4000000.0 `ul ]
-[; ;transmitter.c: 135: LATCbits.LATC4 = 0;
-"135
+[; ;receiver.c: 90: LATCbits.LATC4 = 0;
+"90
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;transmitter.c: 136: while(PORTAbits.RA2);
-"136
-[e $U 362  ]
-[e :U 363 ]
-[e :U 362 ]
-[e $ != -> . . _PORTAbits 0 2 `i -> -> -> 0 `i `Vuc `i 363  ]
-[e :U 364 ]
-[; ;transmitter.c: 137: LATCbits.LATC3 = 0;
-"137
-[e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-[; ;transmitter.c: 138: sreg = SPI_write_byte(0xFF);
-"138
-[e = _sreg ( _SPI_write_byte (1 -> -> 255 `i `uc ]
-[; ;transmitter.c: 139: LATCbits.LATC3 = 1;
-"139
+[; ;receiver.c: 91: _delay((unsigned long)((1)*(16000000UL/4000.0)));
+"91
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
+[; ;receiver.c: 92: LATCbits.LATC3 = 1;
+"92
 [e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;transmitter.c: 140: resetIRQ();
-"140
-[e ( _resetIRQ ..  ]
-"141
-}
-[; ;transmitter.c: 141: } while(!(sreg & 0b00100000));
-[e $ ! != & -> _sreg `i -> 32 `i -> 0 `i 361  ]
-[e :U 360 ]
-[; ;transmitter.c: 145: }
-"145
+[; ;receiver.c: 93: _delay((unsigned long)((10)*(16000000UL/4000.0)));
+"93
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
+"94
+[v _write `uc ~T0 @X0 -> 2 `i a ]
+[; ;receiver.c: 94: uint8_t write[2];
+[; ;receiver.c: 95: write[0] = (0x00 & 0b00011111) | 0b00100000;
+"95
+[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 0 `i -> 31 `i -> 32 `i `uc ]
+[; ;receiver.c: 96: write[1] = 0b00111011;
+"96
+[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 59 `i `uc ]
+[; ;receiver.c: 97: SPI_writeArray(write, 2);
+"97
+[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
+[; ;receiver.c: 100: write[0] = (0x01 & 0b00011111) | 0b00100000;
+"100
+[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 1 `i -> 31 `i -> 32 `i `uc ]
+[; ;receiver.c: 101: write[1] = 0b00000001;
+"101
+[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 1 `i `uc ]
+[; ;receiver.c: 102: SPI_writeArray(write, 2);
+"102
+[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
+[; ;receiver.c: 104: write[0] = (0x02 & 0b00011111) | 0b00100000;
+"104
+[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 2 `i -> 31 `i -> 32 `i `uc ]
+[; ;receiver.c: 105: write[1] = 0b00000001;
+"105
+[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 1 `i `uc ]
+[; ;receiver.c: 106: SPI_writeArray(write, 2);
+"106
+[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
+[; ;receiver.c: 108: write[0] = (RX_PW_P[0] & 0b00011111) | 0b00100000;
+"108
+[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> *U + &U _RX_PW_P * -> -> -> 0 `i `ui `ux -> -> # *U &U _RX_PW_P `ui `ux `i -> 31 `i -> 32 `i `uc ]
+[; ;receiver.c: 109: write[1] = 0b00000001;
+"109
+[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 1 `i `uc ]
+[; ;receiver.c: 110: SPI_writeArray(write, 2);
+"110
+[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
+[; ;receiver.c: 112: write[0] = (0x03 & 0b00011111) | 0b00100000;
+"112
+[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 3 `i -> 31 `i -> 32 `i `uc ]
+[; ;receiver.c: 113: write[1] = 0b0000011;
+"113
+[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 3 `i `uc ]
+[; ;receiver.c: 114: SPI_writeArray(write, 2);
+"114
+[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
+[; ;receiver.c: 116: }
+"116
 [e :UE 358 ]
+}
+"119
+[v _readData `(uc ~T0 @X0 1 ef ]
+{
+[; ;receiver.c: 119: uint8_t readData(void) {
+[e :U _readData ]
+[f ]
+[; ;receiver.c: 120: LATCbits.LATC3 = 0;
+"120
+[e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
+[; ;receiver.c: 121: SPI_write_byte(0b01100001);
+"121
+[e ( _SPI_write_byte (1 -> -> 97 `i `uc ]
+"122
+[v _ret `uc ~T0 @X0 1 a ]
+[; ;receiver.c: 122: uint8_t ret = SPI_write_byte(0xFF);
+[e = _ret ( _SPI_write_byte (1 -> -> 255 `i `uc ]
+[; ;receiver.c: 123: LATCbits.LATC3 = 1;
+"123
+[e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
+[; ;receiver.c: 124: return ret;
+"124
+[e ) _ret ]
+[e $UE 359  ]
+[; ;receiver.c: 125: }
+"125
+[e :UE 359 ]
 }

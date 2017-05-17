@@ -31,6 +31,7 @@ void SPI_init(void);
 uint8_t SPI_write_byte(uint8_t data); // need to manually assert SS for this
 uint8_t SPI_writeArray(uint8_t *data, uint8_t length);
 uint8_t SPI_read_byte(uint8_t address);
+void resetIRQ(void);
 
 
 #ifdef	__cplusplus

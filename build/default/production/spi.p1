@@ -113,6 +113,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi.h: 31: uint8_t SPI_write_byte(uint8_t data);
 [; ;spi.h: 32: uint8_t SPI_writeArray(uint8_t *data, uint8_t length);
 [; ;spi.h: 33: uint8_t SPI_read_byte(uint8_t address);
+[; ;spi.h: 34: void resetIRQ(void);
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3140,4 +3141,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi.c: 71: }
 "71
 [e :UE 352 ]
+}
+"73
+[v _resetIRQ `(v ~T0 @X0 1 ef ]
+{
+[; ;spi.c: 73: void resetIRQ(void) {
+[e :U _resetIRQ ]
+[f ]
+"74
+[v _write `uc ~T0 @X0 -> 2 `i a ]
+[; ;spi.c: 74: uint8_t write[2];
+[; ;spi.c: 75: write[0] = (0x07 & 0b00011111) | 0b00100000;
+"75
+[e = *U + &U _write * -> -> -> 0 `i `ui `ux -> -> # *U &U _write `ui `ux -> | & -> 7 `i -> 31 `i -> 32 `i `uc ]
+[; ;spi.c: 76: write[1] = 0b01110000;
+"76
+[e = *U + &U _write * -> -> -> 1 `i `ui `ux -> -> # *U &U _write `ui `ux -> -> 112 `i `uc ]
+[; ;spi.c: 77: SPI_writeArray(write, 2);
+"77
+[e ( _SPI_writeArray (2 , &U _write -> -> 2 `i `uc ]
+[; ;spi.c: 78: }
+"78
+[e :UE 353 ]
 }

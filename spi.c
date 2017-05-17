@@ -70,3 +70,9 @@ uint8_t SPI_read_byte(uint8_t address) {
     return ret;
 }
 
+void resetIRQ(void) {
+    uint8_t write[2];
+    write[0] = (0x07 & REGISTER_MASK) | W_MASK;
+    write[1] = 0b01110000;
+    SPI_writeArray(write, 2);
+}
