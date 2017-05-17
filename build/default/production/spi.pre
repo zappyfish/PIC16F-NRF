@@ -3896,6 +3896,7 @@ TRISCbits.TRISC4 = 0;
 TRISAbits.TRISA2 = 1;
 OPTION_REGbits.nWPUEN = 0;
 WPUAbits.WPUA5 = 1;
+WPUAbits.WPUA2 = 1;
 APFCON = 0b00010000;
 ANSELA = 0x00;
 ANSELC = 0x00;
@@ -3912,12 +3913,10 @@ SSP1CON1bits.SSPEN = 1;
 }
 
 uint8_t SPI_write_byte(uint8_t data) {
-SSP1CON1bits.WCOL = 0;
-SSP1STATbits.BF = 0;
 SSP1BUF = data;
-while(!SSP1STATbits.BF);
-
+while(!PIR1bits.SSP1IF);
 uint8_t ret_data = SSP1BUF;
+PIR1bits.SSP1IF = 0;
 return ret_data;
 }
 
@@ -3934,7 +3933,7 @@ return ret;
 
 uint8_t SPI_read_byte(uint8_t address) {
 LATCbits.LATC3 = 0;
-SPI_write_byte((address & 0b00011111) | 0b00100000);
+SPI_write_byte((address & 0b00011111) | 0x00);
 uint8_t ret = SPI_write_byte(0xFF);
 LATCbits.LATC3 = 1;
 return ret;

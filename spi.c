@@ -27,6 +27,7 @@ void configIO(void) {
     TRISAbits.TRISA2 = 1;
     OPTION_REGbits.nWPUEN = 0; // enable pull ups
     WPUAbits.WPUA5 = 1; // pull up for switch
+    WPUAbits.WPUA2 = 1; // pull up for IRQ
     APFCON = 0b00010000; // sdo on ra4
     ANSELA = 0x00;
     ANSELC = 0x00;
@@ -43,12 +44,10 @@ void SPI_init(void) {
 }
 
 uint8_t SPI_write_byte(uint8_t data) {
-    SSP1CON1bits.WCOL = 0;
-    SSP1STATbits.BF = 0;
     SSP1BUF = data;
-    while(!SSP1STATbits.BF);
-    
+    while(!PIR1bits.SSP1IF);
     uint8_t ret_data = SSP1BUF;
+    PIR1bits.SSP1IF = 0;
     return ret_data;
 }
 

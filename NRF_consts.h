@@ -15,8 +15,8 @@ extern "C" {
 #endif
 
 #define REGISTER_MASK 0b00011111 // AND this w/ addresses for config registers
-#define W_MASK 0x00 // OR this w/ masked addresses
-#define R_MASK 0b00100000 // OR this w/ masked addresses
+#define W_MASK 0b00100000 // OR this w/ masked addresses
+#define R_MASK 0x00 // OR this w/ masked addresses
 
 // spi command for reading/writing payloads
 #define R_RX_PAYLOAD 0b01100001

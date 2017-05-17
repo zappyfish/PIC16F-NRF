@@ -11,23 +11,23 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Liam\AppData\Local\Temp\sh0g.obj
+$C:\Users\Liam\AppData\Local\Temp\sh9g.obj
 reset_vec CODE 0 0 0 1 2
 end_init CODE 0 1 1 1 2
 config CONFIG 0 8007 8007 2 2
 $dist/default/production\RF_Transceiver.X.production.obj
 cinit CODE 0 7FE 7FE 2 2
-text1 CODE 0 724 724 10 2
-text2 CODE 0 7A3 7A3 5B 2
-text3 CODE 0 77C 77C 27 2
-text4 CODE 0 761 761 1B 2
-text5 CODE 0 714 714 10 2
-text6 CODE 0 706 706 E 2
-text7 CODE 0 6F8 6F8 E 2
-text8 CODE 0 734 734 13 2
-maintext CODE 0 747 747 1A 2
+text1 CODE 0 741 741 1B 2
+text2 CODE 0 7A4 7A4 5A 2
+text3 CODE 0 726 726 1B 2
+text4 CODE 0 77D 77D 27 2
+text5 CODE 0 6F3 6F3 F 2
+text6 CODE 0 702 702 10 2
+text7 CODE 0 6E5 6E5 E 2
+text8 CODE 0 712 712 14 2
+maintext CODE 0 75C 75C 21 2
 cstackCOMMON COMMON 1 70 70 E 1
-stringtext STRCODE 0 6EB 6EB D 2
+stringtext STRCODE 0 6D8 6D8 D 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -38,8 +38,8 @@ RAM 20-6F 1
 RAM A0-BF 1
 BANK0 20-6F 1
 BANK1 A0-BF 1
-CONST 2-6EA 2
-ENTRY 2-6EA 2
+CONST 2-6D7 2
+ENTRY 2-6D7 2
 IDLOC 8000-8003 2
 SFR10 500-56F 1
 SFR11 580-5EF 1
@@ -64,7 +64,7 @@ SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
 STACK 2000-206F 1
-CODE 2-6EA 2
+CODE 2-6D7 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-16F 1
@@ -76,8 +76,8 @@ SFR7 380-3EF 1
 SFR8 400-46F 1
 SFR9 480-4EF 1
 BIGRAM 2000-206F 1
-STRCODE 2-6EA 2
-STRING 2-6EA 2
+STRCODE 2-6D7 2
+STRING 2-6D7 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -92,103 +92,106 @@ STRING 2-6EA 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\RF_Transceiver.X.production.obj
-7FE cinit CODE >710:C:\Users\Liam\AppData\Local\Temp\sh0g.
-7FE cinit CODE >713:C:\Users\Liam\AppData\Local\Temp\sh0g.
-7FE cinit CODE >719:C:\Users\Liam\AppData\Local\Temp\sh0g.
-7FE cinit CODE >721:C:\Users\Liam\AppData\Local\Temp\sh0g.
-7FF cinit CODE >722:C:\Users\Liam\AppData\Local\Temp\sh0g.
-734 text8 CODE >19:C:\Users\Liam\RF Transceiver.X\spi.c
-734 text8 CODE >20:C:\Users\Liam\RF Transceiver.X\spi.c
-736 text8 CODE >21:C:\Users\Liam\RF Transceiver.X\spi.c
-737 text8 CODE >22:C:\Users\Liam\RF Transceiver.X\spi.c
-738 text8 CODE >23:C:\Users\Liam\RF Transceiver.X\spi.c
-739 text8 CODE >24:C:\Users\Liam\RF Transceiver.X\spi.c
-73A text8 CODE >25:C:\Users\Liam\RF Transceiver.X\spi.c
-73B text8 CODE >26:C:\Users\Liam\RF Transceiver.X\spi.c
-73C text8 CODE >27:C:\Users\Liam\RF Transceiver.X\spi.c
-73D text8 CODE >28:C:\Users\Liam\RF Transceiver.X\spi.c
-73E text8 CODE >29:C:\Users\Liam\RF Transceiver.X\spi.c
-740 text8 CODE >30:C:\Users\Liam\RF Transceiver.X\spi.c
-743 text8 CODE >31:C:\Users\Liam\RF Transceiver.X\spi.c
-745 text8 CODE >32:C:\Users\Liam\RF Transceiver.X\spi.c
-746 text8 CODE >33:C:\Users\Liam\RF Transceiver.X\spi.c
-6F8 text7 CODE >34:C:\Users\Liam\RF Transceiver.X\spi.c
-6F8 text7 CODE >35:C:\Users\Liam\RF Transceiver.X\spi.c
-6FA text7 CODE >36:C:\Users\Liam\RF Transceiver.X\spi.c
-6FB text7 CODE >37:C:\Users\Liam\RF Transceiver.X\spi.c
-6FD text7 CODE >38:C:\Users\Liam\RF Transceiver.X\spi.c
-6FE text7 CODE >39:C:\Users\Liam\RF Transceiver.X\spi.c
-6FF text7 CODE >40:C:\Users\Liam\RF Transceiver.X\spi.c
-701 text7 CODE >41:C:\Users\Liam\RF Transceiver.X\spi.c
-703 text7 CODE >42:C:\Users\Liam\RF Transceiver.X\spi.c
-705 text7 CODE >43:C:\Users\Liam\RF Transceiver.X\spi.c
-706 text6 CODE >45:C:\Users\Liam\RF Transceiver.X\spi.c
-707 text6 CODE >46:C:\Users\Liam\RF Transceiver.X\spi.c
-709 text6 CODE >47:C:\Users\Liam\RF Transceiver.X\spi.c
-70A text6 CODE >48:C:\Users\Liam\RF Transceiver.X\spi.c
-70C text6 CODE >49:C:\Users\Liam\RF Transceiver.X\spi.c
-70E text6 CODE >51:C:\Users\Liam\RF Transceiver.X\spi.c
-712 text6 CODE >52:C:\Users\Liam\RF Transceiver.X\spi.c
-714 text5 CODE >66:C:\Users\Liam\RF Transceiver.X\spi.c
-715 text5 CODE >67:C:\Users\Liam\RF Transceiver.X\spi.c
-717 text5 CODE >68:C:\Users\Liam\RF Transceiver.X\spi.c
-71B text5 CODE >69:C:\Users\Liam\RF Transceiver.X\spi.c
-720 text5 CODE >70:C:\Users\Liam\RF Transceiver.X\spi.c
-722 text5 CODE >71:C:\Users\Liam\RF Transceiver.X\spi.c
-761 text4 CODE >55:C:\Users\Liam\RF Transceiver.X\spi.c
-762 text4 CODE >56:C:\Users\Liam\RF Transceiver.X\spi.c
-764 text4 CODE >58:C:\Users\Liam\RF Transceiver.X\spi.c
-769 text4 CODE >59:C:\Users\Liam\RF Transceiver.X\spi.c
-774 text4 CODE >58:C:\Users\Liam\RF Transceiver.X\spi.c
-779 text4 CODE >62:C:\Users\Liam\RF Transceiver.X\spi.c
-77B text4 CODE >64:C:\Users\Liam\RF Transceiver.X\spi.c
-77C text3 CODE >67:C:\Users\Liam\RF Transceiver.X\transmitter.c
-77D text3 CODE >68:C:\Users\Liam\RF Transceiver.X\transmitter.c
-77F text3 CODE >69:C:\Users\Liam\RF Transceiver.X\transmitter.c
-784 text3 CODE >70:C:\Users\Liam\RF Transceiver.X\transmitter.c
-78B text3 CODE >69:C:\Users\Liam\RF Transceiver.X\transmitter.c
-790 text3 CODE >72:C:\Users\Liam\RF Transceiver.X\transmitter.c
-792 text3 CODE >73:C:\Users\Liam\RF Transceiver.X\transmitter.c
-797 text3 CODE >74:C:\Users\Liam\RF Transceiver.X\transmitter.c
-79E text3 CODE >73:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7A3 text2 CODE >78:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7A3 text2 CODE >91:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7A5 text2 CODE >92:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7AD text2 CODE >93:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7AF text2 CODE >94:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7B6 text2 CODE >96:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7FE cinit CODE >710:C:\Users\Liam\AppData\Local\Temp\sh9g.
+7FE cinit CODE >713:C:\Users\Liam\AppData\Local\Temp\sh9g.
+7FE cinit CODE >719:C:\Users\Liam\AppData\Local\Temp\sh9g.
+7FE cinit CODE >721:C:\Users\Liam\AppData\Local\Temp\sh9g.
+7FF cinit CODE >722:C:\Users\Liam\AppData\Local\Temp\sh9g.
+712 text8 CODE >19:C:\Users\Liam\RF Transceiver.X\spi.c
+712 text8 CODE >20:C:\Users\Liam\RF Transceiver.X\spi.c
+714 text8 CODE >21:C:\Users\Liam\RF Transceiver.X\spi.c
+715 text8 CODE >22:C:\Users\Liam\RF Transceiver.X\spi.c
+716 text8 CODE >23:C:\Users\Liam\RF Transceiver.X\spi.c
+717 text8 CODE >24:C:\Users\Liam\RF Transceiver.X\spi.c
+718 text8 CODE >25:C:\Users\Liam\RF Transceiver.X\spi.c
+719 text8 CODE >26:C:\Users\Liam\RF Transceiver.X\spi.c
+71A text8 CODE >27:C:\Users\Liam\RF Transceiver.X\spi.c
+71B text8 CODE >28:C:\Users\Liam\RF Transceiver.X\spi.c
+71C text8 CODE >29:C:\Users\Liam\RF Transceiver.X\spi.c
+71E text8 CODE >30:C:\Users\Liam\RF Transceiver.X\spi.c
+71F text8 CODE >31:C:\Users\Liam\RF Transceiver.X\spi.c
+722 text8 CODE >32:C:\Users\Liam\RF Transceiver.X\spi.c
+724 text8 CODE >33:C:\Users\Liam\RF Transceiver.X\spi.c
+725 text8 CODE >34:C:\Users\Liam\RF Transceiver.X\spi.c
+6E5 text7 CODE >35:C:\Users\Liam\RF Transceiver.X\spi.c
+6E5 text7 CODE >36:C:\Users\Liam\RF Transceiver.X\spi.c
+6E7 text7 CODE >37:C:\Users\Liam\RF Transceiver.X\spi.c
+6E8 text7 CODE >38:C:\Users\Liam\RF Transceiver.X\spi.c
+6EA text7 CODE >39:C:\Users\Liam\RF Transceiver.X\spi.c
+6EB text7 CODE >40:C:\Users\Liam\RF Transceiver.X\spi.c
+6EC text7 CODE >41:C:\Users\Liam\RF Transceiver.X\spi.c
+6EE text7 CODE >42:C:\Users\Liam\RF Transceiver.X\spi.c
+6F0 text7 CODE >43:C:\Users\Liam\RF Transceiver.X\spi.c
+6F2 text7 CODE >44:C:\Users\Liam\RF Transceiver.X\spi.c
+702 text6 CODE >46:C:\Users\Liam\RF Transceiver.X\spi.c
+703 text6 CODE >47:C:\Users\Liam\RF Transceiver.X\spi.c
+706 text6 CODE >48:C:\Users\Liam\RF Transceiver.X\spi.c
+709 text6 CODE >49:C:\Users\Liam\RF Transceiver.X\spi.c
+70E text6 CODE >50:C:\Users\Liam\RF Transceiver.X\spi.c
+710 text6 CODE >51:C:\Users\Liam\RF Transceiver.X\spi.c
+6F3 text5 CODE >65:C:\Users\Liam\RF Transceiver.X\spi.c
+6F4 text5 CODE >66:C:\Users\Liam\RF Transceiver.X\spi.c
+6F6 text5 CODE >67:C:\Users\Liam\RF Transceiver.X\spi.c
+6F9 text5 CODE >68:C:\Users\Liam\RF Transceiver.X\spi.c
+6FE text5 CODE >69:C:\Users\Liam\RF Transceiver.X\spi.c
+700 text5 CODE >70:C:\Users\Liam\RF Transceiver.X\spi.c
+77D text4 CODE >68:C:\Users\Liam\RF Transceiver.X\transmitter.c
+77E text4 CODE >69:C:\Users\Liam\RF Transceiver.X\transmitter.c
+780 text4 CODE >70:C:\Users\Liam\RF Transceiver.X\transmitter.c
+785 text4 CODE >71:C:\Users\Liam\RF Transceiver.X\transmitter.c
+78C text4 CODE >70:C:\Users\Liam\RF Transceiver.X\transmitter.c
+791 text4 CODE >73:C:\Users\Liam\RF Transceiver.X\transmitter.c
+793 text4 CODE >74:C:\Users\Liam\RF Transceiver.X\transmitter.c
+798 text4 CODE >75:C:\Users\Liam\RF Transceiver.X\transmitter.c
+79F text4 CODE >74:C:\Users\Liam\RF Transceiver.X\transmitter.c
+726 text3 CODE >54:C:\Users\Liam\RF Transceiver.X\spi.c
+727 text3 CODE >55:C:\Users\Liam\RF Transceiver.X\spi.c
+729 text3 CODE >57:C:\Users\Liam\RF Transceiver.X\spi.c
+72E text3 CODE >58:C:\Users\Liam\RF Transceiver.X\spi.c
+739 text3 CODE >57:C:\Users\Liam\RF Transceiver.X\spi.c
+73E text3 CODE >61:C:\Users\Liam\RF Transceiver.X\spi.c
+740 text3 CODE >63:C:\Users\Liam\RF Transceiver.X\spi.c
+7A4 text2 CODE >79:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7A4 text2 CODE >92:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7A6 text2 CODE >93:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7AE text2 CODE >94:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7B0 text2 CODE >95:C:\Users\Liam\RF Transceiver.X\transmitter.c
 7B7 text2 CODE >97:C:\Users\Liam\RF Transceiver.X\transmitter.c
 7BB text2 CODE >98:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7C1 text2 CODE >100:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7C6 text2 CODE >101:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7C8 text2 CODE >104:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7CA text2 CODE >105:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7CC text2 CODE >106:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7D2 text2 CODE >108:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7D6 text2 CODE >109:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7D8 text2 CODE >110:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7DE text2 CODE >112:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7E7 text2 CODE >113:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7E9 text2 CODE >114:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7EF text2 CODE >116:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7F3 text2 CODE >117:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7F7 text2 CODE >118:C:\Users\Liam\RF Transceiver.X\transmitter.c
-7FD text2 CODE >121:C:\Users\Liam\RF Transceiver.X\transmitter.c
-724 text1 CODE >125:C:\Users\Liam\RF Transceiver.X\transmitter.c
-725 text1 CODE >127:C:\Users\Liam\RF Transceiver.X\transmitter.c
-729 text1 CODE >128:C:\Users\Liam\RF Transceiver.X\transmitter.c
-72D text1 CODE >129:C:\Users\Liam\RF Transceiver.X\transmitter.c
-733 text1 CODE >130:C:\Users\Liam\RF Transceiver.X\transmitter.c
-747 maintext CODE >45:C:\Users\Liam\RF Transceiver.X\transmitter.c
-747 maintext CODE >46:C:\Users\Liam\RF Transceiver.X\transmitter.c
-749 maintext CODE >47:C:\Users\Liam\RF Transceiver.X\transmitter.c
-74A maintext CODE >48:C:\Users\Liam\RF Transceiver.X\transmitter.c
-74C maintext CODE >49:C:\Users\Liam\RF Transceiver.X\transmitter.c
-74D maintext CODE >51:C:\Users\Liam\RF Transceiver.X\transmitter.c
-754 maintext CODE >52:C:\Users\Liam\RF Transceiver.X\transmitter.c
-758 maintext CODE >53:C:\Users\Liam\RF Transceiver.X\transmitter.c
-75E maintext CODE >54:C:\Users\Liam\RF Transceiver.X\transmitter.c
-760 maintext CODE >50:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7BF text2 CODE >99:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7C5 text2 CODE >101:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7C9 text2 CODE >102:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7CB text2 CODE >103:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7D1 text2 CODE >105:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7D5 text2 CODE >106:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7D7 text2 CODE >107:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7DD text2 CODE >109:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7E7 text2 CODE >110:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7E9 text2 CODE >111:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7EF text2 CODE >113:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7F3 text2 CODE >114:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7F7 text2 CODE >115:C:\Users\Liam\RF Transceiver.X\transmitter.c
+7FD text2 CODE >118:C:\Users\Liam\RF Transceiver.X\transmitter.c
+741 text1 CODE >122:C:\Users\Liam\RF Transceiver.X\transmitter.c
+742 text1 CODE >124:C:\Users\Liam\RF Transceiver.X\transmitter.c
+746 text1 CODE >125:C:\Users\Liam\RF Transceiver.X\transmitter.c
+74A text1 CODE >126:C:\Users\Liam\RF Transceiver.X\transmitter.c
+750 text1 CODE >127:C:\Users\Liam\RF Transceiver.X\transmitter.c
+752 text1 CODE >128:C:\Users\Liam\RF Transceiver.X\transmitter.c
+756 text1 CODE >129:C:\Users\Liam\RF Transceiver.X\transmitter.c
+758 text1 CODE >130:C:\Users\Liam\RF Transceiver.X\transmitter.c
+75C maintext CODE >44:C:\Users\Liam\RF Transceiver.X\transmitter.c
+75C maintext CODE >45:C:\Users\Liam\RF Transceiver.X\transmitter.c
+75E maintext CODE >46:C:\Users\Liam\RF Transceiver.X\transmitter.c
+75F maintext CODE >47:C:\Users\Liam\RF Transceiver.X\transmitter.c
+761 maintext CODE >48:C:\Users\Liam\RF Transceiver.X\transmitter.c
+762 maintext CODE >50:C:\Users\Liam\RF Transceiver.X\transmitter.c
+769 maintext CODE >51:C:\Users\Liam\RF Transceiver.X\transmitter.c
+76D maintext CODE >52:C:\Users\Liam\RF Transceiver.X\transmitter.c
+773 maintext CODE >53:C:\Users\Liam\RF Transceiver.X\transmitter.c
+775 maintext CODE >55:C:\Users\Liam\RF Transceiver.X\transmitter.c
+77A maintext CODE >56:C:\Users\Liam\RF Transceiver.X\transmitter.c
+77C maintext CODE >49:C:\Users\Liam\RF Transceiver.X\transmitter.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -214,48 +217,48 @@ __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.o
 transmitData@data 7A 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
 __Lstringtext 0 0 ABS 0 stringtext -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\Liam\AppData\Local\Temp\sh0g.obj
-_main E8E 0 CODE 0 maintext dist/default/production\RF_Transceiver.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\Liam\AppData\Local\Temp\sh9g.obj
+_main EB8 0 CODE 0 maintext dist/default/production\RF_Transceiver.X.production.obj
 btemp 7E 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
-__end_of_SPI_read_byte E48 0 CODE 0 text5 dist/default/production\RF_Transceiver.X.production.obj
-start 2 0 CODE 0 init C:\Users\Liam\AppData\Local\Temp\sh0g.obj
+__end_of_SPI_read_byte E04 0 CODE 0 text5 dist/default/production\RF_Transceiver.X.production.obj
+start 2 0 CODE 0 init C:\Users\Liam\AppData\Local\Temp\sh9g.obj
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 _OPTION_REGbits 95 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
-__end_of_transmitData E68 0 CODE 0 text1 dist/default/production\RF_Transceiver.X.production.obj
+__end_of_transmitData EB8 0 CODE 0 text1 dist/default/production\RF_Transceiver.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
-_SPI_writeArray EC2 0 CODE 0 text4 dist/default/production\RF_Transceiver.X.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh0g.obj
-intlevel1 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh0g.obj
-intlevel2 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh0g.obj
-intlevel3 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh0g.obj
-intlevel4 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh0g.obj
-intlevel5 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh0g.obj
-_SPI_write_byte E0C 0 CODE 0 text6 dist/default/production\RF_Transceiver.X.production.obj
-_bigBlink EF8 0 CODE 0 text3 dist/default/production\RF_Transceiver.X.production.obj
+_SPI_writeArray E4C 0 CODE 0 text3 dist/default/production\RF_Transceiver.X.production.obj
+intlevel0 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh9g.obj
+intlevel1 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh9g.obj
+intlevel2 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh9g.obj
+intlevel3 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh9g.obj
+intlevel4 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh9g.obj
+intlevel5 0 0 CODE 0 functab C:\Users\Liam\AppData\Local\Temp\sh9g.obj
+_SPI_write_byte E04 0 CODE 0 text6 dist/default/production\RF_Transceiver.X.production.obj
+_bigBlink EFA 0 CODE 0 text4 dist/default/production\RF_Transceiver.X.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
-bigBlink@i_121 72 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
+bigBlink@i_126 72 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
 __Hfunctab 0 0 CODE 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
-__end_of_bigBlink F46 0 CODE 0 text3 dist/default/production\RF_Transceiver.X.production.obj
+__end_of_bigBlink F48 0 CODE 0 text4 dist/default/production\RF_Transceiver.X.production.obj
 _ANSELA 18C 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 _ANSELC 18E 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 _APFCON 11D 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __size_of_configureTX 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __Lmaintext 0 0 ABS 0 maintext -
-__end_of_SPI_writeArray EF8 0 CODE 0 text4 dist/default/production\RF_Transceiver.X.production.obj
-__end_of_SPI_write_byte E28 0 CODE 0 text6 dist/default/production\RF_Transceiver.X.production.obj
-__end_of_RX_PW_P DE2 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
+__end_of_SPI_writeArray E82 0 CODE 0 text3 dist/default/production\RF_Transceiver.X.production.obj
+__end_of_SPI_write_byte E24 0 CODE 0 text6 dist/default/production\RF_Transceiver.X.production.obj
+__end_of_RX_PW_P DBC 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
 _WPUAbits 20C 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 start_initialization FFC 0 CODE 0 cinit dist/default/production\RF_Transceiver.X.production.obj
 _TRISAbits 8C 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 _TRISCbits 8E 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 SPI_read_byte@ret 75 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
-__end_of_RX_ADDR_P DEE 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
+__end_of_RX_ADDR_P DC8 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
 SPI_writeArray@data 78 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
 __size_of_SPI_init 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 transmitData@write 7B 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\Liam\AppData\Local\Temp\sh0g.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Liam\AppData\Local\Temp\sh9g.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 BANK2 1 bank2 -
@@ -390,13 +393,13 @@ __S0 8009 0 ABS 0 - -
 __S1 7E 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 SPI_writeArray@ret 76 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
-_SPI_init DF0 0 CODE 0 text7 dist/default/production\RF_Transceiver.X.production.obj
+_SPI_init DCA 0 CODE 0 text7 dist/default/production\RF_Transceiver.X.production.obj
 SPI_write_byte@ret_data 72 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
-__end_of_SPI_init E0C 0 CODE 0 text7 dist/default/production\RF_Transceiver.X.production.obj
+__end_of_SPI_init DE6 0 CODE 0 text7 dist/default/production\RF_Transceiver.X.production.obj
 __Lintentry 2 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Liam\AppData\Local\Temp\sh0g.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Liam\AppData\Local\Temp\sh9g.obj
 SPI_write_byte@data 71 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
-_configureTX F46 0 CODE 0 text2 dist/default/production\RF_Transceiver.X.production.obj
+_configureTX F48 0 CODE 0 text2 dist/default/production\RF_Transceiver.X.production.obj
 __Lbank10 0 0 BANK10 1 bank10 -
 __Lbank11 0 0 BANK11 1 bank11 -
 __Lbank12 0 0 BANK12 1 bank12 -
@@ -419,7 +422,7 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-__pmaintext E8E 0 CODE 0 maintext dist/default/production\RF_Transceiver.X.production.obj
+__pmaintext EB8 0 CODE 0 maintext dist/default/production\RF_Transceiver.X.production.obj
 __Lbigram 0 0 ABS 0 bigram -
 __CFG_BORV$LO 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __Lcommon 0 0 ABS 0 common -
@@ -428,12 +431,12 @@ __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 _LATAbits 10C 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 _LATCbits 10E 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
-_RX_PW_P DD6 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
+_RX_PW_P DB0 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
 SPI_read_byte@address 74 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
 main@last 7D 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
 __size_of_SPI_writeArray 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
-stackhi 206F 0 ABS 0 - C:\Users\Liam\AppData\Local\Temp\sh0g.obj
-stacklo 2000 0 ABS 0 - C:\Users\Liam\AppData\Local\Temp\sh0g.obj
+stackhi 206F 0 ABS 0 - C:\Users\Liam\AppData\Local\Temp\sh9g.obj
+stacklo 2000 0 ABS 0 - C:\Users\Liam\AppData\Local\Temp\sh9g.obj
 __size_of_SPI_write_byte 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __Lspace_0 0 0 ABS 0 - -
@@ -449,18 +452,18 @@ __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.
 SPI_writeArray@length 73 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 2 0 CODE 0 reset_vec -
-__ptext1 E48 0 CODE 0 text1 dist/default/production\RF_Transceiver.X.production.obj
-__ptext2 F46 0 CODE 0 text2 dist/default/production\RF_Transceiver.X.production.obj
-__ptext3 EF8 0 CODE 0 text3 dist/default/production\RF_Transceiver.X.production.obj
-__ptext4 EC2 0 CODE 0 text4 dist/default/production\RF_Transceiver.X.production.obj
-__ptext5 E28 0 CODE 0 text5 dist/default/production\RF_Transceiver.X.production.obj
-__ptext6 E0C 0 CODE 0 text6 dist/default/production\RF_Transceiver.X.production.obj
-__ptext7 DF0 0 CODE 0 text7 dist/default/production\RF_Transceiver.X.production.obj
-__ptext8 E68 0 CODE 0 text8 dist/default/production\RF_Transceiver.X.production.obj
-_SPI_read_byte E28 0 CODE 0 text5 dist/default/production\RF_Transceiver.X.production.obj
+__ptext1 E82 0 CODE 0 text1 dist/default/production\RF_Transceiver.X.production.obj
+__ptext2 F48 0 CODE 0 text2 dist/default/production\RF_Transceiver.X.production.obj
+__ptext3 E4C 0 CODE 0 text3 dist/default/production\RF_Transceiver.X.production.obj
+__ptext4 EFA 0 CODE 0 text4 dist/default/production\RF_Transceiver.X.production.obj
+__ptext5 DE6 0 CODE 0 text5 dist/default/production\RF_Transceiver.X.production.obj
+__ptext6 E04 0 CODE 0 text6 dist/default/production\RF_Transceiver.X.production.obj
+__ptext7 DCA 0 CODE 0 text7 dist/default/production\RF_Transceiver.X.production.obj
+__ptext8 E24 0 CODE 0 text8 dist/default/production\RF_Transceiver.X.production.obj
+_SPI_read_byte DE6 0 CODE 0 text5 dist/default/production\RF_Transceiver.X.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-__pstringtext DD6 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
+__pstringtext DB0 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec -
 __CFG_LPBOR$OFF 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __size_of_configIO 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
@@ -470,21 +473,21 @@ __Lfunctab 0 0 CODE 0 functab -
 __Lclrtext 0 0 ABS 0 clrtext -
 _SSP1CON1bits 215 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 configureTX@write 7A 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
-__end_of_TX_ADDR DF0 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
+__end_of_TX_ADDR DCA 0 STRCODE 0 stringtext dist/default/production\RF_Transceiver.X.production.obj
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\RF_Transceiver.X.production.obj
 _SSP1BUF 211 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __Hend_init 4 0 CODE 0 end_init -
-__end_of_main EC2 0 CODE 0 maintext dist/default/production\RF_Transceiver.X.production.obj
+__end_of_main EFA 0 CODE 0 maintext dist/default/production\RF_Transceiver.X.production.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-_transmitData E48 0 CODE 0 text1 dist/default/production\RF_Transceiver.X.production.obj
-_configIO E68 0 CODE 0 text8 dist/default/production\RF_Transceiver.X.production.obj
+_transmitData E82 0 CODE 0 text1 dist/default/production\RF_Transceiver.X.production.obj
+_configIO E24 0 CODE 0 text8 dist/default/production\RF_Transceiver.X.production.obj
 __initialization FFC 0 CODE 0 cinit dist/default/production\RF_Transceiver.X.production.obj
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __Hstringtext 0 0 ABS 0 stringtext -
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 __end_of_configureTX FFC 0 CODE 0 text2 dist/default/production\RF_Transceiver.X.production.obj
-__end_of_configIO E8E 0 CODE 0 text8 dist/default/production\RF_Transceiver.X.production.obj
+__end_of_configIO E4C 0 CODE 0 text8 dist/default/production\RF_Transceiver.X.production.obj
 __size_of_SPI_read_byte 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
@@ -512,16 +515,16 @@ __size_of_SPI_read_byte 0 0 ABS 0 - dist/default/production\RF_Transceiver.X.pro
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cinit 0 7FE FFC 2 2
-text1 0 724 E48 10 2
-text2 0 7A3 F46 5B 2
-text3 0 77C EF8 27 2
-text4 0 761 EC2 1B 2
-text5 0 714 E28 10 2
-text6 0 706 E0C E 2
-text7 0 6F8 DF0 E 2
-text8 0 734 E68 13 2
-maintext 0 747 E8E 1A 2
+text1 0 741 E82 1B 2
+text2 0 7A4 F48 5A 2
+text3 0 726 E4C 1B 2
+text4 0 77D EFA 27 2
+text5 0 6F3 DE6 F 2
+text6 0 702 E04 10 2
+text7 0 6E5 DCA E 2
+text8 0 712 E24 14 2
+maintext 0 75C EB8 21 2
 cstackCOMMON 1 70 70 E 1
 reset_vec 0 0 0 2 2
-stringtext 0 6EB DD6 D 2
+stringtext 0 6D8 DB0 D 2
 config 0 8007 1000E 2 2

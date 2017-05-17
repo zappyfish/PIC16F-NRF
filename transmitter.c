@@ -31,7 +31,6 @@
 
 
 void configureTX(void);
-void configIOTransmitter(void);
 void transmitData(uint8_t data);
 void blink(void);
 void bigBlink(uint8_t x);
@@ -53,7 +52,9 @@ int main(void) {
             LED = last;
             transmitData(0xCF);
         }
-        
+        if(SPI_read_byte(0x00) == 0b01011010) {
+            bigBlink(5);
+        }
     }
     
 }
@@ -96,10 +97,6 @@ void configureTX(void) {
     write[0] = (CONFIG & REGISTER_MASK) | W_MASK;
     write[1] = 0b01011010;  // config stuff
     SPI_writeArray(write, 2);
-    
-    if(SPI_read_byte(0x00) == 0b01011010) {
-        bigBlink(10);
-    }
    
     write[0] = (EN_AA & REGISTER_MASK) | W_MASK;
     write[1] = 0b00000001;
@@ -127,6 +124,10 @@ void transmitData(uint8_t data) {
     write[0]= W_TX_PAYLOAD; 
     write[1] = data;// command and data. single byte data
     SPI_writeArray(write, 2);
+    NRF_CE = 1;
+    __delay_us(50);
+    NRF_CE = 0;
+    while(IRQ);
 }
 
 

@@ -2985,159 +2985,159 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi.c: 29: WPUAbits.WPUA5 = 1;
 "29
 [e = . . _WPUAbits 0 5 -> -> 1 `i `uc ]
-[; ;spi.c: 30: APFCON = 0b00010000;
+[; ;spi.c: 30: WPUAbits.WPUA2 = 1;
 "30
-[e = _APFCON -> -> 16 `i `uc ]
-[; ;spi.c: 31: ANSELA = 0x00;
+[e = . . _WPUAbits 0 2 -> -> 1 `i `uc ]
+[; ;spi.c: 31: APFCON = 0b00010000;
 "31
-[e = _ANSELA -> -> 0 `i `uc ]
-[; ;spi.c: 32: ANSELC = 0x00;
+[e = _APFCON -> -> 16 `i `uc ]
+[; ;spi.c: 32: ANSELA = 0x00;
 "32
-[e = _ANSELC -> -> 0 `i `uc ]
-[; ;spi.c: 33: }
+[e = _ANSELA -> -> 0 `i `uc ]
+[; ;spi.c: 33: ANSELC = 0x00;
 "33
+[e = _ANSELC -> -> 0 `i `uc ]
+[; ;spi.c: 34: }
+"34
 [e :UE 341 ]
 }
-"34
+"35
 [v _SPI_init `(v ~T0 @X0 1 ef ]
 {
-[; ;spi.c: 34: void SPI_init(void) {
+[; ;spi.c: 35: void SPI_init(void) {
 [e :U _SPI_init ]
 [f ]
-[; ;spi.c: 35: SSP1CON1bits.SSPEN = 0;
-"35
-[e = . . _SSP1CON1bits 0 5 -> -> 0 `i `uc ]
-[; ;spi.c: 36: configIO();
+[; ;spi.c: 36: SSP1CON1bits.SSPEN = 0;
 "36
-[e ( _configIO ..  ]
-[; ;spi.c: 37: SSP1CON1bits.CKP = 0;
+[e = . . _SSP1CON1bits 0 5 -> -> 0 `i `uc ]
+[; ;spi.c: 37: configIO();
 "37
-[e = . . _SSP1CON1bits 0 4 -> -> 0 `i `uc ]
-[; ;spi.c: 38: SSP1STATbits.CKE = 1;
+[e ( _configIO ..  ]
+[; ;spi.c: 38: SSP1CON1bits.CKP = 0;
 "38
-[e = . . _SSP1STATbits 0 6 -> -> 1 `i `uc ]
-[; ;spi.c: 39: SSP1STATbits.SMP = 0;
+[e = . . _SSP1CON1bits 0 4 -> -> 0 `i `uc ]
+[; ;spi.c: 39: SSP1STATbits.CKE = 1;
 "39
-[e = . . _SSP1STATbits 0 7 -> -> 0 `i `uc ]
-[; ;spi.c: 40: SSP1CON1bits.SSPM = 0b0000;
+[e = . . _SSP1STATbits 0 6 -> -> 1 `i `uc ]
+[; ;spi.c: 40: SSP1STATbits.SMP = 0;
 "40
-[e = . . _SSP1CON1bits 1 0 -> -> 0 `i `uc ]
-[; ;spi.c: 41: PIR1bits.SSP1IF = 0;
+[e = . . _SSP1STATbits 0 7 -> -> 0 `i `uc ]
+[; ;spi.c: 41: SSP1CON1bits.SSPM = 0b0000;
 "41
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;spi.c: 42: SSP1CON1bits.SSPEN = 1;
+[e = . . _SSP1CON1bits 1 0 -> -> 0 `i `uc ]
+[; ;spi.c: 42: PIR1bits.SSP1IF = 0;
 "42
-[e = . . _SSP1CON1bits 0 5 -> -> 1 `i `uc ]
-[; ;spi.c: 43: }
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;spi.c: 43: SSP1CON1bits.SSPEN = 1;
 "43
+[e = . . _SSP1CON1bits 0 5 -> -> 1 `i `uc ]
+[; ;spi.c: 44: }
+"44
 [e :UE 342 ]
 }
-"45
+"46
 [v _SPI_write_byte `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;spi.c: 45: uint8_t SPI_write_byte(uint8_t data) {
+[; ;spi.c: 46: uint8_t SPI_write_byte(uint8_t data) {
 [e :U _SPI_write_byte ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;spi.c: 46: SSP1CON1bits.WCOL = 0;
-"46
-[e = . . _SSP1CON1bits 0 7 -> -> 0 `i `uc ]
-[; ;spi.c: 47: SSP1STATbits.BF = 0;
+[; ;spi.c: 47: SSP1BUF = data;
 "47
-[e = . . _SSP1STATbits 0 0 -> -> 0 `i `uc ]
-[; ;spi.c: 48: SSP1BUF = data;
-"48
 [e = _SSP1BUF _data ]
-[; ;spi.c: 49: while(!SSP1STATbits.BF);
-"49
+[; ;spi.c: 48: while(!PIR1bits.SSP1IF);
+"48
 [e $U 344  ]
 [e :U 345 ]
 [e :U 344 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> -> -> 0 `i `Vuc `i 345  ]
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 345  ]
 [e :U 346 ]
-"51
+"49
 [v _ret_data `uc ~T0 @X0 1 a ]
-[; ;spi.c: 51: uint8_t ret_data = SSP1BUF;
+[; ;spi.c: 49: uint8_t ret_data = SSP1BUF;
 [e = _ret_data _SSP1BUF ]
-[; ;spi.c: 52: return ret_data;
-"52
+[; ;spi.c: 50: PIR1bits.SSP1IF = 0;
+"50
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;spi.c: 51: return ret_data;
+"51
 [e ) _ret_data ]
 [e $UE 343  ]
-[; ;spi.c: 53: }
-"53
+[; ;spi.c: 52: }
+"52
 [e :UE 343 ]
 }
-"55
+"54
 [v _SPI_writeArray `(uc ~T0 @X0 1 ef2`*uc`uc ]
 {
-[; ;spi.c: 55: uint8_t SPI_writeArray(uint8_t *data, uint8_t length) {
+[; ;spi.c: 54: uint8_t SPI_writeArray(uint8_t *data, uint8_t length) {
 [e :U _SPI_writeArray ]
 [v _data `*uc ~T0 @X0 1 r1 ]
 [v _length `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;spi.c: 56: LATCbits.LATC3 = 0;
-"56
+[; ;spi.c: 55: LATCbits.LATC3 = 0;
+"55
 [e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-"57
+"56
 [v _ret `uc ~T0 @X0 1 a ]
-[; ;spi.c: 57: uint8_t ret;
-[; ;spi.c: 58: for(uint8_t i = 0; i < length; ++i) {
-"58
+[; ;spi.c: 56: uint8_t ret;
+[; ;spi.c: 57: for(uint8_t i = 0; i < length; ++i) {
+"57
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 351  ]
 [e :U 348 ]
 {
-[; ;spi.c: 59: ret = SPI_write_byte(data[i]);
-"59
-[e = _ret ( _SPI_write_byte (1 *U + _data * -> _i `ux -> -> # *U _data `ui `ux ]
-"60
-}
+[; ;spi.c: 58: ret = SPI_write_byte(data[i]);
 "58
+[e = _ret ( _SPI_write_byte (1 *U + _data * -> _i `ux -> -> # *U _data `ui `ux ]
+"59
+}
+"57
 [e =+ _i -> -> 1 `i `uc ]
 [e :U 351 ]
 [e $ < -> _i `i -> _length `i 348  ]
 [e :U 349 ]
-"60
+"59
 }
-[; ;spi.c: 60: }
-[; ;spi.c: 62: LATCbits.LATC3 = 1;
-"62
+[; ;spi.c: 59: }
+[; ;spi.c: 61: LATCbits.LATC3 = 1;
+"61
 [e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;spi.c: 63: return ret;
-"63
+[; ;spi.c: 62: return ret;
+"62
 [e ) _ret ]
 [e $UE 347  ]
-[; ;spi.c: 64: }
-"64
+[; ;spi.c: 63: }
+"63
 [e :UE 347 ]
 }
-"66
+"65
 [v _SPI_read_byte `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;spi.c: 66: uint8_t SPI_read_byte(uint8_t address) {
+[; ;spi.c: 65: uint8_t SPI_read_byte(uint8_t address) {
 [e :U _SPI_read_byte ]
 [v _address `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;spi.c: 67: LATCbits.LATC3 = 0;
-"67
+[; ;spi.c: 66: LATCbits.LATC3 = 0;
+"66
 [e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-[; ;spi.c: 68: SPI_write_byte((address & 0b00011111) | 0b00100000);
+[; ;spi.c: 67: SPI_write_byte((address & 0b00011111) | 0x00);
+"67
+[e ( _SPI_write_byte (1 -> | & -> _address `i -> 31 `i -> 0 `i `uc ]
 "68
-[e ( _SPI_write_byte (1 -> | & -> _address `i -> 31 `i -> 32 `i `uc ]
-"69
 [v _ret `uc ~T0 @X0 1 a ]
-[; ;spi.c: 69: uint8_t ret = SPI_write_byte(0xFF);
+[; ;spi.c: 68: uint8_t ret = SPI_write_byte(0xFF);
 [e = _ret ( _SPI_write_byte (1 -> -> 255 `i `uc ]
-[; ;spi.c: 70: LATCbits.LATC3 = 1;
-"70
+[; ;spi.c: 69: LATCbits.LATC3 = 1;
+"69
 [e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;spi.c: 71: return ret;
-"71
+[; ;spi.c: 70: return ret;
+"70
 [e ) _ret ]
 [e $UE 352  ]
-[; ;spi.c: 72: }
-"72
+[; ;spi.c: 71: }
+"71
 [e :UE 352 ]
 }
