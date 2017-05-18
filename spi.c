@@ -28,7 +28,7 @@ void configIO(void) {
     OPTION_REGbits.nWPUEN = 0; // enable pull ups
     WPUAbits.WPUA5 = 1; // pull up for switch
     WPUAbits.WPUA2 = 1; // pull up for IRQ
-    APFCON = 0b00010000; // sdo on ra4
+    APFCON = 0b00010000; // sdo on rc2
     ANSELA = 0x00;
     ANSELC = 0x00;
 }
